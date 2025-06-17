@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Bosh sahifa{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-3">Assalomu alaykum, {{ request.user.full_name }}</h1>
+    <p class="lead">dualedu.uz platformasiga xush kelibsiz.</p>
+
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Musiqa Nazariyasi</h5>
+                    <p class="card-text">Text + Audio darslar, topshiriqlar</p>
+                    <a href="#" class="btn btn-outline-primary w-100">Boshlash</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Salfedjio</h5>
+                    <p class="card-text">YouTube dars videolari</p>
+                    <a href="#" class="btn btn-outline-success w-100">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

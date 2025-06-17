@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Ro‘yxatdan o‘tish{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <h2 class="text-center mb-4">Ro‘yxatdan o‘tish</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="mb-3">
+                {{ form.full_name.label_tag }}
+                {{ form.full_name }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Ro‘yxatdan o‘tish</button>
+        </form>
+
+        <div class="text-center mt-3">
+            Allaqachon ro‘yxatdan o‘tganmisiz? <a href="{% url 'login' %}">Kirish</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

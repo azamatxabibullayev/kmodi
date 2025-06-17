@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Kirish{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <h2 class="text-center mb-4">Tizimga kirish</h2>
+
+        {% if error %}
+            <div class="alert alert-danger text-center">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="phone" class="form-label">Telefon raqam</label>
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="+998901234567" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Parol</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Kirish</button>
+        </form>
+        <div class="text-center mt-3">
+            Ro‘yxatdan o‘tmaganmisiz? <a href="{% url 'register' %}">Ro‘yxatdan o‘tish</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
