@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
-from .forms import RegisterForm
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
+from .forms import RegisterForm, ProfileUpdateForm
 from .models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
 
@@ -39,5 +39,19 @@ def logout_view(request):
 
 
 @login_required
-def home_view(request):
-    return render(request, 'users/home.html')
+def profile_view(request):
+    return render(request, 'users/profile.html')
+
+
+@login_required
+def profile_update_view(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            # Parol o‘zgartirilsa, sessiyani yangilab qo‘yish
+            update_session_auth_hash(request, user)
+            return redirect('profile')  # 🔁 profilga qaytarish
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+    return render(request, 'users/profile_update.html', {'form': form})

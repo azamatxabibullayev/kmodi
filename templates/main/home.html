@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %}Bosh sahifa{% endblock %}
 
 {% block content %}
@@ -8,23 +7,48 @@
     <p class="lead">dualedu.uz platformasiga xush kelibsiz.</p>
 
     <div class="row mt-4 justify-content-center">
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Musiqa Nazariyasi</h5>
+        <!-- Musiqa Nazariyasi -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">🎼 Musiqa Nazariyasi</h5>
                     <p class="card-text">Text + Audio darslar, topshiriqlar</p>
-                    <a href="#" class="btn btn-outline-primary w-100">Boshlash</a>
+                    <a href="{% url 'category_list' %}" class="btn btn-outline-primary w-100 mt-3">Boshlash</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mt-3 mt-md-0">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Salfedjio</h5>
+
+        <!-- Salfedjio -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">🎵 Salfedjio</h5>
                     <p class="card-text">YouTube dars videolari</p>
-                    <a href="#" class="btn btn-outline-success w-100">Ko‘rish</a>
+                    <a href="{% url 'salfedjio' %}" class="btn btn-outline-success w-100 mt-3">Ko‘rish</a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- E-Kitoblar bo‘limi -->
+    <div id="ebooks" class="mt-5 pt-5">
+        <h2 class="text-center mb-4">📚 E-Kitoblar</h2>
+        <div class="row">
+            {% for book in books %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text text-muted">{{ book.description|truncatewords:20 }}</p>
+                        <a href="{{ book.pdf_file.url }}" class="btn btn-outline-success mt-auto" target="_blank">PDF ni ko‘rish</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Hech qanday e-kitob mavjud emas.</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}E-Kutubxona{% endblock %}
+{% block content %}
+<h2 class="mb-4">Kutubxona</h2>
+<div class="row">
+    {% for book in books %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5>{{ book.title }}</h5>
+                    <p>{{ book.description }}</p>
+                    <a href="{{ book.pdf_file.url }}" class="btn btn-primary" download>Yuklab olish</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

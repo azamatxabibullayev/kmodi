@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Profil ma’lumotlari</h2>
+    <p><strong>Ism:</strong> {{ request.user.full_name }}</p>
+    <p><strong>Telefon:</strong> {{ request.user.phone }}</p>
+
+    <a href="{% url 'profile_update' %}" class="btn btn-warning mt-3">Tahrirlash</a>
+</div>
+{% endblock %}

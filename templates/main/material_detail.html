@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }} - Materiallar{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">{{ category.name }} - Materiallar</h2>
+
+{% if materials %}
+    {% for material in materials %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Text</h5>
+                <p class="card-text">{{ material.text }}</p>
+
+                {% if material.audio %}
+                    <audio controls class="w-100">
+                        <source src="{{ material.audio.url }}" type="audio/mpeg">
+                        Sizning brauzeringiz audio elementni qo‘llab-quvvatlamaydi.
+                    </audio>
+                {% endif %}
+
+                {% if material.assignment_text %}
+                    <p><strong>Topshiriq:</strong> {{ material.assignment_text }}</p>
+                {% endif %}
+
+                {% if material.assignment_audio %}
+                    <audio controls class="w-100 mt-2">
+                        <source src="{{ material.assignment_audio.url }}" type="audio/mpeg">
+                        Sizning brauzeringiz audio elementni qo‘llab-quvvatlamaydi.
+                    </audio>
+                {% endif %}
+
+                {% if material.assignment_image %}
+                    <img src="{{ material.assignment_image.url }}" class="img-fluid mt-2" alt="Topshiriq rasmi">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p class="text-danger">Material topilmadi.</p>
+{% endif %}
+{% endblock %}
