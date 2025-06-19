@@ -1,18 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}Salfedjio{% endblock %}
+
+{% block title %}Salfedjio Darslari{% endblock %}
+
 {% block content %}
-<h2 class="mb-4">Salfedjio darslari</h2>
+<h2 class="mb-4">🎵 Salfedjio Darslari</h2>
+
 <div class="row">
     {% for video in videos %}
-        <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">{{ video.title }}</h5>
-                    <div class="ratio ratio-16x9">
-                        <iframe src="{{ video.youtube_url }}" frameborder="0" allowfullscreen></iframe>
+        {% with video.video_id as vid %}
+            {% if vid %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <a href="https://www.youtube.com/watch?v={{ vid }}" target="_blank">
+                        <img src="https://img.youtube.com/vi/{{ vid }}/hqdefault.jpg"
+                             class="card-img-top" alt="{{ video.title }}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <a href="https://www.youtube.com/watch?v={{ vid }}"
+                           class="btn btn-sm btn-outline-primary w-100" target="_blank">
+                            Videoni ko‘rish
+                        </a>
                     </div>
                 </div>
             </div>
+            {% endif %}
+        {% endwith %}
+    {% empty %}
+        <div class="col-12">
+            <p class="text-danger">Hech qanday video mavjud emas.</p>
         </div>
     {% endfor %}
 </div>
