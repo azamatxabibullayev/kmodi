@@ -51,5 +51,32 @@
             {% endfor %}
         </div>
     </div>
+    <!--Recommendations  -->
+    <h3 class="mt-5 mb-3">🎬 YouTube Recommendations</h3>
+    <div class="row">
+        {% for video in videos %}
+            {% with video.video_id as vid %}
+                {% if vid %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <a href="https://www.youtube.com/watch?v={{ vid }}" target="_blank">
+                                <img src="https://img.youtube.com/vi/{{ vid }}/hqdefault.jpg"
+                                     class="card-img-top" alt="{{ video.title }}">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ video.title }}</h5>
+                                <a href="https://www.youtube.com/watch?v={{ vid }}" class="btn btn-sm btn-outline-danger w-100" target="_blank">
+                                    Ko'rish
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% empty %}
+            <p class="text-danger">Tavsiya etilgan video mavjud emas.</p>
+        {% endfor %}
+    </div>
+
 </div>
 {% endblock %}

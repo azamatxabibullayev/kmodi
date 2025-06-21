@@ -1,12 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Category, Material, LibraryBook, SalfedjioVideo
+from .models import Category, Material, LibraryBook, SalfedjioVideo, YouTubeRecommendation
 from django.db.models import Q
 
 
 def home_view(request):
     books = LibraryBook.objects.all()
-    return render(request, 'main/home.html', {'books': books})
+    videos = YouTubeRecommendation.objects.all()[:4]
+    return render(request, 'main/home.html', {
+        'books': books,
+        'videos': videos
+    })
 
 
 def category_list(request):

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Material, LibraryBook, SalfedjioVideo
+from .models import Category, Material, LibraryBook, SalfedjioVideo, YouTubeRecommendation
 
 
 @admin.register(Category)
@@ -19,4 +19,9 @@ class LibraryBookAdmin(admin.ModelAdmin):
 
 @admin.register(SalfedjioVideo)
 class SalfedjioVideoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title']
+    list_display = ['id', 'title', 'youtube_url']
+
+
+@admin.register(YouTubeRecommendation)
+class YouTubeRecommendationAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'youtube_url']
