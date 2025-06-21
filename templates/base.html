@@ -27,9 +27,18 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex ms-3" role="search" method="get" action="{% url 'search' %}">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Qidiruv..."
+                           aria-label="Search" value="{{ request.GET.q|default_if_none:'' }}">
+                    <button class="btn btn-outline-light" type="submit">Qidirish</button>
+                </form>
+
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'home' %}#ebooks">E-Kitoblar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Loyiha a'zolari</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
@@ -58,6 +67,11 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div id="team" class="container">
+            <h5 class="mb-3">👨‍💻 Loyiha A'zolari</h5>
+            <p>Azamat Xabibullayev — Developer</p>
+            <p>Boshqa a'zolar</p>
+        </div>
         <div class="container">
             <p class="mb-0">&copy; 2025 dualedu.uz — Barcha huquqlar himoyalangan.</p>
         </div>

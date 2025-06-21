@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Qidiruv natijalari{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">🔍 Qidiruv natijalari: "{{ query }}"</h3>
+
+{% if materials or videos %}
+    {% if materials %}
+        <h5 class="mt-4">📘 Materiallar:</h5>
+        <ul class="list-group mb-4">
+            {% for m in materials %}
+            <li class="list-group-item">
+                <strong>{{ m.category.name }}</strong><br>
+                {{ m.text|truncatechars:150 }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if videos %}
+        <h5>🎥 Salfedjio Videolari:</h5>
+        <div class="row">
+            {% for v in videos %}
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://img.youtube.com/vi/{{ v.youtube_url|cut:'https://www.youtube.com/watch?v=' }}/hqdefault.jpg"
+                         class="card-img-top" alt="{{ v.title }}">
+                    <div class="card-body">
+                        <h6 class="card-title">{{ v.title }}</h6>
+                        <a href="{{ v.youtube_url }}" class="btn btn-sm btn-outline-primary w-100" target="_blank">Ko‘rish</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% else %}
+    <p class="text-danger">❌ Hech qanday ma’lumot topilmadi.</p>
+{% endif %}
+{% endblock %}

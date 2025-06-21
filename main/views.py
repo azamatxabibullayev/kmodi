@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Category, Material, LibraryBook, SalfedjioVideo
+from django.db.models import Q
 
 
 def home_view(request):
@@ -30,3 +31,19 @@ def library_view(request):
 def salfedjio_view(request):
     videos = SalfedjioVideo.objects.all()
     return render(request, 'main/salfedjio.html', {'videos': videos})
+
+
+def search_view(request):
+    query = request.GET.get('q')
+    materials = SalfedjioVideo.objects.none()
+    videos = Material.objects.none()
+
+    if query:
+        materials = Material.objects.filter(Q(text__icontains=query) | Q(assignment_text__icontains=query))
+        videos = SalfedjioVideo.objects.filter(Q(title__icontains=query) | Q(youtube_url__icontains=query))
+
+    return render(request, 'main/search_results.html', {
+        'query': query,
+        'materials': materials,
+        'videos': videos
+    })
