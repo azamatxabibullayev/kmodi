@@ -30,6 +30,32 @@
         </div>
     </div>
 
+    <!-- Loyiha A'zolari -->
+    <div id="team" class="my-5">
+        <h2 class="text-center mb-4">👥 Loyiha A'zolari</h2>
+        <div class="row justify-content-center">
+            {% for member in team_members %}
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="card h-100 text-center shadow-sm">
+                    {% if member.photo %}
+                    <img src="{{ member.photo.url }}" class="card-img-top img-fluid rounded-circle p-3" alt="{{ member.full_name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ member.full_name }}</h5>
+                        {% if member.job_title %}
+                        <p class="text-muted">{{ member.job_title }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Loyiha a'zolari hozircha mavjud emas.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
     <!-- E-Kitoblar bo‘limi -->
     <div id="ebooks" class="mt-5 pt-5">
         <h2 class="text-center mb-4">📚 E-Kitoblar</h2>

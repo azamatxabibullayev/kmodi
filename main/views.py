@@ -1,15 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Category, Material, LibraryBook, SalfedjioVideo, YouTubeRecommendation
+from .models import Category, Material, LibraryBook, SalfedjioVideo, YouTubeRecommendation, TeamMember
 from django.db.models import Q
 
 
 def home_view(request):
     books = LibraryBook.objects.all()
-    videos = YouTubeRecommendation.objects.all()[:4]
+    videos = YouTubeRecommendation.objects.all()
+    team_members = TeamMember.objects.all()
     return render(request, 'main/home.html', {
         'books': books,
-        'videos': videos
+        'videos': videos,
+        'team_members': team_members,
     })
 
 
