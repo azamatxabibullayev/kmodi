@@ -49,9 +49,8 @@ def profile_update_view(request):
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             user = form.save()
-            # Parol o‘zgartirilsa, sessiyani yangilab qo‘yish
             update_session_auth_hash(request, user)
-            return redirect('profile')  # 🔁 profilga qaytarish
+            return redirect('profile')
     else:
         form = ProfileUpdateForm(instance=request.user)
     return render(request, 'users/profile_update.html', {'form': form})

@@ -23,6 +23,13 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Kirish</button>
         </form>
+
+        <div class="text-center my-3">
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-outline-danger w-100">
+                <i class="bi bi-google"></i> Continue with Google
+            </a>
+        </div>
+
         <div class="text-center mt-3">
             Ro‘yxatdan o‘tmaganmisiz? <a href="{% url 'register' %}">Ro‘yxatdan o‘tish</a>
         </div>

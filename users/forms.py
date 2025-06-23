@@ -34,7 +34,27 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['full_name', 'password']
+        fields = ['full_name', 'phone', 'email', 'password']
+        widgets = {
+            'phone': forms.TextInput(attrs={'placeholder': 'Telefon raqam'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Email manzilingiz'}),
+        }
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if email:
+            qs = User.objects.exclude(pk=self.instance.pk).filter(email=email)
+            if qs.exists():
+                raise forms.ValidationError("Bu email allaqachon mavjud.")
+        return email
+
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        if phone:
+            qs = User.objects.exclude(pk=self.instance.pk).filter(phone=phone)
+            if qs.exists():
+                raise forms.ValidationError("Bu telefon raqam allaqachon mavjud.")
+        return phone
 
     def save(self, commit=True):
         user = super().save(commit=False)

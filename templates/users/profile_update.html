@@ -2,21 +2,47 @@
 {% block title %}Profilni yangilash{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <h2 class="mb-4 text-center">Profilni yangilash</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label class="form-label">To‘liq ism</label>
-                {{ form.full_name }}
+<div class="container">
+    <h2 class="mb-4">🛠 Profilni yangilash</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+
+                        <div class="mb-3">
+                            <label for="id_full_name" class="form-label">To‘liq ism</label>
+                            {{ form.full_name }}
+                            {{ form.full_name.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_phone" class="form-label">Telefon raqam</label>
+                            {{ form.phone }}
+                            {{ form.phone.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_email" class="form-label">Email manzil</label>
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label">Yangi parol (ixtiyoriy)</label>
+                            {{ form.password }}
+                            {{ form.password.errors }}
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">💾 Saqlash</button>
+                        <a href="{% url 'profile' %}" class="btn btn-secondary w-100 mt-2">🔙 Ortga</a>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Yangi parol (ixtiyoriy)</label>
-                {{ form.password }}
-            </div>
-            <button type="submit" class="btn btn-success w-100">Saqlash</button>
-        </form>
+        </div>
     </div>
 </div>
 {% endblock %}

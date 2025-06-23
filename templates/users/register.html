@@ -29,6 +29,12 @@
             <button type="submit" class="btn btn-success w-100">Ro‘yxatdan o‘tish</button>
         </form>
 
+        <div class="text-center my-3">
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-outline-danger w-100">
+                <i class="bi bi-google"></i> Continue with Google
+            </a>
+        </div>
+
         <div class="text-center mt-3">
             Allaqachon ro‘yxatdan o‘tganmisiz? <a href="{% url 'login' %}">Kirish</a>
         </div>

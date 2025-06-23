@@ -1,18 +1,35 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
+from django.utils.crypto import get_random_string
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, full_name, phone, password=None, role='student'):
-        if not phone:
-            raise ValueError("Telefon raqam kiritilishi shart")
-        user = self.model(full_name=full_name, phone=phone, role=role)
-        user.set_password(password)
+    def create_user(self, full_name=None, phone=None, password=None, email=None, role='student', **extra_fields):
+        if not phone and not email:
+            raise ValueError("Telefon raqam yoki email bo‘lishi shart")
+
+        if not full_name:
+            full_name = email or phone or "Foydalanuvchi"
+
+        user = self.model(
+            full_name=full_name,
+            phone=phone,
+            email=email,
+            role=role,
+            **extra_fields
+        )
+        user.set_password(password or get_random_string(12))
         user.save()
         return user
 
-    def create_superuser(self, full_name, phone, password):
-        user = self.create_user(full_name, phone, password, role='admin')
+    def create_superuser(self, full_name, phone, password, email=None):
+        user = self.create_user(
+            full_name=full_name,
+            phone=phone,
+            password=password,
+            email=email,
+            role='admin'
+        )
         user.is_admin = True
         user.is_superuser = True
         user.save()
@@ -25,7 +42,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('admin', 'Admin'),
     )
     full_name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20, unique=True)
+    phone = models.CharField(max_length=20, unique=True, null=True, blank=True)
+    email = models.EmailField(unique=True, null=True, blank=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='student')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
