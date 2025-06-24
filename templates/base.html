@@ -11,69 +11,124 @@
 
     <!-- Custom styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            background: linear-gradient(to right, #faf8af, #ffa6fa);
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #faf8af, #ffa6fa);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: black !important;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin: 0 6px;
+            border: 1px solid black;
+            border-radius: 15px;
+            padding: 5px 15px;
+            background: linear-gradient(to right, #faf8af, #ffa6fa);
+            color: black !important;
+            transition: 0.3s;
+        }
+
+
+        .form-control {
+            border-radius: 20px;
+            border: 1px solid #aaa;
+        }
+
+        .btn-outline-light {
+            border-radius: 20px;
+            background: linear-gradient(to right, #faf8af, #ffa6fa);
+            color: black;
+            border: 1px solid black;
+            font-weight: bold;
+        }
+
+
+        footer {
+            background: linear-gradient(to right, #faf8af, #ffa6fa);
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+    </style>
 
     {% block extra_head %}{% endblock %}
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">dualedu.uz</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">dualedu.uz</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <form class="d-flex ms-3" role="search" method="get" action="{% url 'search' %}">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Qidiruv..."
-                           aria-label="Search" value="{{ request.GET.q|default_if_none:'' }}">
-                    <button class="btn btn-outline-light" type="submit">Qidirish</button>
-                </form>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <form class="d-flex ms-3" role="search" method="get" action="{% url 'search' %}">
+                <input class="form-control me-2" type="search" name="q" placeholder="Qidiruv..."
+                       aria-label="Search" value="{{ request.GET.q|default_if_none:'' }}">
+                <button class="btn btn-outline-light" type="submit">🔍</button>
+            </form>
 
-                <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}#ebooks">E-Kutubxona</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}#team">Loyiha a'zolari</a>
+                </li>
+                {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}#ebooks">E-Kitoblar</a>
+                        <a class="nav-link" href="{% url 'profile' %}">Profil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#team">Loyiha a'zolari</a>
+                        <a class="nav-link" href="{% url 'logout' %}">Chiqish</a>
                     </li>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' %}">Profil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Chiqish</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Kirish</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'register' %}">Ro‘yxatdan o‘tish</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Kirish</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Ro‘yxatdan o‘tish</a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Content -->
-    <main class="container py-4">
-        {% block content %}{% endblock %}
-    </main>
+<!-- Main Content -->
+<main class="container py-4">
+    {% block content %}{% endblock %}
+</main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <p class="mb-0">&copy; 2025 dualedu.uz — Barcha huquqlar himoyalangan.</p>
-        </div>
-    </footer>
+<!-- Footer -->
+<footer class="text-white text-center py-3 mt-auto">
+    <div class="container">
+        <p class="mb-0">&copy; 2025 dualedu.uz — Barcha huquqlar himoyalangan.</p>
+    </div>
+</footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    {% block extra_js %}{% endblock %}
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_js %}{% endblock %}
 </body>
 </html>
