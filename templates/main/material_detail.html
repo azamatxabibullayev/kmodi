@@ -1,42 +1,87 @@
 {% extends 'base.html' %}
-
-{% block title %}{{ category.name }} - Materiallar{% endblock %}
+{% block title %}Dars Tafsiloti{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">{{ category.name }} - Materiallar</h2>
+<h2 class="mb-4">{{ category.name }}</h2>
 
-{% if materials %}
-    {% for material in materials %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Text</h5>
-                <p class="card-text">{{ material.text }}</p>
+{% for material in materials %}
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">📚 Dars: {{ material.title }}</h5>
 
-                {% if material.audio %}
-                    <audio controls class="w-100">
-                        <source src="{{ material.audio.url }}" type="audio/mpeg">
-                        Sizning brauzeringiz audio elementni qo‘llab-quvvatlamaydi.
-                    </audio>
-                {% endif %}
-
-                {% if material.assignment_text %}
-                    <p><strong>Topshiriq:</strong> {{ material.assignment_text }}</p>
-                {% endif %}
-
-                {% if material.assignment_audio %}
-                    <audio controls class="w-100 mt-2">
-                        <source src="{{ material.assignment_audio.url }}" type="audio/mpeg">
-                        Sizning brauzeringiz audio elementni qo‘llab-quvvatlamaydi.
-                    </audio>
-                {% endif %}
-
-                {% if material.assignment_image %}
-                    <img src="{{ material.assignment_image.url }}" class="img-fluid mt-2" alt="Topshiriq rasmi">
-                {% endif %}
-            </div>
+        {% if material.text %}
+        <div class="mb-3">
+            <h6>📖 Matn:</h6>
+            <p>{{ material.text|linebreaks }}</p>
         </div>
-    {% endfor %}
-{% else %}
-    <p class="text-danger">Material topilmadi.</p>
-{% endif %}
+        {% endif %}
+
+        {% if material.audio %}
+        <div class="mb-3">
+            <h6>🔊 Audio:</h6>
+            <audio
+                id="audio-{{ material.id }}"
+                class="w-100 material-audio"
+                controls
+                data-material-id="{{ material.id }}">
+                <source src="{{ material.audio.url }}" type="audio/mpeg">
+                Brauzeringiz audiolarni qo‘llab-quvvatlamaydi.
+            </audio>
+        </div>
+        {% endif %}
+
+        {% if material.assignment_text or material.assignment_audio or material.assignment_image %}
+        <div class="mb-3">
+            <h6>📌 Topshiriq:</h6>
+
+            {% if material.assignment_text %}
+                <p>{{ material.assignment_text }}</p>
+            {% endif %}
+
+            {% if material.assignment_audio %}
+                <p><strong>Audio:</strong></p>
+                <audio controls class="w-100">
+                    <source src="{{ material.assignment_audio.url }}" type="audio/mpeg">
+                    Brauzeringiz audiolarni qo‘llab-quvvatlamaydi.
+                </audio>
+            {% endif %}
+
+            {% if material.assignment_image %}
+                <p><strong>Rasm:</strong></p>
+                <img src="{{ material.assignment_image.url }}" alt="Topshiriq rasmi" class="img-fluid rounded">
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div id="completion-alert-{{ material.id }}" class="alert alert-success {% if material.is_completed %}d-block{% else %}d-none{% endif %}">
+            ✅ Tugallandi!
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('audio.material-audio').forEach(audio => {
+        audio.addEventListener('ended', function () {
+            const materialId = audio.dataset.materialId;
+            fetch(`/material/${materialId}/complete/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    const alertBox = document.getElementById('completion-alert-' + materialId);
+                    if (alertBox) {
+                        alertBox.classList.remove('d-none');
+                    }
+                }
+            });
+        });
+    });
+});
+</script>
 {% endblock %}

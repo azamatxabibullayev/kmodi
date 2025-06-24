@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
 from .forms import RegisterForm, ProfileUpdateForm
-from .models import User
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 
 
 def register_student(request):
@@ -13,7 +12,7 @@ def register_student(request):
             user.role = 'student'
             user.set_password(form.cleaned_data['password'])
             user.save()
-            login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home')
     else:
         form = RegisterForm()
@@ -22,8 +21,8 @@ def register_student(request):
 
 def login_view(request):
     if request.method == "POST":
-        phone = request.POST['phone']
-        password = request.POST['password']
+        phone = request.POST.get('phone')
+        password = request.POST.get('password')
         user = authenticate(request, phone=phone, password=password)
         if user is not None:
             login(request, user)

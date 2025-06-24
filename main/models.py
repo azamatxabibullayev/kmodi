@@ -1,6 +1,8 @@
 from django.db import models
 from urllib.parse import urlparse, parse_qs
 
+from dualedu import settings
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -10,15 +12,26 @@ class Category(models.Model):
 
 
 class Material(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    text = models.TextField(default="Hozircha matn mavjud emas.")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    text = models.TextField()
     audio = models.FileField(upload_to='main/material/audios/', blank=True, null=True)
+
     assignment_text = models.TextField(blank=True, null=True)
     assignment_audio = models.FileField(upload_to='main/material/audio/', blank=True, null=True)
     assignment_image = models.ImageField(upload_to='main/material/images/', blank=True, null=True)
 
     def __str__(self):
-        return f"Material for {self.category.name}" if self.category else "Material (kategoriya yo‘q)"
+        return f"Material for {self.category.name}"
+
+
+class MaterialProgress(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    material = models.ForeignKey(Material, on_delete=models.CASCADE)
+    is_completed = models.BooleanField(default=False)
+    completed_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'material')
 
 
 class LibraryBook(models.Model):
