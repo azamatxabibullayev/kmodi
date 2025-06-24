@@ -1,0 +1,42 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Materiallar ro'yxati{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Materiallar</h4>
+        <a href="{% url 'dashboard:material_create' %}" class="btn btn-success">+ Yangi material</a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if materials %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kategoriya</th>
+                            <th>Matn</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for material in materials %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ material.category.name }}</td>
+                            <td>{{ material.text|truncatewords:10 }}</td>
+                            <td>
+                                <a href="{% url 'dashboard:material_edit' material.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                <a href="{% url 'dashboard:material_delete' material.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Hozircha hech qanday material mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

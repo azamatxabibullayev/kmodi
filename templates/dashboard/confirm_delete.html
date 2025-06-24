@@ -1,0 +1,16 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-danger">
+        <h5 class="mb-3">{{ title }}</h5>
+        <p><strong>{{ object }}</strong> nomli obyektni o‘chirishni xohlaysizmi?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Ha, o‘chirish</button>
+            <a href="javascript:history.back();" class="btn btn-secondary">Bekor qilish</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

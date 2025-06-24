@@ -26,10 +26,14 @@ def login_view(request):
         user = authenticate(request, phone=phone, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            if user.role == 'admin':
+                return redirect('dashboard:home')  # admin uchun yo‘naltirish
+            else:
+                return redirect('home')  # oddiy foydalanuvchi uchun
         else:
             return render(request, 'users/login.html', {'error': 'Login yoki parol noto‘g‘ri'})
     return render(request, 'users/login.html')
+
 
 
 def logout_view(request):

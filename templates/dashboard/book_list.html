@@ -1,0 +1,44 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Kutubxona kitoblari{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Kitoblar</h4>
+        <a href="{% url 'dashboard:book_create' %}" class="btn btn-success">+ Yangi kitob</a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if books %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Sarlavha</th>
+                            <th>Tavsif</th>
+                            <th>Fayl</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.description|truncatewords:12 }}</td>
+                            <td><a href="{{ book.pdf_file.url }}" target="_blank">PDF</a></td>
+                            <td>
+                                <a href="{% url 'dashboard:book_edit' book.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                <a href="{% url 'dashboard:book_delete' book.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Hozircha hech qanday kitob mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

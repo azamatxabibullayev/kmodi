@@ -1,0 +1,44 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Talabalar ro'yxati{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Talabalar</h4>
+        <a href="{% url 'dashboard:student_create' %}" class="btn btn-success">+ Yangi talaba</a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if students %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ism</th>
+                            <th>Telefon</th>
+                            <th>Email</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ student.full_name }}</td>
+                            <td>{{ student.phone }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>
+                                <a href="{% url 'dashboard:student_edit' student.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                <a href="{% url 'dashboard:student_delete' student.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Hozircha hech qanday talaba mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

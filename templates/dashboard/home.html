@@ -1,0 +1,85 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <h2 class="fw-bold">👋 Xush kelibsiz, {{ request.user.full_name }}!</h2>
+            <p class="text-muted">Bugungi kun uchun boshqaruv panelingiz.</p>
+        </div>
+        <div class="text-end">
+            <a href="{% url 'profile' %}" class="btn btn-outline-primary">Profilni Ko‘rish</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger">Chiqish</a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-6 col-lg-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-folder fs-1 text-primary"></i>
+                    <h5 class="card-title mt-2">Bo‘limlar</h5>
+                    <p class="card-text">O‘quv kategoriyalarini boshqarish</p>
+                    <a href="{% url 'dashboard:category_list' %}" class="btn btn-sm btn-primary">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-journal-text fs-1 text-success"></i>
+                    <h5 class="card-title mt-2">Materiallar</h5>
+                    <p class="card-text">Dars materiallarini qo‘shish/tahrirlash</p>
+                    <a href="{% url 'dashboard:material_list' %}" class="btn btn-sm btn-success">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-book fs-1 text-warning"></i>
+                    <h5 class="card-title mt-2">Kutubxona</h5>
+                    <p class="card-text">E-kitoblar va fayllarni boshqarish</p>
+                    <a href="{% url 'dashboard:book_list' %}" class="btn btn-sm btn-warning">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-youtube fs-1 text-danger"></i>
+                    <h5 class="card-title mt-2">Solfedjio videolar</h5>
+                    <p class="card-text">YouTube dars videolarini boshqarish</p>
+                    <a href="{% url 'dashboard:video_list' %}" class="btn btn-sm btn-danger">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-people fs-1 text-info"></i>
+                    <h5 class="card-title mt-2">Foydalanuvchilar</h5>
+                    <p class="card-text">Talabalarni boshqarish</p>
+                    <a href="{% url 'dashboard:student_list' %}" class="btn btn-sm btn-info">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-person-lines-fill fs-1 text-secondary"></i>
+                    <h5 class="card-title mt-2">Jamoa A'zolari</h5>
+                    <p class="card-text">Sayt mualliflari va yordamchilar</p>
+                    <a href="{% url 'dashboard:team_list' %}" class="btn btn-sm btn-secondary">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

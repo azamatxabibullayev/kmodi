@@ -1,0 +1,46 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Material Progress ro'yxati{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Material Progress</h4>
+        <a href="{% url 'dashboard:progress_create' %}" class="btn btn-success">+ Yangi yozuv</a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if progresses %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Foydalanuvchi</th>
+                            <th>Material</th>
+                            <th>Holat</th>
+                            <th>Yakunlangan vaqt</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in progresses %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ p.user.full_name }}</td>
+                            <td>{{ p.material }}</td>
+                            <td>{% if p.is_completed %}✅{% else %}⏳{% endif %}</td>
+                            <td>{{ p.completed_at|date:"Y-m-d H:i" }}</td>
+                            <td>
+                                <a href="{% url 'dashboard:progress_edit' p.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                <a href="{% url 'dashboard:progress_delete' p.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Hozircha hech qanday progress mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Kategoriya ro'yxati{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Kategoriyalar</h4>
+        <a href="{% url 'dashboard:category_create' %}" class="btn btn-success">+ Yangi kategoriya</a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if categories %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nomi</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ category.name }}</td>
+                            <td>
+                                <a href="{% url 'dashboard:category_edit' category.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                <a href="{% url 'dashboard:category_delete' category.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Hozircha hech qanday kategoriya mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

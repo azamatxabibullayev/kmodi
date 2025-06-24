@@ -1,0 +1,42 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}Salfedjio videolar ro'yxati{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Salfedjio videolar</h4>
+        <a href="{% url 'dashboard:video_create' %}" class="btn btn-success">+ Yangi video</a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if videos %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Sarlavha</th>
+                            <th>YouTube URL</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for video in videos %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ video.title }}</td>
+                            <td><a href="{{ video.youtube_url }}" target="_blank">Havola</a></td>
+                            <td>
+                                <a href="{% url 'dashboard:video_edit' video.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                <a href="{% url 'dashboard:video_delete' video.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Hozircha hech qanday video mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

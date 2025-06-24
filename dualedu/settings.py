@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'users',
     'main',
     'social_django',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -32,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'users.middleware.AdminOnlySuperuserMiddleware',
 ]
 
 ROOT_URLCONF = 'dualedu.urls'

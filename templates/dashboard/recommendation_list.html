@@ -1,0 +1,42 @@
+{% extends 'base_dashboard.html' %}
+{% block title %}YouTube Tavsiyalar ro'yxati{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>YouTube Tavsiyalar</h4>
+        <a href="{% url 'dashboard:recommendation_create' %}" class="btn btn-success">+ Yangi tavsiya</a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if recommendations %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Sarlavha</th>
+                            <th>YouTube URL</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for r in recommendations %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ r.title }}</td>
+                            <td><a href="{{ r.youtube_url }}" target="_blank">Havola</a></td>
+                            <td>
+                                <a href="{% url 'dashboard:recommendation_edit' r.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                <a href="{% url 'dashboard:recommendation_delete' r.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Hozircha hech qanday tavsiya mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
