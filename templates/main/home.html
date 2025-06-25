@@ -2,61 +2,131 @@
 {% block title %}Bosh sahifa{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <div class="row mt-4 justify-content-center">
-        <!-- Musiqa Nazariyasi -->
-        <a href="{% url 'category_list' %}">
-            <div class="col-md-4 mb-3">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title">Musiqa Nazariyasi</h5>
-                    </div>
-                </div>
-            </div>
-        </a>
+<style>
+    body {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+    }
 
-        <!-- Salfedjio -->
-        <a href="{% url 'salfedjio' %}">
-            <div class="col-md-4 mb-3">
-                <div class="card shadow-sm h-100">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title">Salfedjio</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
+    .section-title {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        padding: 10px 20px;
+        border-radius: 25px;
+        display: inline-block;
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
 
-    <!-- Loyiha A'zolari -->
-    <div id="team" class="my-5">
-        <h2 class="text-center mb-4">Loyiha A'zolari</h2>
+    .main-card {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        border-radius: 25px;
+        height: 250px;x`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        border: 1px solid #ccc;
+        transition: all 0.3s ease;
+        text-align: center;
+        color: #000;
+    }
+
+    .main-card:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-card {
+        background: #ffa6fa;
+        border-radius: 30px;
+        padding: 20px;
+        text-align: center;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border: 1px solid #333;
+    }
+
+    .team-card-name {
+        background: #fffaa0;
+        padding: 10px;
+        border-radius: 20px;
+        font-weight: 500;
+        margin-top: auto;
+    }
+
+    .youtube-card {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        border-radius: 25px;
+        border: 1px solid #000;
+        padding: 25px;
+    }
+
+    .youtube-section-title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .rounded-img {
+        object-fit: cover;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 10px;
+    }
+
+    .btn-custom {
+        background-color: #fffaa0;
+        color: black;
+        border: 1px solid black;
+        border-radius: 20px;
+    }
+
+    .btn-custom:hover {
+        background-color: #ffc2ef;
+        color: black;
+    }
+</style>
+
+<div class="container text-center mt-4">
+
+    <!-- Main Cards -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-5 mb-4">
+            <a href="{% url 'category_list' %}" class="text-decoration-none">
+                <div class="main-card">Musiqa Nazariyasi</div>
+            </a>
+        </div>
+        <div class="col-md-5 mb-4">
+            <a href="{% url 'salfedjio' %}" class="text-decoration-none">
+                <div class="main-card">Salfedjio</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="text-center">
+        <div class="section-title">Loyiha a’zolari</div>
         <div class="row justify-content-center">
             {% for member in team_members %}
-            <div class="col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 text-center shadow-sm">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="team-card">
                     {% if member.photo %}
-                    <img src="{{ member.photo.url }}" class="card-img-top img-fluid rounded-circle p-3" alt="{{ member.full_name }}">
+                    <img src="{{ member.photo.url }}" class="rounded-img" alt="{{ member.full_name }}">
                     {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ member.full_name }}</h5>
-                        {% if member.job_title %}
-                        <p class="text-muted">{{ member.job_title }}</p>
-                        {% endif %}
-                    </div>
+                    <div class="team-card-name">{{ member.full_name }}</div>
                 </div>
             </div>
             {% empty %}
-            <div class="col-12 text-center">
-                <p class="text-muted">Loyiha a'zolari hozircha mavjud emas.</p>
-            </div>
+            <p class="text-muted">Loyiha a’zolari hozircha mavjud emas.</p>
             {% endfor %}
         </div>
     </div>
 
-    <!-- E-Kitoblar bo‘limi -->
-    <div id="ebooks" class="mt-5 pt-5">
-        <h2 class="text-center mb-4">E-Kitoblar</h2>
-        <div class="row">
+    <!-- E-Kitoblar -->
+    <div class="text-center mt-5">
+        <div class="section-title">E-Kitoblar</div>
+        <div class="row justify-content-center">
             {% for book in books %}
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card h-100 shadow-sm">
@@ -68,37 +138,33 @@
                 </div>
             </div>
             {% empty %}
-            <div class="col-12 text-center">
-                <p class="text-muted">Hech qanday e-kitob mavjud emas.</p>
-            </div>
+            <p class="text-muted">Hech qanday e-kitob mavjud emas.</p>
             {% endfor %}
         </div>
     </div>
-    <!--Recommendations  -->
-    <h3 class="mt-5 mb-3">YouTube Recommendations</h3>
-    <div class="row">
-        {% for video in videos %}
-            {% with video.video_id as vid %}
-                {% if vid %}
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm h-100">
-                            <a href="https://www.youtube.com/watch?v={{ vid }}" target="_blank">
-                                <img src="https://img.youtube.com/vi/{{ vid }}/hqdefault.jpg"
-                                     class="card-img-top" alt="{{ video.title }}">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ video.title }}</h5>
-                                <a href="https://www.youtube.com/watch?v={{ vid }}" class="btn btn-sm btn-outline-danger w-100" target="_blank">
-                                    Ko'rish
-                                </a>
-                            </div>
+
+    <!-- YouTube Recommendations -->
+    <div class="youtube-card mt-5">
+        <h4 class="youtube-section-title">YouTube kanalimiz</h4>
+        <div class="row">
+            {% for video in videos %}
+                {% if video.video_id %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100" style="border-radius: 20px; overflow: hidden;">
+                        <a href="https://www.youtube.com/watch?v={{ video.video_id }}" target="_blank">
+                            <img src="https://img.youtube.com/vi/{{ video.video_id }}/hqdefault.jpg" class="card-img-top" alt="{{ video.title }}">
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ video.title }}</h5>
+                            <a href="https://www.youtube.com/watch?v={{ video.video_id }}" class="btn btn-sm btn-outline-danger w-100 rounded-pill" target="_blank">Ko'rish</a>
                         </div>
                     </div>
+                </div>
                 {% endif %}
-            {% endwith %}
-        {% empty %}
-            <p class="text-danger">Tavsiya etilgan video mavjud emas.</p>
-        {% endfor %}
+            {% empty %}
+            <p class="text-danger text-center">Tavsiya etilgan video mavjud emas.</p>
+            {% endfor %}
+        </div>
     </div>
 
 </div>
