@@ -1,43 +1,137 @@
 {% extends 'base.html' %}
-
 {% block title %}Ro‘yxatdan o‘tish{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-        <h2 class="text-center mb-4">Ro‘yxatdan o‘tish</h2>
+<style>
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.non_field_errors }}
+   body {
+        background: #fff;
+   }
 
-            <div class="mb-3">
-                {{ form.full_name.label_tag }}
-                {{ form.full_name }}
-            </div>
+    .auth-wrapper {
+        max-width: 400px;
+        margin: 80px auto;
+        padding: 30px 20px;
+    }
 
-            <div class="mb-3">
-                {{ form.phone.label_tag }}
-                {{ form.phone }}
-            </div>
+    .auth-header {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        text-align: center;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        padding: 40px 20px;
+        color: #333;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
 
-            <div class="mb-3">
-                {{ form.password.label_tag }}
-                {{ form.password }}
-            </div>
+    .auth-form label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 15px;
+        color: #444;
+    }
 
-            <button type="submit" class="btn btn-success w-100">Ro‘yxatdan o‘tish</button>
-        </form>
+    .auth-form input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        background: transparent;
+        font-size: 15px;
+        margin-bottom: 25px;
+        transition: border-color 0.2s ease;
+    }
 
-        <div class="text-center my-3">
-            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-outline-danger w-100">
-                <i class="bi bi-google"></i> Continue with Google
-            </a>
-        </div>
+    .auth-form input:focus {
+        outline: none;
+        border-bottom-color: #ff86d6;
+    }
 
-        <div class="text-center mt-3">
-            Allaqachon ro‘yxatdan o‘tganmisiz? <a href="{% url 'login' %}">Kirish</a>
-        </div>
+    .submit-btn {
+        width: 100%;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        color: #000;
+        padding: 12px;
+        border: none;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 15px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .submit-btn:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .google-btn {
+        margin-top: 20px;
+        width: 100%;
+        display: block;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid #ff7fef;
+        border-radius: 30px;
+        padding: 12px;
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+    }
+
+    .google-btn:hover {
+        background-color: #ffe0fa;
+    }
+
+    .form-footer {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 14px;
+    }
+
+    .form-footer a {
+        color: #a83aca;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .form-footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="auth-wrapper">
+    <h2 class="auth-header">
+        Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting
+    </h2>
+
+    <form class="auth-form" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <label>{{ form.full_name.label }}</label>
+        {{ form.full_name }}
+
+        <label>{{ form.phone.label }}</label>
+        {{ form.phone }}
+
+        <label>{{ form.password.label }}</label>
+        {{ form.password }}
+
+        <button type="submit" class="submit-btn">Ro‘yxatdan o‘tish</button>
+    </form>
+
+    <a href="{% url 'social:begin' 'google-oauth2' %}" class="google-btn">
+        Google bilan davom eting
+    </a>
+
+    <div class="form-footer">
+        Allaqachon ro‘yxatdan o‘tganmisiz?
+        <a href="{% url 'login' %}">Kirish</a>
     </div>
 </div>
 {% endblock %}

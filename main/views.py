@@ -1,3 +1,5 @@
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import (
@@ -95,15 +97,33 @@ def search_view(request):
     query = request.GET.get('q')
     materials = Material.objects.none()
     videos = SalfedjioVideo.objects.none()
+    material_categories = {}
+    completed_material_ids = []
 
     if query:
-        materials = Material.objects.filter(Q(text__icontains=query) | Q(assignment_text__icontains=query))
-        videos = SalfedjioVideo.objects.filter(Q(title__icontains=query) | Q(youtube_url__icontains=query))
+        materials = Material.objects.filter(
+            category__name__icontains=query
+        )
+
+        videos = SalfedjioVideo.objects.filter(
+            title__icontains=query
+        )
+
+        completed_material_ids = list(MaterialProgress.objects.filter(
+            user=request.user, is_completed=True
+        ).values_list('material_id', flat=True))
+
+        from collections import defaultdict
+        material_categories = defaultdict(list)
+        for m in Material.objects.all():
+            material_categories[str(m.category.id)].append(m.id)
 
     return render(request, 'main/search_results.html', {
         'query': query,
         'materials': materials,
-        'videos': videos
+        'videos': videos,
+        'completed_material_ids': json.dumps(completed_material_ids, cls=DjangoJSONEncoder),
+        'material_categories': json.dumps(material_categories, cls=DjangoJSONEncoder),
     })
 
 

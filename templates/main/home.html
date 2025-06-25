@@ -15,18 +15,19 @@
         margin-bottom: 30px;
         font-size: 24px;
         font-weight: bold;
+        border: 1px solid #000000;
     }
 
     .main-card {
         background: linear-gradient(to right, #faf8af, #ffa6fa);
         border-radius: 25px;
-        height: 250px;
+        height: 400px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
-        font-weight: bold;
-        border: 1px solid #ccc;
+        font-size: 40px;
+        font-weight: light;
+        border: 1px solid #000000;
         transition: all 0.3s ease;
         text-align: center;
         color: #000;
@@ -144,7 +145,7 @@
 
     <!-- Team Section -->
     <div class="text-center">
-        <div class="section-title">Loyiha a’zolari</div>
+        <div class="section-title" id="team">Loyiha a’zolari</div>
         <div class="row justify-content-center">
             {% for member in team_members %}
             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -163,7 +164,7 @@
 
     <!-- E-Kitoblar -->
     <div class="text-center mt-5">
-        <div class="section-title">E-Kutubxona</div>
+        <div class="section-title" id="ebooks">E-Kutubxona</div>
         <div class="row text-start justify-content-center">
             <div class="col-md-4">
                 {% for book in books|slice:":3" %}

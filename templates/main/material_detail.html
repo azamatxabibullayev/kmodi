@@ -2,26 +2,154 @@
 {% block title %}Dars Tafsiloti{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">{{ category.name }}</h2>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        font-family: Arial, sans-serif;
+    }
 
-{% for material in materials %}
-<div class="card mb-4 shadow-sm">
-    <div class="card-body">
-        <h5 class="card-title">📚 Dars: {{ material.title }}</h5>
+    .content-wrapper {
+        max-width: 600px;
+        margin: 3rem auto;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .lesson-box {
+        background: none;
+        padding: 2rem 1rem 3rem 1rem;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    /* Mavzu sarlavhasi */
+    .lesson-title {
+        display: inline-block;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        color: #000;
+        padding: 20px 30px;
+        border-radius: 25px;
+        border: 1px solid #666;
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 25px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Matn bloki */
+    .lesson-text {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        padding: 20px;
+        border: 1px solid #444;
+        border-radius: 12px;
+        text-align: justify;
+        color: #222;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+
+    /* Audio oyna */
+    .audio-box {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        padding: 10px;
+        border-radius: 30px;
+        border: 1px solid #999;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        margin-bottom: 30px;
+    }
+
+    audio {
+        width: 100%;
+        border-radius: 20px;
+        height: 40px;
+    }
+
+    /* Topshiriq sarlavhasi */
+    .assignment-title {
+        display: inline-block;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        color: #000;
+        padding: 8px 20px;
+        border-radius: 25px;
+        border: 1px solid #444;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Topshiriq konteyneri */
+    .assignment-box {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        padding: 30px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 12px;
+        color: #111;
+        border: 1px solid #777;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .assignment-image {
+        margin-top: 1rem;
+        border-radius: 10px;
+        max-width: 100%;
+    }
+
+    .completion-alert {
+        margin-top: 20px;
+        padding: 10px 15px;
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        border-radius: 10px;
+        font-weight: bold;
+        display: none;
+    }
+
+    .completion-alert.d-block {
+        display: block;
+    }
+
+    /* Orqaga link */
+    .back-link {
+        margin-top: 50px;
+        display: inline-block;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        color: #000;
+        text-decoration: none;
+        padding: 8px 20px;
+        border-radius: 25px;
+        border: 1px solid #666;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+    }
+
+    .back-link:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="content-wrapper">
+
+    {% for material in materials %}
+    <div class="lesson-box">
+
+        <!-- Mavzu nomi (fixed placement) -->
+        <div class="lesson-title">{{ category.name }}</div>
 
         {% if material.text %}
-        <div class="mb-3">
-            <h6>📖 Matn:</h6>
-            <p>{{ material.text|linebreaks }}</p>
+        <div class="lesson-text">
+            {{ material.text|linebreaks }}
         </div>
         {% endif %}
 
         {% if material.audio %}
-        <div class="mb-3">
-            <h6>🔊 Audio:</h6>
+        <div class="audio-box">
             <audio
                 id="audio-{{ material.id }}"
-                class="w-100 material-audio"
+                class="material-audio"
                 controls
                 data-material-id="{{ material.id }}">
                 <source src="{{ material.audio.url }}" type="audio/mpeg">
@@ -31,34 +159,35 @@
         {% endif %}
 
         {% if material.assignment_text or material.assignment_audio or material.assignment_image %}
-        <div class="mb-3">
-            <h6>📌 Topshiriq:</h6>
+        <div class="assignment-title">Topshiriqlar</div>
 
+        <div class="assignment-box">
             {% if material.assignment_text %}
-                <p>{{ material.assignment_text }}</p>
+                {{ material.assignment_text }}
             {% endif %}
 
             {% if material.assignment_audio %}
-                <p><strong>Audio:</strong></p>
-                <audio controls class="w-100">
+                <audio controls>
                     <source src="{{ material.assignment_audio.url }}" type="audio/mpeg">
                     Brauzeringiz audiolarni qo‘llab-quvvatlamaydi.
                 </audio>
             {% endif %}
 
             {% if material.assignment_image %}
-                <p><strong>Rasm:</strong></p>
-                <img src="{{ material.assignment_image.url }}" alt="Topshiriq rasmi" class="img-fluid rounded">
+                <img src="{{ material.assignment_image.url }}" alt="Topshiriq rasmi" class="assignment-image">
             {% endif %}
         </div>
         {% endif %}
 
-        <div id="completion-alert-{{ material.id }}" class="alert alert-success {% if material.is_completed %}d-block{% else %}d-none{% endif %}">
+        <div id="completion-alert-{{ material.id }}" class="completion-alert {% if material.is_completed %}d-block{% endif %}">
             ✅ Tugallandi!
         </div>
     </div>
+    {% endfor %}
+
+    <!-- Orqaga tugmasi -->
+    <a href="{% url 'category_list' %}" class="back-link">← Orqaga</a>
 </div>
-{% endfor %}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -76,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.status === 'ok') {
                     const alertBox = document.getElementById('completion-alert-' + materialId);
                     if (alertBox) {
-                        alertBox.classList.remove('d-none');
+                        alertBox.classList.add('d-block');
                     }
                 }
             });

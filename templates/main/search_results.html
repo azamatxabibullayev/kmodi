@@ -1,41 +1,183 @@
 {% extends 'base.html' %}
-
 {% block title %}Qidiruv natijalari{% endblock %}
 
 {% block content %}
-<h3 class="mb-4">🔍 Qidiruv natijalari: "{{ query }}"</h3>
+<style>
+    body {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        font-family: Arial, sans-serif;
+    }
+
+    .search-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .section-heading {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .material-button {
+        display: block;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        border: 1px solid #444;
+        border-radius: 25px;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        color: #000;
+        text-decoration: none;
+        margin-bottom: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .material-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .material-button.locked {
+        background: #eee;
+        color: #999;
+        border: 1px solid #ccc;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    .video-card {
+        background: linear-gradient(to right, #fff9d0, #ffd6f5);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        border: 1px solid #ccc;
+    }
+
+    .video-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .video-card img {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .video-card .card-body {
+        padding: 15px;
+    }
+
+    .video-card .card-title {
+        font-weight: bold;
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: #222;
+    }
+
+    .btn-view {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        border: 1px solid #666;
+        border-radius: 25px;
+        padding: 6px 16px;
+        font-weight: bold;
+        color: #000;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-view:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .no-result {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        margin-top: 50px;
+    }
+</style>
+
+<h3 class="search-title">🔍 Qidiruv natijalari: "{{ query }}"</h3>
 
 {% if materials or videos %}
+
     {% if materials %}
-        <h5 class="mt-4">📘 Materiallar:</h5>
-        <ul class="list-group mb-4">
-            {% for m in materials %}
-            <li class="list-group-item">
-                <strong>{{ m.category.name }}</strong><br>
-                {{ m.text|truncatechars:150 }}
-            </li>
-            {% endfor %}
-        </ul>
+        <h5 class="section-heading">📘 Darsliklar:</h5>
+        {% for m in materials %}
+            <div class="material-entry" data-category-id="{{ m.category.id }}">
+                <a href="{% url 'category_detail' m.category.id %}" class="material-button unlocked d-none">
+                    {{ m.category.name }}
+                </a>
+                <span class="material-button locked">
+                    🔒 {{ m.category.name }}
+                </span>
+            </div>
+        {% endfor %}
     {% endif %}
 
     {% if videos %}
-        <h5>🎥 Salfedjio Videolari:</h5>
+        <h5 class="section-heading">🎥 Salfedjio Videolari:</h5>
         <div class="row">
             {% for v in videos %}
-            <div class="col-md-4 mb-3">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://img.youtube.com/vi/{{ v.youtube_url|cut:'https://www.youtube.com/watch?v=' }}/hqdefault.jpg"
+            <div class="col-md-4 mb-4">
+                <div class="video-card h-100">
+                    <img src="https://img.youtube.com/vi/{{ v.get_video_id }}/hqdefault.jpg"
                          class="card-img-top" alt="{{ v.title }}">
                     <div class="card-body">
                         <h6 class="card-title">{{ v.title }}</h6>
-                        <a href="{{ v.youtube_url }}" class="btn btn-sm btn-outline-primary w-100" target="_blank">Ko‘rish</a>
+                        <a href="{% url 'salfedjio' %}?video={{ v.get_video_id }}" class="btn-view">
+                            ▶️ Sahifada ko‘rish
+                        </a>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     {% endif %}
+
 {% else %}
-    <p class="text-danger">❌ Hech qanday ma’lumot topilmadi.</p>
+    <p class="no-result">❌ Hech qanday ma’lumot topilmadi.</p>
 {% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const completedMaterialIds = JSON.parse('{{ completed_material_ids|safe }}');
+        const materialCategories = JSON.parse('{{ material_categories|safe }}');
+        const orderedCategoryIds = Object.keys(materialCategories)
+            .map(id => parseInt(id))
+            .sort((a, b) => a - b);
+
+        function isCategoryUnlocked(categoryId) {
+            const index = orderedCategoryIds.indexOf(categoryId);
+            if (index === 0) return true;
+            const prevCategoryId = orderedCategoryIds[index - 1];
+            const prevMaterialIds = materialCategories[prevCategoryId.toString()] || [];
+            return prevMaterialIds.every(id => completedMaterialIds.includes(id));
+        }
+
+        document.querySelectorAll('.material-entry').forEach(entry => {
+            const categoryId = parseInt(entry.dataset.categoryId);
+            const unlocked = isCategoryUnlocked(categoryId);
+            const unlockedButton = entry.querySelector('.unlocked');
+            const lockedButton = entry.querySelector('.locked');
+
+            if (unlocked) {
+                unlockedButton.classList.remove('d-none');
+                lockedButton.classList.add('d-none');
+            } else {
+                unlockedButton.classList.add('d-none');
+                lockedButton.classList.remove('d-none');
+            }
+        });
+    });
+</script>
 {% endblock %}

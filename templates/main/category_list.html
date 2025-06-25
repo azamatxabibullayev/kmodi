@@ -1,22 +1,122 @@
 {% extends 'base.html' %}
 {% block title %}Musiqa Nazariyasi{% endblock %}
+
 {% block content %}
-<h2 class="mb-4">🎼 Bo‘limlar</h2>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        font-family: Arial, sans-serif;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 40px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .category-card {
+        background: linear-gradient(to right, #fff9d0, #ffd6f5);
+        border-radius: 20px;
+        padding: 25px;
+        border: 1px solid #ccc;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .category-card.locked {
+        opacity: 0.6;
+        background: linear-gradient(to right, #e0e0e0, #f0f0f0);
+        border: 1px solid #999;
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .category-btn {
+        display: inline-block;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        color: #000;
+        border: 1px solid #666;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .category-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-locked {
+        background: #ccc;
+        color: #666;
+        border-radius: 25px;
+        padding: 8px 20px;
+        cursor: not-allowed;
+        border: none;
+        font-weight: bold;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .col-md-6 {
+        flex: 0 0 45%;
+    }
+
+    @media (max-width: 768px) {
+        .col-md-6 {
+            flex: 0 0 100%;
+        }
+    }
+
+</style>
+
+<h2 class="section-title">🎼 Bo‘limlar</h2>
 
 <div class="row">
     {% for category in categories %}
-    <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm {% if not category.unlocked %}border-secondary text-muted{% endif %}">
-            <div class="card-body">
-                <h5 class="card-title">{{ category.name }}</h5>
-                {% if category.unlocked %}
-                    <a href="{% url 'category_detail' category.id %}" class="btn btn-outline-primary">Ochish</a>
-                {% else %}
-                    <button class="btn btn-secondary" disabled>🔒 Yopiq</button>
-                {% endif %}
-            </div>
+    <div class="col-md-6">
+        {% if category.unlocked %}
+        <a href="{% url 'category_detail' category.id %}" style="text-decoration: none; color: inherit;" class="category-card">
+            <div class="card-title">{{ category.name }}</div>
+        </a>
+        {% else %}
+        <div class="category-card locked">
+            <div class="card-title">{{ category.name }}</div>
+            <div class="lock-icon">🔒 Yopiq</div>
         </div>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
+
+<!-- Orqaga tugmasi -->
+<div style="text-align: center; margin-top: 50px;">
+    <a href="{% url 'home' %}" class="back-link" style="text-decoration: none; color: inherit; font-size: 25px;">← Orqaga</a>
+</div>
+
 {% endblock %}

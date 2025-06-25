@@ -2,47 +2,115 @@
 {% block title %}Profilni yangilash{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2 class="mb-4">🛠 Profilni yangilash</h2>
+<style>
+    .update-wrapper {
+        max-width: 600px;
+        margin: 60px auto;
+    }
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.non_field_errors }}
+    .update-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        color: #444;
+    }
 
-                        <div class="mb-3">
-                            <label for="id_full_name" class="form-label">To‘liq ism</label>
-                            {{ form.full_name }}
-                            {{ form.full_name.errors }}
-                        </div>
+    .update-card {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
 
-                        <div class="mb-3">
-                            <label for="id_phone" class="form-label">Telefon raqam</label>
-                            {{ form.phone }}
-                            {{ form.phone.errors }}
-                        </div>
+    .update-card label {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 3px;
+        display: block;
+    }
 
-                        <div class="mb-3">
-                            <label for="id_email" class="form-label">Email manzil</label>
-                            {{ form.email }}
-                            {{ form.email.errors }}
-                        </div>
+    .update-card input {
+        width: 100%;
+        padding: 10px 8px;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        background: transparent;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
 
-                        <div class="mb-3">
-                            <label for="id_password" class="form-label">Yangi parol (ixtiyoriy)</label>
-                            {{ form.password }}
-                            {{ form.password.errors }}
-                        </div>
+    .update-card input:focus {
+        outline: none;
+        border-bottom-color: #ff86d6;
+    }
 
-                        <button type="submit" class="btn btn-success w-100">💾 Saqlash</button>
-                        <a href="{% url 'profile' %}" class="btn btn-secondary w-100 mt-2">🔙 Ortga</a>
-                    </form>
-                </div>
-            </div>
-        </div>
+    .btn-save {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        border: none;
+        border-radius: 30px;
+        padding: 10px;
+        font-weight: bold;
+        color: #000;
+        width: 100%;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-save:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-back {
+        width: 100%;
+        margin-top: 15px;
+        background: #eee;
+        color: #333;
+        border: none;
+        border-radius: 30px;
+        padding: 10px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-back:hover {
+        background: #e0e0e0;
+    }
+</style>
+
+<div class="update-wrapper">
+    <h2 class="update-title">🛠 Profilni yangilash</h2>
+
+    <div class="update-card">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <label for="id_full_name">To‘liq ism</label>
+            {{ form.full_name }}
+            {{ form.full_name.errors }}
+
+            <label for="id_phone">Telefon raqam</label>
+            {{ form.phone }}
+            {{ form.phone.errors }}
+
+            <label for="id_email">Email manzil</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+
+            <label for="id_password">Yangi parol (ixtiyoriy)</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+
+            <button type="submit" class="btn-save">💾 Saqlash</button>
+        </form>
+
+        <a href="{% url 'profile' %}" class="btn-back">🔙 Ortga</a>
     </div>
 </div>
 {% endblock %}

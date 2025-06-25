@@ -24,38 +24,41 @@
 
         .navbar-brand {
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: black !important;
         }
 
         .navbar-nav .nav-link {
             font-weight: 500;
-            margin: 0 6px;
+            margin: 0 10px;
             border: 1px solid black;
             border-radius: 15px;
-            padding: 5px 15px;
+            padding: 7px 20px;
             background: linear-gradient(to right, #faf8af, #ffa6fa);
             color: black !important;
             transition: 0.3s;
         }
 
-
         .form-control {
-            border-radius: 20px;
+            border-radius: 25px;
             border: 1px solid #aaa;
+            padding: 12px 20px;
+            font-size: 1rem;
+            min-width: 280px;
         }
 
         .btn-outline-light {
-            border-radius: 20px;
+            border-radius: 25px;
             background: linear-gradient(to right, #faf8af, #ffa6fa);
             color: black;
             border: 1px solid black;
             font-weight: bold;
+            padding: 8px 20px;
         }
 
-
-        footer {
-            background: linear-gradient(to right, #faf8af, #ffa6fa);
+        .btn-outline-light:hover {
+            background: linear-gradient(to right, #ffe680, #ff85ea);
+            color: black;
         }
 
         .navbar-toggler {
@@ -64,6 +67,27 @@
 
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .lang-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+        }
+
+        .lang-buttons button {
+            border: 1px solid black;
+            border-radius: 15px;
+            padding: 4px 10px;
+            background: linear-gradient(to right, #faf8af, #ffa6fa);
+            color: black;
+            font-weight: 500;
+            cursor: not-allowed; /* Fake */
+        }
+
+        footer {
+            background: linear-gradient(to right, #faf8af, #ffa6fa);
         }
     </style>
 
@@ -82,13 +106,23 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <form class="d-flex ms-3" role="search" method="get" action="{% url 'search' %}">
+
+            <!-- Search Bar -->
+            <form class="d-flex ms-3 me-auto" role="search" method="get" action="{% url 'search' %}">
                 <input class="form-control me-2" type="search" name="q" placeholder="Qidiruv..."
                        aria-label="Search" value="{{ request.GET.q|default_if_none:'' }}">
                 <button class="btn btn-outline-light" type="submit">🔍</button>
             </form>
 
-            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+            <!-- Language Buttons -->
+            <div class="lang-buttons">
+                <button disabled>UZ</button>
+                <button disabled>RU</button>
+                <button disabled>ENG</button>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="navbar-nav ms-4 mt-2 mt-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'home' %}#ebooks">E-Kutubxona</a>
                 </li>

@@ -1,23 +1,129 @@
 {% extends 'base.html' %}
-
 {% block title %}Salfedjio Darslari{% endblock %}
 
 {% block content %}
-<h2 class="mb-4 text-center">🎵 Salfedjio Darslari</h2>
 
-<div class="text-center mb-4">
+<style>
+    body {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+    }
+
+    .video-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 40px;
+        transition: opacity 0.3s ease;
+    }
+
+    .video-buttons.hidden {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .btn-number {
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        border: 1px solid #000;
+        padding: 12px 30px;
+        border-radius: 999px;
+        font-weight: 500;
+        color: #000;
+        text-decoration: none;
+        font-size: 18px;
+        display: inline-block;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-number:hover {
+        transform: scale(1.08);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .back-link {
+        display: inline-block;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        color: #000;
+        text-decoration: none;
+        padding: 8px 20px;
+        border-radius: 25px;
+        border: 1px solid #666;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+        margin-bottom: 40px;
+    }
+
+    .back-link:hover {
+        transform: scale(1.05);
+    }
+
+    .video-title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+</style>
+
+<h2 class="video-title">🎵 Salfedjio Darslari</h2>
+
+<!-- 🎹 Button grid -->
+<div class="video-buttons {% if request.GET.video %}hidden{% endif %}" id="video-buttons">
     {% for video in videos %}
-        <a class="btn btn-outline-primary mx-1 mb-2"
-           href="?video={{ video.get_video_id }}">{{ forloop.counter }}</a>
+        <a class="btn-number"
+           href="?video={{ video.get_video_id }}">Nomer {{ forloop.counter }}</a>
     {% endfor %}
 </div>
 
+<!-- 📺 Embedded YouTube Video -->
 {% if request.GET.video %}
     <div class="ratio ratio-16x9 mb-4">
-        <iframe src="https://www.youtube.com/embed/{{ request.GET.video }}"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+        <iframe
+            id="youtube-video"
+            src="https://www.youtube.com/embed/{{ request.GET.video }}?autoplay=1&enablejsapi=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
     </div>
 {% endif %}
+
+<!-- ⬅️ Back button -->
+<div style="text-align: center; margin-top: 50px;">
+    <a href="{% url 'home' %}" class="back-link">← Orqaga</a>
+</div>
+
+<!-- 👇 JS to hide numbers when video starts (YouTube API) -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const iframe = document.getElementById("youtube-video");
+        if (iframe) {
+            const onYouTubeIframeAPIReady = function () {
+                const player = new YT.Player('youtube-video', {
+                    events: {
+                        'onStateChange': function (event) {
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                const buttons = document.getElementById('video-buttons');
+                                if (buttons) {
+                                    buttons.classList.add('hidden');
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+        }
+    });
+</script>
+
 {% endblock %}
