@@ -2,13 +2,14 @@ import json
 from django.core.serializers.json import DjangoJSONEncoder
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
+from django.utils.translation import gettext as _
+from django.db.models import Q
 from .models import (
     Category, Material, LibraryBook, SalfedjioVideo,
     YouTubeRecommendation, TeamMember, MaterialProgress
 )
-from django.db.models import Q
-from django.views.decorators.http import require_POST
-from django.http import JsonResponse
 
 
 @login_required
@@ -32,7 +33,6 @@ def category_list(request):
         MaterialProgress.objects.filter(user=user, is_completed=True).values_list('material_id', flat=True)
     )
 
-    unlocked = True
     for i, category in enumerate(categories):
         materials = list(Material.objects.filter(category=category))
 
@@ -77,7 +77,10 @@ def category_detail(request, category_id):
     for m in materials:
         m.is_completed = m.id in completed_ids
 
-    return render(request, 'main/material_detail.html', {'category': category, 'materials': materials})
+    return render(request, 'main/material_detail.html', {
+        'category': category,
+        'materials': materials
+    })
 
 
 @login_required

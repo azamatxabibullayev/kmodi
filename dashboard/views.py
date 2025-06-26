@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from dashboard.decorators import admin_required
 from django import forms
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _t
 
 from main.models import (
     Category, Material, MaterialProgress,
@@ -24,48 +26,88 @@ class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = ['name']
+        labels = {
+            'name': _("Category Name"),
+        }
 
 
 class MaterialForm(forms.ModelForm):
     class Meta:
         model = Material
         fields = ['category', 'text', 'audio', 'assignment_text', 'assignment_audio', 'assignment_image']
+        labels = {
+            'category': _("Category"),
+            'text': _("Text"),
+            'audio': _("Audio"),
+            'assignment_text': _("Assignment Text"),
+            'assignment_audio': _("Assignment Audio"),
+            'assignment_image': _("Assignment Image"),
+        }
 
 
 class MaterialProgressForm(forms.ModelForm):
     class Meta:
         model = MaterialProgress
         fields = ['user', 'material', 'is_completed']
+        labels = {
+            'user': _("User"),
+            'material': _("Material"),
+            'is_completed': _("Is Completed"),
+        }
 
 
 class LibraryBookForm(forms.ModelForm):
     class Meta:
         model = LibraryBook
         fields = ['title', 'description', 'pdf_file']
+        labels = {
+            'title': _("Title"),
+            'description': _("Description"),
+            'pdf_file': _("PDF File"),
+        }
 
 
 class SalfedjioVideoForm(forms.ModelForm):
     class Meta:
         model = SalfedjioVideo
         fields = ['title', 'youtube_url']
+        labels = {
+            'title': _("Title"),
+            'youtube_url': _("YouTube URL"),
+        }
 
 
 class YouTubeRecommendationForm(forms.ModelForm):
     class Meta:
         model = YouTubeRecommendation
         fields = ['title', 'youtube_url']
+        labels = {
+            'title': _("Title"),
+            'youtube_url': _("YouTube URL"),
+        }
 
 
 class TeamMemberForm(forms.ModelForm):
     class Meta:
         model = TeamMember
         fields = ['full_name', 'job_title', 'photo']
+        labels = {
+            'full_name': _("Full Name"),
+            'job_title': _("Job Title"),
+            'photo': _("Photo"),
+        }
 
 
 class StudentForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['full_name', 'phone', 'email', 'is_active']
+        labels = {
+            'full_name': _("Full Name"),
+            'phone': _("Phone"),
+            'email': _("Email"),
+            'is_active': _("Is Active"),
+        }
 
 
 # ==== GENERIC CRUD ====
@@ -79,7 +121,7 @@ def create_view(request, form_class, redirect_url, title):
     if form.is_valid():
         form.save()
         return redirect(redirect_url)
-    return render(request, 'dashboard/form.html', {'form': form, 'title': title})
+    return render(request, 'dashboard/form.html', {'form': form, 'title': _t(title)})
 
 
 def update_view(request, pk, model, form_class, redirect_url, title):
@@ -88,7 +130,7 @@ def update_view(request, pk, model, form_class, redirect_url, title):
     if form.is_valid():
         form.save()
         return redirect(redirect_url)
-    return render(request, 'dashboard/form.html', {'form': form, 'title': title})
+    return render(request, 'dashboard/form.html', {'form': form, 'title': _t(title)})
 
 
 def delete_view(request, pk, model, redirect_url, title):
@@ -96,7 +138,7 @@ def delete_view(request, pk, model, redirect_url, title):
     if request.method == 'POST':
         obj.delete()
         return redirect(redirect_url)
-    return render(request, 'dashboard/confirm_delete.html', {'object': obj, 'title': title})
+    return render(request, 'dashboard/confirm_delete.html', {'object': obj, 'title': _t(title)})
 
 
 # ==== CATEGORY CRUD ====
@@ -109,19 +151,19 @@ def category_list(request):
 @login_required
 @admin_required
 def category_create(request):
-    return create_view(request, CategoryForm, 'dashboard:category_list', 'Kategoriya qo\'shish')
+    return create_view(request, CategoryForm, 'dashboard:category_list', _("Add Category"))
 
 
 @login_required
 @admin_required
 def category_edit(request, pk):
-    return update_view(request, pk, Category, CategoryForm, 'dashboard:category_list', 'Kategoriya tahrirlash')
+    return update_view(request, pk, Category, CategoryForm, 'dashboard:category_list', _("Edit Category"))
 
 
 @login_required
 @admin_required
 def category_delete(request, pk):
-    return delete_view(request, pk, Category, 'dashboard:category_list', 'Kategoriya o\'chirish')
+    return delete_view(request, pk, Category, 'dashboard:category_list', _("Delete Category"))
 
 
 # ==== MATERIAL CRUD ====
@@ -134,19 +176,19 @@ def material_list(request):
 @login_required
 @admin_required
 def material_create(request):
-    return create_view(request, MaterialForm, 'dashboard:material_list', 'Material qo\'shish')
+    return create_view(request, MaterialForm, 'dashboard:material_list', _("Add Material"))
 
 
 @login_required
 @admin_required
 def material_edit(request, pk):
-    return update_view(request, pk, Material, MaterialForm, 'dashboard:material_list', 'Material tahrirlash')
+    return update_view(request, pk, Material, MaterialForm, 'dashboard:material_list', _("Edit Material"))
 
 
 @login_required
 @admin_required
 def material_delete(request, pk):
-    return delete_view(request, pk, Material, 'dashboard:material_list', 'Material o\'chirish')
+    return delete_view(request, pk, Material, 'dashboard:material_list', _("Delete Material"))
 
 
 # ==== MATERIAL PROGRESS CRUD ====
@@ -159,20 +201,20 @@ def progress_list(request):
 @login_required
 @admin_required
 def progress_create(request):
-    return create_view(request, MaterialProgressForm, 'dashboard:progress_list', 'Material Progress qo\'shish')
+    return create_view(request, MaterialProgressForm, 'dashboard:progress_list', _("Add Material Progress"))
 
 
 @login_required
 @admin_required
 def progress_edit(request, pk):
     return update_view(request, pk, MaterialProgress, MaterialProgressForm, 'dashboard:progress_list',
-                       'Material Progress tahrirlash')
+                       _("Edit Material Progress"))
 
 
 @login_required
 @admin_required
 def progress_delete(request, pk):
-    return delete_view(request, pk, MaterialProgress, 'dashboard:progress_list', 'Material Progress o\'chirish')
+    return delete_view(request, pk, MaterialProgress, 'dashboard:progress_list', _("Delete Material Progress"))
 
 
 # ==== LIBRARY BOOK CRUD ====
@@ -185,19 +227,19 @@ def book_list(request):
 @login_required
 @admin_required
 def book_create(request):
-    return create_view(request, LibraryBookForm, 'dashboard:book_list', 'Kitob qo\'shish')
+    return create_view(request, LibraryBookForm, 'dashboard:book_list', _("Add Book"))
 
 
 @login_required
 @admin_required
 def book_edit(request, pk):
-    return update_view(request, pk, LibraryBook, LibraryBookForm, 'dashboard:book_list', 'Kitob tahrirlash')
+    return update_view(request, pk, LibraryBook, LibraryBookForm, 'dashboard:book_list', _("Edit Book"))
 
 
 @login_required
 @admin_required
 def book_delete(request, pk):
-    return delete_view(request, pk, LibraryBook, 'dashboard:book_list', 'Kitob o\'chirish')
+    return delete_view(request, pk, LibraryBook, 'dashboard:book_list', _("Delete Book"))
 
 
 # ==== SALFEDJIO VIDEO CRUD ====
@@ -210,19 +252,19 @@ def video_list(request):
 @login_required
 @admin_required
 def video_create(request):
-    return create_view(request, SalfedjioVideoForm, 'dashboard:video_list', 'Video qo\'shish')
+    return create_view(request, SalfedjioVideoForm, 'dashboard:video_list', _("Add Video"))
 
 
 @login_required
 @admin_required
 def video_edit(request, pk):
-    return update_view(request, pk, SalfedjioVideo, SalfedjioVideoForm, 'dashboard:video_list', 'Video tahrirlash')
+    return update_view(request, pk, SalfedjioVideo, SalfedjioVideoForm, 'dashboard:video_list', _("Edit Video"))
 
 
 @login_required
 @admin_required
 def video_delete(request, pk):
-    return delete_view(request, pk, SalfedjioVideo, 'dashboard:video_list', 'Video o\'chirish')
+    return delete_view(request, pk, SalfedjioVideo, 'dashboard:video_list', _("Delete Video"))
 
 
 # ==== YOUTUBE RECOMMENDATION CRUD ====
@@ -235,20 +277,20 @@ def recommendation_list(request):
 @login_required
 @admin_required
 def recommendation_create(request):
-    return create_view(request, YouTubeRecommendationForm, 'dashboard:recommendation_list', 'Tavsiya qo\'shish')
+    return create_view(request, YouTubeRecommendationForm, 'dashboard:recommendation_list', _("Add Recommendation"))
 
 
 @login_required
 @admin_required
 def recommendation_edit(request, pk):
     return update_view(request, pk, YouTubeRecommendation, YouTubeRecommendationForm, 'dashboard:recommendation_list',
-                       'Tavsiya tahrirlash')
+                       _("Edit Recommendation"))
 
 
 @login_required
 @admin_required
 def recommendation_delete(request, pk):
-    return delete_view(request, pk, YouTubeRecommendation, 'dashboard:recommendation_list', 'Tavsiya o\'chirish')
+    return delete_view(request, pk, YouTubeRecommendation, 'dashboard:recommendation_list', _("Delete Recommendation"))
 
 
 # ==== TEAM MEMBER CRUD ====
@@ -261,19 +303,19 @@ def team_list(request):
 @login_required
 @admin_required
 def team_create(request):
-    return create_view(request, TeamMemberForm, 'dashboard:team_list', 'A\'zo qo\'shish')
+    return create_view(request, TeamMemberForm, 'dashboard:team_list', _("Add Team Member"))
 
 
 @login_required
 @admin_required
 def team_edit(request, pk):
-    return update_view(request, pk, TeamMember, TeamMemberForm, 'dashboard:team_list', 'A\'zo tahrirlash')
+    return update_view(request, pk, TeamMember, TeamMemberForm, 'dashboard:team_list', _("Edit Team Member"))
 
 
 @login_required
 @admin_required
 def team_delete(request, pk):
-    return delete_view(request, pk, TeamMember, 'dashboard:team_list', 'A\'zo o\'chirish')
+    return delete_view(request, pk, TeamMember, 'dashboard:team_list', _("Delete Team Member"))
 
 
 # ==== STUDENT USER CRUD ====
@@ -291,10 +333,10 @@ def student_create(request):
     if form.is_valid():
         student = form.save(commit=False)
         student.role = 'student'
-        student.set_password('default123')  # You may prompt real password later
+        student.set_password('default123')
         student.save()
         return redirect('dashboard:student_list')
-    return render(request, 'dashboard/form.html', {'form': form, 'title': 'Talaba qo\'shish'})
+    return render(request, 'dashboard/form.html', {'form': form, 'title': _("Add Student")})
 
 
 @login_required
@@ -305,7 +347,7 @@ def student_edit(request, pk):
     if form.is_valid():
         form.save()
         return redirect('dashboard:student_list')
-    return render(request, 'dashboard/form.html', {'form': form, 'title': 'Talaba tahrirlash'})
+    return render(request, 'dashboard/form.html', {'form': form, 'title': _("Edit Student")})
 
 
 @login_required
@@ -315,4 +357,4 @@ def student_delete(request, pk):
     if request.method == 'POST':
         student.delete()
         return redirect('dashboard:student_list')
-    return render(request, 'dashboard/confirm_delete.html', {'object': student, 'title': 'Talaba o\'chirish'})
+    return render(request, 'dashboard/confirm_delete.html', {'object': student, 'title': _("Delete Student")})

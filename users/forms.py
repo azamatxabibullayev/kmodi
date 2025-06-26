@@ -1,13 +1,17 @@
 from django import forms
-from .models import User
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import AuthenticationForm
+from .models import User
 
 
 class RegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
-        'placeholder': 'Parol kiriting'
-    }))
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': _('Enter your password')
+        }),
+        label=_("Password")
+    )
 
     class Meta:
         model = User
@@ -15,29 +19,42 @@ class RegisterForm(forms.ModelForm):
         widgets = {
             'full_name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'To‘liq ismingiz'
+                'placeholder': _('Your full name')
             }),
             'phone': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Telefon raqamingiz'
+                'placeholder': _('Your phone number')
             }),
+        }
+        labels = {
+            'full_name': _("Full Name"),
+            'phone': _("Phone Number"),
         }
 
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(label="Telefon raqam")
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(label=_("Phone number"))
+    password = forms.CharField(widget=forms.PasswordInput, label=_("Password"))
 
 
 class ProfileUpdateForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(), required=False)
+    password = forms.CharField(
+        widget=forms.PasswordInput(),
+        required=False,
+        label=_("Password")
+    )
 
     class Meta:
         model = User
         fields = ['full_name', 'phone', 'email', 'password']
         widgets = {
-            'phone': forms.TextInput(attrs={'placeholder': 'Telefon raqam'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'Email manzilingiz'}),
+            'phone': forms.TextInput(attrs={'placeholder': _('Phone number')}),
+            'email': forms.EmailInput(attrs={'placeholder': _('Your email address')}),
+        }
+        labels = {
+            'full_name': _("Full Name"),
+            'phone': _("Phone Number"),
+            'email': _("Email Address"),
         }
 
     def clean_email(self):
@@ -45,7 +62,7 @@ class ProfileUpdateForm(forms.ModelForm):
         if email:
             qs = User.objects.exclude(pk=self.instance.pk).filter(email=email)
             if qs.exists():
-                raise forms.ValidationError("Bu email allaqachon mavjud.")
+                raise forms.ValidationError(_("This email is already in use."))
         return email
 
     def clean_phone(self):
@@ -53,7 +70,7 @@ class ProfileUpdateForm(forms.ModelForm):
         if phone:
             qs = User.objects.exclude(pk=self.instance.pk).filter(phone=phone)
             if qs.exists():
-                raise forms.ValidationError("Bu telefon raqam allaqachon mavjud.")
+                raise forms.ValidationError(_("This phone number is already in use."))
         return phone
 
     def save(self, commit=True):

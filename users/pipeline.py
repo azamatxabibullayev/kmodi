@@ -1,3 +1,6 @@
+from django.utils.translation import gettext_lazy as _
+
+
 def assign_user_fields(strategy, details, backend, user=None, *args, **kwargs):
     if user:
         return
@@ -5,6 +8,6 @@ def assign_user_fields(strategy, details, backend, user=None, *args, **kwargs):
     fields = {
         'email': details.get('email'),
         'full_name': details.get('fullname') or details.get('first_name'),
-        'phone': None  # Do NOT assign email to phone!
+        'phone': None
     }
     return {'user': strategy.create_user(**fields)}

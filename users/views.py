@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
-from .forms import RegisterForm, ProfileUpdateForm
+from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required
+from .forms import RegisterForm, ProfileUpdateForm
 
 
 def register_student(request):
@@ -16,7 +17,7 @@ def register_student(request):
             return redirect('home')
     else:
         form = RegisterForm()
-    return render(request, 'users/register.html', {'form': form, 'title': 'Ro‘yxatdan o‘tish'})
+    return render(request, 'users/register.html', {'form': form, 'title': _('Register')})
 
 
 def login_view(request):
@@ -27,13 +28,12 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.role == 'admin':
-                return redirect('dashboard:home')  # admin uchun yo‘naltirish
+                return redirect('dashboard:home')
             else:
-                return redirect('home')  # oddiy foydalanuvchi uchun
+                return redirect('home')
         else:
-            return render(request, 'users/login.html', {'error': 'Login yoki parol noto‘g‘ri'})
+            return render(request, 'users/login.html', {'error': _('Invalid phone number or password')})
     return render(request, 'users/login.html')
-
 
 
 def logout_view(request):
