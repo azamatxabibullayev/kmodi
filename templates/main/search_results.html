@@ -44,14 +44,6 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .material-button.locked {
-        background: #eee;
-        color: #999;
-        border: 1px solid #ccc;
-        cursor: not-allowed;
-        pointer-events: none;
-    }
-
     .video-card {
         background: linear-gradient(to right, #fff9d0, #ffd6f5);
         border-radius: 15px;
@@ -114,14 +106,9 @@
     {% if materials %}
         <h5 class="section-heading">📘 {% trans "Darsliklar" %}:</h5>
         {% for m in materials %}
-            <div class="material-entry" data-category-id="{{ m.category.id }}">
-                <a href="{% url 'category_detail' m.category.id %}" class="material-button unlocked d-none">
-                    {{ m.category.name }}
-                </a>
-                <span class="material-button locked">
-                    🔒 {{ m.category.name }}
-                </span>
-            </div>
+            <a href="{% url 'category_detail' m.category.id %}" class="material-button">
+                {{ m.category.name }}
+            </a>
         {% endfor %}
     {% endif %}
 
@@ -148,37 +135,4 @@
 {% else %}
     <p class="no-result">❌ {% trans "Hech qanday ma’lumot topilmadi." %}</p>
 {% endif %}
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const completedMaterialIds = JSON.parse('{{ completed_material_ids|safe }}');
-        const materialCategories = JSON.parse('{{ material_categories|safe }}');
-        const orderedCategoryIds = Object.keys(materialCategories)
-            .map(id => parseInt(id))
-            .sort((a, b) => a - b);
-
-        function isCategoryUnlocked(categoryId) {
-            const index = orderedCategoryIds.indexOf(categoryId);
-            if (index === 0) return true;
-            const prevCategoryId = orderedCategoryIds[index - 1];
-            const prevMaterialIds = materialCategories[prevCategoryId.toString()] || [];
-            return prevMaterialIds.every(id => completedMaterialIds.includes(id));
-        }
-
-        document.querySelectorAll('.material-entry').forEach(entry => {
-            const categoryId = parseInt(entry.dataset.categoryId);
-            const unlocked = isCategoryUnlocked(categoryId);
-            const unlockedButton = entry.querySelector('.unlocked');
-            const lockedButton = entry.querySelector('.locked');
-
-            if (unlocked) {
-                unlockedButton.classList.remove('d-none');
-                lockedButton.classList.add('d-none');
-            } else {
-                unlockedButton.classList.add('d-none');
-                lockedButton.classList.remove('d-none');
-            }
-        });
-    });
-</script>
 {% endblock %}

@@ -9,7 +9,7 @@ SECRET_KEY = 'your-secret-key-here'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,7 +37,7 @@ MIDDLEWARE = [
     'users.middleware.AdminOnlySuperuserMiddleware',
 ]
 
-ROOT_URLCONF = 'dualedu.urls'
+ROOT_URLCONF = 'kmodi.urls'
 
 TEMPLATES = [
     {
@@ -55,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'dualedu.wsgi.application'
+WSGI_APPLICATION = 'kmodi.wsgi.application'
 
 DATABASES = {
     'default': {

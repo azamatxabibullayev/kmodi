@@ -32,12 +32,6 @@
         justify-content: space-between;
     }
 
-    .category-card.locked {
-        opacity: 0.6;
-        background: linear-gradient(to right, #e0e0e0, #f0f0f0);
-        border: 1px solid #999;
-    }
-
     .category-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -47,33 +41,6 @@
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
-    }
-
-    .category-btn {
-        display: inline-block;
-        background: linear-gradient(to right, #faf8af, #ffa6fa);
-        color: #000;
-        border: 1px solid #666;
-        padding: 8px 20px;
-        border-radius: 25px;
-        font-weight: bold;
-        text-decoration: none;
-        transition: all 0.2s ease;
-    }
-
-    .category-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-locked {
-        background: #ccc;
-        color: #666;
-        border-radius: 25px;
-        padding: 8px 20px;
-        cursor: not-allowed;
-        border: none;
-        font-weight: bold;
     }
 
     .row {
@@ -93,30 +60,39 @@
         }
     }
 
+    .back-link {
+        display: inline-block;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        color: #000;
+        text-decoration: none;
+        padding: 10px 25px;
+        border-radius: 25px;
+        border: 1px solid #666;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+    }
+
+    .back-link:hover {
+        transform: scale(1.05);
+    }
+
 </style>
 
-<h2 class="section-title">🎼 {% trans "Bo‘limlar" %}</h2>
+<h2 class="section-title">{% trans "Bo‘limlar" %}</h2>
 
 <div class="row">
     {% for category in categories %}
     <div class="col-md-6">
-        {% if category.unlocked %}
         <a href="{% url 'category_detail' category.id %}" style="text-decoration: none; color: inherit;" class="category-card">
             <div class="card-title">{{ category.name }}</div>
         </a>
-        {% else %}
-        <div class="category-card locked">
-            <div class="card-title">{{ category.name }}</div>
-            <div class="lock-icon">🔒 {% trans "Yopiq" %}</div>
-        </div>
-        {% endif %}
     </div>
     {% endfor %}
 </div>
 
-<!-- Orqaga tugmasi -->
 <div style="text-align: center; margin-top: 50px;">
-    <a href="{% url 'home' %}" class="back-link" style="text-decoration: none; color: inherit; font-size: 25px;">← {% trans "Orqaga" %}</a>
+    <a href="{% url 'home' %}" class="back-link">← {% trans "Orqaga" %}</a>
 </div>
 
 {% endblock %}

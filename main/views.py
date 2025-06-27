@@ -26,31 +26,7 @@ def home_view(request):
 
 @login_required
 def category_list(request):
-    categories = list(Category.objects.all().order_by('id'))
-    user = request.user
-
-    completed_material_ids = set(
-        MaterialProgress.objects.filter(user=user, is_completed=True).values_list('material_id', flat=True)
-    )
-
-    for i, category in enumerate(categories):
-        materials = list(Material.objects.filter(category=category))
-
-        if i == 0:
-            category.unlocked = True
-            continue
-
-        prev_category = categories[i - 1]
-        prev_materials = Material.objects.filter(category=prev_category)
-
-        if prev_materials.exists():
-            prev_material_ids = set(m.id for m in prev_materials)
-            all_prev_completed = prev_material_ids.issubset(completed_material_ids)
-        else:
-            all_prev_completed = True
-
-        category.unlocked = all_prev_completed
-
+    categories = Category.objects.all().order_by('id')
     return render(request, 'main/category_list.html', {
         'categories': categories
     })
@@ -59,21 +35,10 @@ def category_list(request):
 @login_required
 def category_detail(request, category_id):
     category = get_object_or_404(Category, id=category_id)
-    categories = list(Category.objects.all().order_by('id'))
-    current_index = categories.index(category)
-
-    if current_index > 0:
-        prev_category = categories[current_index - 1]
-        prev_materials = Material.objects.filter(category=prev_category)
-        completed_ids = set(
-            MaterialProgress.objects.filter(user=request.user, is_completed=True).values_list('material_id', flat=True))
-
-        if not all(m.id in completed_ids for m in prev_materials):
-            return redirect('category_list')
-
     materials = Material.objects.filter(category=category)
     completed_ids = set(
-        MaterialProgress.objects.filter(user=request.user, is_completed=True).values_list('material_id', flat=True))
+        MaterialProgress.objects.filter(user=request.user, is_completed=True).values_list('material_id', flat=True)
+    )
     for m in materials:
         m.is_completed = m.id in completed_ids
 
@@ -97,20 +62,15 @@ def salfedjio_view(request):
 
 @login_required
 def search_view(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q', '')
     materials = Material.objects.none()
     videos = SalfedjioVideo.objects.none()
     material_categories = {}
     completed_material_ids = []
 
     if query:
-        materials = Material.objects.filter(
-            category__name__icontains=query
-        )
-
-        videos = SalfedjioVideo.objects.filter(
-            title__icontains=query
-        )
+        materials = Material.objects.filter(category__name__icontains=query)
+        videos = SalfedjioVideo.objects.filter(title__icontains=query)
 
         completed_material_ids = list(MaterialProgress.objects.filter(
             user=request.user, is_completed=True
@@ -118,8 +78,8 @@ def search_view(request):
 
         from collections import defaultdict
         material_categories = defaultdict(list)
-        for m in Material.objects.all():
-            material_categories[str(m.category.id)].append(m.id)
+        for material in materials:
+            material_categories[str(material.category.id)].append(material.id)
 
     return render(request, 'main/search_results.html', {
         'query': query,

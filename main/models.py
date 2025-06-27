@@ -1,7 +1,7 @@
 from django.db import models
 from urllib.parse import urlparse, parse_qs
 from django.utils.translation import gettext_lazy as _
-from dualedu import settings
+from kmodi import settings
 
 
 class Category(models.Model):

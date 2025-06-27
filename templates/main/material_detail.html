@@ -127,7 +127,6 @@
 </style>
 
 <div class="content-wrapper">
-
     {% for material in materials %}
     <div class="lesson-box">
         <div class="lesson-title">{{ category.name }}</div>
@@ -153,7 +152,6 @@
 
         {% if material.assignment_text or material.assignment_audio or material.assignment_image %}
         <div class="assignment-title">{% trans "Topshiriqlar" %}</div>
-
         <div class="assignment-box">
             {% if material.assignment_text %}
                 {{ material.assignment_text }}
