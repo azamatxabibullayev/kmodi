@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Dars Tafsiloti{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Dars Tafsiloti" %}{% endblock %}
 
 {% block content %}
 <style>
@@ -24,7 +25,6 @@
         position: relative;
     }
 
-    /* Mavzu sarlavhasi */
     .lesson-title {
         display: inline-block;
         background: linear-gradient(to right, #faf8af, #ffa6fa);
@@ -38,7 +38,6 @@
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    /* Matn bloki */
     .lesson-text {
         background: linear-gradient(to right, #faf8af, #ffa6fa);
         padding: 20px;
@@ -50,7 +49,6 @@
         margin-bottom: 30px;
     }
 
-    /* Audio oyna */
     .audio-box {
         background: linear-gradient(to right, #faf8af, #ffa6fa);
         padding: 10px;
@@ -66,7 +64,6 @@
         height: 40px;
     }
 
-    /* Topshiriq sarlavhasi */
     .assignment-title {
         display: inline-block;
         background: linear-gradient(to right, #faf8af, #ffa6fa);
@@ -78,7 +75,6 @@
         font-weight: bold;
     }
 
-    /* Topshiriq konteyneri */
     .assignment-box {
         background: linear-gradient(to right, #faf8af, #ffa6fa);
         padding: 30px;
@@ -111,7 +107,6 @@
         display: block;
     }
 
-    /* Orqaga link */
     .back-link {
         margin-top: 50px;
         display: inline-block;
@@ -135,8 +130,6 @@
 
     {% for material in materials %}
     <div class="lesson-box">
-
-        <!-- Mavzu nomi (fixed placement) -->
         <div class="lesson-title">{{ category.name }}</div>
 
         {% if material.text %}
@@ -153,13 +146,13 @@
                 controls
                 data-material-id="{{ material.id }}">
                 <source src="{{ material.audio.url }}" type="audio/mpeg">
-                Brauzeringiz audiolarni qo‘llab-quvvatlamaydi.
+                {% trans "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi." %}
             </audio>
         </div>
         {% endif %}
 
         {% if material.assignment_text or material.assignment_audio or material.assignment_image %}
-        <div class="assignment-title">Topshiriqlar</div>
+        <div class="assignment-title">{% trans "Topshiriqlar" %}</div>
 
         <div class="assignment-box">
             {% if material.assignment_text %}
@@ -169,24 +162,23 @@
             {% if material.assignment_audio %}
                 <audio controls>
                     <source src="{{ material.assignment_audio.url }}" type="audio/mpeg">
-                    Brauzeringiz audiolarni qo‘llab-quvvatlamaydi.
+                    {% trans "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi." %}
                 </audio>
             {% endif %}
 
             {% if material.assignment_image %}
-                <img src="{{ material.assignment_image.url }}" alt="Topshiriq rasmi" class="assignment-image">
+                <img src="{{ material.assignment_image.url }}" alt="{% trans 'Topshiriq rasmi' %}" class="assignment-image">
             {% endif %}
         </div>
         {% endif %}
 
         <div id="completion-alert-{{ material.id }}" class="completion-alert {% if material.is_completed %}d-block{% endif %}">
-            ✅ Tugallandi!
+            ✅ {% trans "Tugallandi!" %}
         </div>
     </div>
     {% endfor %}
 
-    <!-- Orqaga tugmasi -->
-    <a href="{% url 'category_list' %}" class="back-link">← Orqaga</a>
+    <a href="{% url 'category_list' %}" class="back-link">← {% trans "Orqaga" %}</a>
 </div>
 
 <script>

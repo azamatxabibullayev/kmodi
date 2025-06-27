@@ -1,18 +1,75 @@
 {% extends 'base.html' %}
-{% block title %}E-Kutubxona{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "E-Kutubxona" %}{% endblock %}
+
 {% block content %}
-<h2 class="mb-4">Kutubxona</h2>
+<style>
+    .library-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 30px;
+        font-weight: bold;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 1px solid #000;
+    }
+
+    .library-card {
+        background: linear-gradient(to right, #fff9d0, #ffd6f5);
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 25px;
+        height: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .library-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .library-btn {
+        margin-top: 15px;
+        background: linear-gradient(to right, #faf8af, #ffa6fa);
+        border: 1px solid #333;
+        color: #000;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .library-btn:hover {
+        background: linear-gradient(to right, #ffe680, #ff85ea);
+        text-decoration: none;
+        color: black;
+    }
+
+    .book-description {
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+
+<h2 class="library-title">{% trans "E-Kutubxona" %}</h2>
+
 <div class="row">
     {% for book in books %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5>{{ book.title }}</h5>
-                    <p>{{ book.description }}</p>
-                    <a href="{{ book.pdf_file.url }}" class="btn btn-primary" download>Yuklab olish</a>
-                </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="library-card h-100">
+                <h5>{{ book.title }}</h5>
+                <p class="book-description">{{ book.description }}</p>
+                <a href="{{ book.pdf_file.url }}" class="library-btn" download>
+                    {% trans "Yuklab olish" %}
+                </a>
             </div>
         </div>
+    {% empty %}
+        <p class="text-muted text-center">{% trans "Hech qanday kitob mavjud emas." %}</p>
     {% endfor %}
 </div>
 {% endblock %}

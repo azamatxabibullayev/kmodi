@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Ro‘yxatdan o‘tish{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Ro‘yxatdan o‘tish" %}{% endblock %}
 
 {% block content %}
 <style>
@@ -106,32 +107,32 @@
 
 <div class="auth-wrapper">
     <h2 class="auth-header">
-        Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting
+        {% blocktrans %}Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting{% endblocktrans %}
     </h2>
 
     <form class="auth-form" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
 
-        <label>{{ form.full_name.label }}</label>
+        <label>{% trans form.full_name.label %}</label>
         {{ form.full_name }}
 
-        <label>{{ form.phone.label }}</label>
+        <label>{% trans form.phone.label %}</label>
         {{ form.phone }}
 
-        <label>{{ form.password.label }}</label>
+        <label>{% trans form.password.label %}</label>
         {{ form.password }}
 
-        <button type="submit" class="submit-btn">Ro‘yxatdan o‘tish</button>
+        <button type="submit" class="submit-btn">{% trans "Ro‘yxatdan o‘tish" %}</button>
     </form>
 
     <a href="{% url 'social:begin' 'google-oauth2' %}" class="google-btn">
-        Google bilan davom eting
+        {% trans "Google bilan davom eting" %}
     </a>
 
     <div class="form-footer">
-        Allaqachon ro‘yxatdan o‘tganmisiz?
-        <a href="{% url 'login' %}">Kirish</a>
+        {% trans "Allaqachon ro‘yxatdan o‘tganmisiz?" %}
+        <a href="{% url 'login' %}">{% trans "Kirish" %}</a>
     </div>
 </div>
 {% endblock %}

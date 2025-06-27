@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Musiqa Nazariyasi{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Musiqa Nazariyasi" %}{% endblock %}
 
 {% block content %}
-
 <style>
     body {
         margin: 0;
@@ -95,7 +95,7 @@
 
 </style>
 
-<h2 class="section-title">🎼 Bo‘limlar</h2>
+<h2 class="section-title">🎼 {% trans "Bo‘limlar" %}</h2>
 
 <div class="row">
     {% for category in categories %}
@@ -107,7 +107,7 @@
         {% else %}
         <div class="category-card locked">
             <div class="card-title">{{ category.name }}</div>
-            <div class="lock-icon">🔒 Yopiq</div>
+            <div class="lock-icon">🔒 {% trans "Yopiq" %}</div>
         </div>
         {% endif %}
     </div>
@@ -116,7 +116,7 @@
 
 <!-- Orqaga tugmasi -->
 <div style="text-align: center; margin-top: 50px;">
-    <a href="{% url 'home' %}" class="back-link" style="text-decoration: none; color: inherit; font-size: 25px;">← Orqaga</a>
+    <a href="{% url 'home' %}" class="back-link" style="text-decoration: none; color: inherit; font-size: 25px;">← {% trans "Orqaga" %}</a>
 </div>
 
 {% endblock %}

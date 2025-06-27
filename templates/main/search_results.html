@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Qidiruv natijalari{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Qidiruv natijalari" %}{% endblock %}
 
 {% block content %}
 <style>
@@ -106,12 +107,12 @@
     }
 </style>
 
-<h3 class="search-title">🔍 Qidiruv natijalari: "{{ query }}"</h3>
+<h3 class="search-title">🔍 {% trans "Qidiruv natijalari" %}: "{{ query }}"</h3>
 
 {% if materials or videos %}
 
     {% if materials %}
-        <h5 class="section-heading">📘 Darsliklar:</h5>
+        <h5 class="section-heading">📘 {% trans "Darsliklar" %}:</h5>
         {% for m in materials %}
             <div class="material-entry" data-category-id="{{ m.category.id }}">
                 <a href="{% url 'category_detail' m.category.id %}" class="material-button unlocked d-none">
@@ -125,7 +126,7 @@
     {% endif %}
 
     {% if videos %}
-        <h5 class="section-heading">🎥 Salfedjio Videolari:</h5>
+        <h5 class="section-heading">🎥 {% trans "Salfedjio Videolari" %}:</h5>
         <div class="row">
             {% for v in videos %}
             <div class="col-md-4 mb-4">
@@ -135,7 +136,7 @@
                     <div class="card-body">
                         <h6 class="card-title">{{ v.title }}</h6>
                         <a href="{% url 'salfedjio' %}?video={{ v.get_video_id }}" class="btn-view">
-                            ▶️ Sahifada ko‘rish
+                            ▶️ {% trans "Sahifada ko‘rish" %}
                         </a>
                     </div>
                 </div>
@@ -145,7 +146,7 @@
     {% endif %}
 
 {% else %}
-    <p class="no-result">❌ Hech qanday ma’lumot topilmadi.</p>
+    <p class="no-result">❌ {% trans "Hech qanday ma’lumot topilmadi." %}</p>
 {% endif %}
 
 <script>

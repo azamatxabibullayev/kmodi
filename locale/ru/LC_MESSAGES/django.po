@@ -1,0 +1,404 @@
+# Russian Translation for Kmodi.uz
+# Copyright (C) 2025 Kmodi Team
+# This file is distributed under the same license as the Kmodi.uz package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Kmodi.uz 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-27 12:04+0500\n"
+"PO-Revision-Date: 2025-06-27 13:30+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+msgid "Category Name"
+msgstr "Название категории"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "Audio"
+msgstr "Аудио"
+
+msgid "Assignment Text"
+msgstr "Текст задания"
+
+msgid "Assignment Audio"
+msgstr "Аудио задания"
+
+msgid "Assignment Image"
+msgstr "Изображение задания"
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "Material"
+msgstr "Материал"
+
+msgid "Is Completed"
+msgstr "Завершено"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "PDF File"
+msgstr "PDF-файл"
+
+msgid "YouTube URL"
+msgstr "Ссылка на YouTube"
+
+msgid "Full Name"
+msgstr "Полное имя"
+
+msgid "Job Title"
+msgstr "Должность"
+
+msgid "Photo"
+msgstr "Фото"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Email"
+msgstr "Электронная почта"
+
+msgid "Is Active"
+msgstr "Активен"
+
+msgid "Add Category"
+msgstr "Добавить категорию"
+
+msgid "Edit Category"
+msgstr "Редактировать категорию"
+
+msgid "Delete Category"
+msgstr "Удалить категорию"
+
+msgid "Add Material"
+msgstr "Добавить материал"
+
+msgid "Edit Material"
+msgstr "Редактировать материал"
+
+msgid "Delete Material"
+msgstr "Удалить материал"
+
+msgid "Add Material Progress"
+msgstr "Добавить прогресс по материалу"
+
+msgid "Edit Material Progress"
+msgstr "Редактировать прогресс по материалу"
+
+msgid "Delete Material Progress"
+msgstr "Удалить прогресс по материалу"
+
+msgid "Add Book"
+msgstr "Добавить книгу"
+
+msgid "Edit Book"
+msgstr "Редактировать книгу"
+
+msgid "Delete Book"
+msgstr "Удалить книгу"
+
+msgid "Add Video"
+msgstr "Добавить видео"
+
+msgid "Edit Video"
+msgstr "Редактировать видео"
+
+msgid "Delete Video"
+msgstr "Удалить видео"
+
+msgid "Add Recommendation"
+msgstr "Добавить рекомендацию"
+
+msgid "Edit Recommendation"
+msgstr "Редактировать рекомендацию"
+
+msgid "Delete Recommendation"
+msgstr "Удалить рекомендацию"
+
+msgid "Add Team Member"
+msgstr "Добавить участника команды"
+
+msgid "Edit Team Member"
+msgstr "Редактировать участника команды"
+
+msgid "Delete Team Member"
+msgstr "Удалить участника команды"
+
+msgid "Add Student"
+msgstr "Добавить ученика"
+
+msgid "Edit Student"
+msgstr "Редактировать ученика"
+
+msgid "Delete Student"
+msgstr "Удалить ученика"
+
+msgid "Uzbek"
+msgstr "Узбекский"
+
+msgid "Russian"
+msgstr "Русский"
+
+msgid "English"
+msgstr "Английский"
+
+msgid "Audio File"
+msgstr "Аудиофайл"
+
+msgid "Completed"
+msgstr "Завершено"
+
+msgid "Completed At"
+msgstr "Дата завершения"
+
+msgid "Material Progress"
+msgstr "Прогресс изучения"
+
+msgid "Material Progresses"
+msgstr "Прогрессы изучения"
+
+msgid "Video Title"
+msgstr "Название видео"
+
+msgid "Recommendation Title"
+msgstr "Название рекомендации"
+
+msgid "Kmodi.uz"
+msgstr "Kmodi.uz"
+
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+msgid "Search..."
+msgstr "Поиск..."
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "UZ"
+msgstr "УЗ"
+
+msgid "RU"
+msgstr "РУ"
+
+msgid "ENG"
+msgstr "АНГ"
+
+msgid "E-Library"
+msgstr "Электронная библиотека"
+
+msgid "Project Team"
+msgstr "Команда проекта"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Login"
+msgstr "Вход"
+
+msgid "Register"
+msgstr "Регистрация"
+
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+msgid "Musiqa Nazariyasi"
+msgstr "Теория музыки"
+
+msgid "Bo‘limlar"
+msgstr "Разделы"
+
+msgid "Yopiq"
+msgstr "Закрыто"
+
+msgid "Orqaga"
+msgstr "Назад"
+
+msgid "Bosh sahifa"
+msgstr "Главная страница"
+
+msgid "Salfedjio"
+msgstr "Сольфеджио"
+
+msgid "Loyiha a’zolari"
+msgstr "Члены проекта"
+
+msgid "Loyiha a’zolari hozircha mavjud emas."
+msgstr "В проекте пока нет участников."
+
+msgid "E-Kutubxona"
+msgstr "Электронная библиотека"
+
+msgid "Hech qanday e-kitob mavjud emas."
+msgstr "Электронные книги отсутствуют."
+
+msgid "YouTube kanalimiz"
+msgstr "Наш YouTube канал"
+
+msgid "Tavsiya etilgan video mavjud emas."
+msgstr "Рекомендованных видео нет."
+
+msgid "Yuklab olish"
+msgstr "Скачать"
+
+msgid "Hech qanday kitob mavjud emas."
+msgstr "Нет доступных книг."
+
+msgid "Dars Tafsiloti"
+msgstr "Подробности урока"
+
+msgid "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
+msgstr "Ваш браузер не поддерживает воспроизведение аудио."
+
+msgid "Topshiriqlar"
+msgstr "Задания"
+
+msgid "Topshiriq rasmi"
+msgstr "Изображение задания"
+
+msgid "Tugallandi!"
+msgstr "Завершено!"
+
+msgid "Salfedjio Darslari"
+msgstr "Уроки сольфеджио"
+
+msgid "Nomer"
+msgstr "Номер"
+
+msgid "Qidiruv natijalari"
+msgstr "Результаты поиска"
+
+msgid "Darsliklar"
+msgstr "Учебные материалы"
+
+msgid "Salfedjio Videolari"
+msgstr "Видеоуроки по сольфеджио"
+
+msgid "Sahifada ko‘rish"
+msgstr "Посмотреть на странице"
+
+msgid "Hech qanday ma’lumot topilmadi."
+msgstr "Информация не найдена."
+
+msgid "Kirish"
+msgstr "Вход"
+
+msgid "Tizimga kiring<br>yoki Google bilan davom eting"
+msgstr "Войдите в систему<br>или продолжите через Google"
+
+msgid "Telefon raqam"
+msgstr "Номер телефона"
+
+msgid "Parol"
+msgstr "Пароль"
+
+msgid "Google bilan davom eting"
+msgstr "Продолжить через Google"
+
+msgid "Ro‘yxatdan o‘tmaganmisiz?"
+msgstr "Еще не зарегистрированы?"
+
+msgid "Ro‘yxatdan o‘tish"
+msgstr "Регистрация"
+
+msgid "Profil"
+msgstr "Профиль"
+
+msgid "To‘liq ism"
+msgstr "Полное имя"
+
+msgid "Kiritilmagan"
+msgstr "Не указано"
+
+msgid "Ma'lumotlarni yangilash"
+msgstr "Обновить информацию"
+
+msgid "Profilni yangilash"
+msgstr "Обновить профиль"
+
+msgid "Email manzil"
+msgstr "Адрес электронной почты"
+
+msgid "Yangi parol (ixtiyoriy)"
+msgstr "Новый пароль (необязательно)"
+
+msgid "Saqlash"
+msgstr "Сохранить"
+
+msgid "Ortga"
+msgstr "Назад"
+
+msgid "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
+msgstr "Зарегистрируйтесь<br>или продолжите через Google"
+
+msgid "Allaqachon ro‘yxatdan o‘tganmisiz?"
+msgstr "Уже зарегистрированы?"
+
+msgid "Enter your password"
+msgstr "Введите пароль"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Your full name"
+msgstr "Ваше полное имя"
+
+msgid "Your phone number"
+msgstr "Ваш номер телефона"
+
+msgid "Phone Number"
+msgstr "Номер телефона"
+
+msgid "Phone number"
+msgstr "Номер телефона"
+
+msgid "Your email address"
+msgstr "Ваш адрес электронной почты"
+
+msgid "Email Address"
+msgstr "Адрес электронной почты"
+
+msgid "This email is already in use."
+msgstr "Этот адрес уже используется."
+
+msgid "This phone number is already in use."
+msgstr "Этот номер уже используется."
+
+msgid "Phone number or email is required"
+msgstr "Требуется номер телефона или адрес электронной почты"
+
+msgid "Student"
+msgstr "Студент"
+
+msgid "Admin"
+msgstr "Администратор"
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Active"
+msgstr "Активный"
+
+msgid "Invalid phone number or password"
+msgstr "Неверный номер телефона или пароль"

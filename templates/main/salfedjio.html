@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
-{% block title %}Salfedjio Darslari{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Salfedjio Darslari" %}{% endblock %}
 
 {% block content %}
-
 <style>
     body {
         background: linear-gradient(to right, #faf8af, #ffa6fa);
+    }
+
+    .video-title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+        font-weight: bold;
     }
 
     .video-buttons {
@@ -59,22 +66,16 @@
     .back-link:hover {
         transform: scale(1.05);
     }
-
-    .video-title {
-        text-align: center;
-        font-size: 32px;
-        margin-bottom: 40px;
-        font-weight: bold;
-    }
 </style>
 
-<h2 class="video-title">🎵 Salfedjio Darslari</h2>
+<h2 class="video-title">🎵 {% trans "Salfedjio Darslari" %}</h2>
 
 <!-- 🎹 Button grid -->
 <div class="video-buttons {% if request.GET.video %}hidden{% endif %}" id="video-buttons">
     {% for video in videos %}
-        <a class="btn-number"
-           href="?video={{ video.get_video_id }}">Nomer {{ forloop.counter }}</a>
+        <a class="btn-number" href="?video={{ video.get_video_id }}">
+            {% trans "Nomer" %} {{ forloop.counter }}
+        </a>
     {% endfor %}
 </div>
 
@@ -94,10 +95,10 @@
 
 <!-- ⬅️ Back button -->
 <div style="text-align: center; margin-top: 50px;">
-    <a href="{% url 'home' %}" class="back-link">← Orqaga</a>
+    <a href="{% url 'home' %}" class="back-link">← {% trans "Orqaga" %}</a>
 </div>
 
-<!-- 👇 JS to hide numbers when video starts (YouTube API) -->
+<!-- 👇 JS to hide numbers when video starts -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const iframe = document.getElementById("youtube-video");
@@ -125,5 +126,4 @@
         }
     });
 </script>
-
 {% endblock %}

@@ -1,0 +1,400 @@
+# Uzbek Translation for Kmodi.uz
+# Copyright (C) 2025
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kmodi.uz 1.0\n"
+"POT-Creation-Date: 2025-06-27 12:04+0500\n"
+"PO-Revision-Date: 2025-06-27 15:30+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Uzbek <uz@li.org>\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Category Name"
+msgstr "Kategoriya nomi"
+
+msgid "Category"
+msgstr "Kategoriya"
+
+msgid "Text"
+msgstr "Matn"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Assignment Text"
+msgstr "Topshiriq matni"
+
+msgid "Assignment Audio"
+msgstr "Topshiriq audiosi"
+
+msgid "Assignment Image"
+msgstr "Topshiriq rasmi"
+
+msgid "User"
+msgstr "Foydalanuvchi"
+
+msgid "Material"
+msgstr "Material"
+
+msgid "Is Completed"
+msgstr "Bajarilgan"
+
+msgid "Title"
+msgstr "Sarlavha"
+
+msgid "Description"
+msgstr "Tavsif"
+
+msgid "PDF File"
+msgstr "PDF fayl"
+
+msgid "YouTube URL"
+msgstr "YouTube havola"
+
+msgid "Full Name"
+msgstr "To‘liq ism"
+
+msgid "Job Title"
+msgstr "Lavozimi"
+
+msgid "Photo"
+msgstr "Rasmi"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Is Active"
+msgstr "Faolmi"
+
+msgid "Add Category"
+msgstr "Kategoriya qo‘shish"
+
+msgid "Edit Category"
+msgstr "Kategoriyani tahrirlash"
+
+msgid "Delete Category"
+msgstr "Kategoriyani o‘chirish"
+
+msgid "Add Material"
+msgstr "Material qo‘shish"
+
+msgid "Edit Material"
+msgstr "Materialni tahrirlash"
+
+msgid "Delete Material"
+msgstr "Materialni o‘chirish"
+
+msgid "Add Material Progress"
+msgstr "Material bajarilishini qo‘shish"
+
+msgid "Edit Material Progress"
+msgstr "Material bajarilishini tahrirlash"
+
+msgid "Delete Material Progress"
+msgstr "Material bajarilishini o‘chirish"
+
+msgid "Add Book"
+msgstr "Kitob qo‘shish"
+
+msgid "Edit Book"
+msgstr "Kitobni tahrirlash"
+
+msgid "Delete Book"
+msgstr "Kitobni o‘chirish"
+
+msgid "Add Video"
+msgstr "Video qo‘shish"
+
+msgid "Edit Video"
+msgstr "Videoni tahrirlash"
+
+msgid "Delete Video"
+msgstr "Videoni o‘chirish"
+
+msgid "Add Recommendation"
+msgstr "Tavsiya qo‘shish"
+
+msgid "Edit Recommendation"
+msgstr "Tavsiyani tahrirlash"
+
+msgid "Delete Recommendation"
+msgstr "Tavsiyani o‘chirish"
+
+msgid "Add Team Member"
+msgstr "Jamoa aʼzosini qo‘shish"
+
+msgid "Edit Team Member"
+msgstr "Jamoa aʼzosini tahrirlash"
+
+msgid "Delete Team Member"
+msgstr "Jamoa aʼzosini o‘chirish"
+
+msgid "Add Student"
+msgstr "Talaba qo‘shish"
+
+msgid "Edit Student"
+msgstr "Talabani tahrirlash"
+
+msgid "Delete Student"
+msgstr "Talabani o‘chirish"
+
+msgid "Uzbek"
+msgstr "O‘zbekcha"
+
+msgid "Russian"
+msgstr "Ruscha"
+
+msgid "English"
+msgstr "Inglizcha"
+
+msgid "Audio File"
+msgstr "Audio fayl"
+
+msgid "Completed"
+msgstr "Bajarildi"
+
+msgid "Completed At"
+msgstr "Bajarilgan vaqti"
+
+msgid "Material Progress"
+msgstr "Material bajarilishi"
+
+msgid "Material Progresses"
+msgstr "Material bajarilishlari"
+
+msgid "Video Title"
+msgstr "Video sarlavhasi"
+
+msgid "Recommendation Title"
+msgstr "Tavsiya sarlavhasi"
+
+msgid "Kmodi.uz"
+msgstr "Kmodi.uz"
+
+msgid "Toggle navigation"
+msgstr "Navigatsiyani yoqish/oʻchirish"
+
+msgid "Search..."
+msgstr "Qidirish..."
+
+msgid "Search"
+msgstr "Qidirish"
+
+msgid "UZ"
+msgstr "UZ"
+
+msgid "RU"
+msgstr "RU"
+
+msgid "ENG"
+msgstr "ENG"
+
+msgid "E-Library"
+msgstr "Elektron kutubxona"
+
+msgid "Project Team"
+msgstr "Loyiha jamoasi"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Login"
+msgstr "Kirish"
+
+msgid "Register"
+msgstr "Ro‘yxatdan o‘tish"
+
+msgid "All rights reserved."
+msgstr "Barcha huquqlar himoyalangan."
+
+msgid "Musiqa Nazariyasi"
+msgstr "Musiqa Nazariyasi"
+
+msgid "Bo‘limlar"
+msgstr "Bo‘limlar"
+
+msgid "Yopiq"
+msgstr "Yopiq"
+
+msgid "Orqaga"
+msgstr "Orqaga"
+
+msgid "Bosh sahifa"
+msgstr "Bosh sahifa"
+
+msgid "Salfedjio"
+msgstr "Salfedjio"
+
+msgid "Loyiha a’zolari"
+msgstr "Loyiha a’zolari"
+
+msgid "Loyiha a’zolari hozircha mavjud emas."
+msgstr "Loyiha a’zolari hozircha mavjud emas."
+
+msgid "E-Kutubxona"
+msgstr "E-Kutubxona"
+
+msgid "Hech qanday e-kitob mavjud emas."
+msgstr "Hech qanday e-kitob mavjud emas."
+
+msgid "YouTube kanalimiz"
+msgstr "YouTube kanalimiz"
+
+msgid "Tavsiya etilgan video mavjud emas."
+msgstr "Tavsiya etilgan video mavjud emas."
+
+msgid "Yuklab olish"
+msgstr "Yuklab olish"
+
+msgid "Hech qanday kitob mavjud emas."
+msgstr "Hech qanday kitob mavjud emas."
+
+msgid "Dars Tafsiloti"
+msgstr "Dars Tafsiloti"
+
+msgid "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
+msgstr "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
+
+msgid "Topshiriqlar"
+msgstr "Topshiriqlar"
+
+msgid "Topshiriq rasmi"
+msgstr "Topshiriq rasmi"
+
+msgid "Tugallandi!"
+msgstr "Tugallandi!"
+
+msgid "Salfedjio Darslari"
+msgstr "Salfedjio Darslari"
+
+msgid "Nomer"
+msgstr "Raqam"
+
+msgid "Qidiruv natijalari"
+msgstr "Qidiruv natijalari"
+
+msgid "Darsliklar"
+msgstr "Darsliklar"
+
+msgid "Salfedjio Videolari"
+msgstr "Salfedjio Videolari"
+
+msgid "Sahifada ko‘rish"
+msgstr "Sahifada ko‘rish"
+
+msgid "Hech qanday ma’lumot topilmadi."
+msgstr "Hech qanday ma’lumot topilmadi."
+
+msgid "Kirish"
+msgstr "Kirish"
+
+msgid "Tizimga kiring<br>yoki Google bilan davom eting"
+msgstr "Tizimga kiring<br>yoki Google bilan davom eting"
+
+msgid "Telefon raqam"
+msgstr "Telefon raqam"
+
+msgid "Parol"
+msgstr "Parol"
+
+msgid "Google bilan davom eting"
+msgstr "Google bilan davom eting"
+
+msgid "Ro‘yxatdan o‘tmaganmisiz?"
+msgstr "Ro‘yxatdan o‘tmaganmisiz?"
+
+msgid "Ro‘yxatdan o‘tish"
+msgstr "Ro‘yxatdan o‘tish"
+
+msgid "Profil"
+msgstr "Profil"
+
+msgid "To‘liq ism"
+msgstr "To‘liq ism"
+
+msgid "Kiritilmagan"
+msgstr "Kiritilmagan"
+
+msgid "Ma'lumotlarni yangilash"
+msgstr "Ma'lumotlarni yangilash"
+
+msgid "Profilni yangilash"
+msgstr "Profilni yangilash"
+
+msgid "Email manzil"
+msgstr "Email manzil"
+
+msgid "Yangi parol (ixtiyoriy)"
+msgstr "Yangi parol (ixtiyoriy)"
+
+msgid "Saqlash"
+msgstr "Saqlash"
+
+msgid "Ortga"
+msgstr "Ortga"
+
+msgid "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
+msgstr "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
+
+msgid "Allaqachon ro‘yxatdan o‘tganmisiz?"
+msgstr "Allaqachon ro‘yxatdan o‘tganmisiz?"
+
+msgid "Enter your password"
+msgstr "Parolingizni kiriting"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "Your full name"
+msgstr "To‘liq ismingiz"
+
+msgid "Your phone number"
+msgstr "Telefon raqamingiz"
+
+msgid "Phone Number"
+msgstr "Telefon raqam"
+
+msgid "Phone number"
+msgstr "Telefon raqam"
+
+msgid "Your email address"
+msgstr "Email manzilingiz"
+
+msgid "Email Address"
+msgstr "Email manzil"
+
+msgid "This email is already in use."
+msgstr "Bu email allaqachon ishlatilmoqda."
+
+msgid "This phone number is already in use."
+msgstr "Bu telefon raqam allaqachon ishlatilmoqda."
+
+msgid "Phone number or email is required"
+msgstr "Telefon raqam yoki email manzil talab qilinadi"
+
+msgid "Student"
+msgstr "Talaba"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Role"
+msgstr "Roli"
+
+msgid "Active"
+msgstr "Faol"
+
+msgid "Invalid phone number or password"
+msgstr "Telefon raqam yoki parol noto‘g‘ri"

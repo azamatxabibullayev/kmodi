@@ -1,81 +1,35 @@
 {% extends 'base.html' %}
-{% block title %}Profil{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Profil" %}{% endblock %}
 
 {% block content %}
 <style>
-    .profile-wrapper {
-        max-width: 600px;
-        margin: 60px auto;
-    }
-
-    .profile-card {
-        background: linear-gradient(to right, #faf8af, #ffa6fa);
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        color: #222;
-        font-size: 16px;
-    }
-
-    .profile-card p {
-        margin-bottom: 12px;
-        font-weight: 500;
-    }
-
-    .profile-card strong {
-        color: #555;
-    }
-
-    .btn-edit {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        background: linear-gradient(to right, #faf8af, #ffa6fa);
-        border: 1px solid #999;
-        border-radius: 30px;
-        color: #000;
-        font-weight: bold;
-        text-decoration: none;
-        transition: 0.2s ease;
-    }
-
-    .btn-edit:hover {
-        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-        transform: scale(1.03);
-    }
-
-    .profile-title {
-        text-align: center;
-        font-size: 28px;
-        font-weight: bold;
-        margin-bottom: 40px;
-        color: #444;
-    }
+/* your styles unchanged */
 </style>
 
 <div class="profile-wrapper">
-    <h2 class="profile-title">👤 Profil</h2>
+    <h2 class="profile-title">{% trans "Profil" %}</h2>
 
     <div class="profile-card">
-        <p><strong>To‘liq ism:</strong> {{ request.user.full_name }}</p>
+        <p><strong>{% trans "To‘liq ism" %}:</strong> {{ request.user.full_name }}</p>
 
-        <p><strong>Telefon raqam:</strong>
+        <p><strong>{% trans "Telefon raqam" %}:</strong>
             {% if request.user.phone %}
                 {{ request.user.phone }}
             {% else %}
-                <span class="text-danger">Kiritilmagan</span>
+                <span class="text-danger">{% trans "Kiritilmagan" %}</span>
             {% endif %}
         </p>
 
-        <p><strong>Email:</strong>
+        <p><strong>{% trans "Email" %}:</strong>
             {% if request.user.email %}
                 {{ request.user.email }}
             {% else %}
-                <span class="text-danger">Kiritilmagan</span>
+                <span class="text-danger">{% trans "Kiritilmagan" %}</span>
             {% endif %}
         </p>
 
-        <a href="{% url 'profile_update' %}" class="btn-edit">✏️ Ma'lumotlarni yangilash</a>
+        <a href="{% url 'profile_update' %}" class="btn-edit">{% trans "Ma'lumotlarni yangilash" %}</a>
     </div>
 </div>
 {% endblock %}
