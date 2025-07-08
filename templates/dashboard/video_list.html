@@ -7,32 +7,39 @@
         <h4>Salfedjio videolar</h4>
         <a href="{% url 'dashboard:video_create' %}" class="btn btn-success">+ Yangi video</a>
     </div>
+
     <div class="card shadow-sm">
         <div class="card-body">
             {% if videos %}
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Sarlavha</th>
-                            <th>YouTube URL</th>
-                            <th>Amallar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for video in videos %}
-                        <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td>{{ video.title }}</td>
-                            <td><a href="{{ video.youtube_url }}" target="_blank">Havola</a></td>
-                            <td>
-                                <a href="{% url 'dashboard:video_edit' video.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
-                                <a href="{% url 'dashboard:video_delete' video.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 50px;">#</th>
+                                <th>Sarlavha</th>
+                                <th>YouTube URL</th>
+                                <th style="min-width: 120px;">Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for video in videos %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ video.title|truncatechars:20 }}</td>
+                                <td>
+                                    <a href="{{ video.youtube_url }}" target="_blank" class="text-decoration-none text-primary">
+                                        {{ video.youtube_url|truncatechars:20 }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'dashboard:video_edit' video.pk %}" class="btn btn-sm btn-primary">Tahrirlash</a>
+                                    <a href="{% url 'dashboard:video_delete' video.pk %}" class="btn btn-sm btn-danger">O‘chirish</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             {% else %}
                 <p>Hozircha hech qanday video mavjud emas.</p>
             {% endif %}

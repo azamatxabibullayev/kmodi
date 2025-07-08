@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'main',
     'social_django',
     'dashboard',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
