@@ -11,6 +11,7 @@ from main.models import (
     LibraryBook, SalfedjioVideo,
     YouTubeRecommendation, TeamMember
 )
+from modeltranslation.utils import get_translation_fields
 
 User = get_user_model()
 
@@ -25,16 +26,18 @@ def dashboard_home(request):
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['name']
-        labels = {
-            'name': _("Category Name"),
-        }
+        fields = ['name'] + list(get_translation_fields('name'))
+        labels = {'name': _("Category Name")}
 
 
 class MaterialForm(forms.ModelForm):
     class Meta:
         model = Material
-        fields = ['category', 'text', 'audio', 'assignment_text', 'assignment_audio', 'assignment_image']
+        fields = (
+                ['category', 'audio', 'assignment_audio', 'assignment_image']
+                + list(get_translation_fields('text'))
+                + list(get_translation_fields('assignment_text'))
+        )
         labels = {
             'category': _("Category"),
             'text': _("Text"),
@@ -59,7 +62,7 @@ class MaterialProgressForm(forms.ModelForm):
 class LibraryBookForm(forms.ModelForm):
     class Meta:
         model = LibraryBook
-        fields = ['title', 'description', 'pdf_file']
+        fields = ['pdf_file'] + list(get_translation_fields('title')) + list(get_translation_fields('description'))
         labels = {
             'title': _("Title"),
             'description': _("Description"),
@@ -70,7 +73,7 @@ class LibraryBookForm(forms.ModelForm):
 class SalfedjioVideoForm(forms.ModelForm):
     class Meta:
         model = SalfedjioVideo
-        fields = ['title', 'youtube_url']
+        fields = ['youtube_url'] + list(get_translation_fields('title'))
         labels = {
             'title': _("Title"),
             'youtube_url': _("YouTube URL"),
@@ -80,7 +83,7 @@ class SalfedjioVideoForm(forms.ModelForm):
 class YouTubeRecommendationForm(forms.ModelForm):
     class Meta:
         model = YouTubeRecommendation
-        fields = ['title', 'youtube_url']
+        fields = ['youtube_url'] + list(get_translation_fields('title'))
         labels = {
             'title': _("Title"),
             'youtube_url': _("YouTube URL"),
@@ -90,7 +93,7 @@ class YouTubeRecommendationForm(forms.ModelForm):
 class TeamMemberForm(forms.ModelForm):
     class Meta:
         model = TeamMember
-        fields = ['full_name', 'job_title', 'photo']
+        fields = ['photo'] + list(get_translation_fields('full_name')) + list(get_translation_fields('job_title'))
         labels = {
             'full_name': _("Full Name"),
             'job_title': _("Job Title"),
@@ -99,16 +102,8 @@ class TeamMemberForm(forms.ModelForm):
 
 
 class StudentForm(forms.ModelForm):
-    password1 = forms.CharField(
-        label=_("Password"),
-        widget=forms.PasswordInput,
-        required=True
-    )
-    password2 = forms.CharField(
-        label=_("Confirm Password"),
-        widget=forms.PasswordInput,
-        required=True
-    )
+    password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput, required=True)
+    password2 = forms.CharField(label=_("Confirm Password"), widget=forms.PasswordInput, required=True)
 
     class Meta:
         model = User
@@ -124,10 +119,8 @@ class StudentForm(forms.ModelForm):
         cleaned_data = super().clean()
         pw1 = cleaned_data.get("password1")
         pw2 = cleaned_data.get("password2")
-
         if pw1 and pw2 and pw1 != pw2:
             raise forms.ValidationError(_("Passwords do not match"))
-
         return cleaned_data
 
     def save(self, commit=True):
@@ -139,7 +132,6 @@ class StudentForm(forms.ModelForm):
         return user
 
 
-# ==== GENERIC CRUD ====
 def list_view(request, model, template_name, context_name):
     objects = model.objects.all()
     return render(request, template_name, {context_name: objects})
@@ -170,7 +162,6 @@ def delete_view(request, pk, model, redirect_url, title):
     return render(request, 'dashboard/confirm_delete.html', {'object': obj, 'title': _t(title)})
 
 
-# ==== CATEGORY CRUD ====
 @login_required
 @admin_required
 def category_list(request):
@@ -195,7 +186,6 @@ def category_delete(request, pk):
     return delete_view(request, pk, Category, 'dashboard:category_list', _("Delete Category"))
 
 
-# ==== MATERIAL CRUD ====
 @login_required
 @admin_required
 def material_list(request):
@@ -220,7 +210,6 @@ def material_delete(request, pk):
     return delete_view(request, pk, Material, 'dashboard:material_list', _("Delete Material"))
 
 
-# ==== MATERIAL PROGRESS CRUD ====
 @login_required
 @admin_required
 def progress_list(request):
@@ -246,7 +235,6 @@ def progress_delete(request, pk):
     return delete_view(request, pk, MaterialProgress, 'dashboard:progress_list', _("Delete Material Progress"))
 
 
-# ==== LIBRARY BOOK CRUD ====
 @login_required
 @admin_required
 def book_list(request):
@@ -271,7 +259,6 @@ def book_delete(request, pk):
     return delete_view(request, pk, LibraryBook, 'dashboard:book_list', _("Delete Book"))
 
 
-# ==== SALFEDJIO VIDEO CRUD ====
 @login_required
 @admin_required
 def video_list(request):
@@ -296,7 +283,6 @@ def video_delete(request, pk):
     return delete_view(request, pk, SalfedjioVideo, 'dashboard:video_list', _("Delete Video"))
 
 
-# ==== YOUTUBE RECOMMENDATION CRUD ====
 @login_required
 @admin_required
 def recommendation_list(request):
@@ -322,7 +308,6 @@ def recommendation_delete(request, pk):
     return delete_view(request, pk, YouTubeRecommendation, 'dashboard:recommendation_list', _("Delete Recommendation"))
 
 
-# ==== TEAM MEMBER CRUD ====
 @login_required
 @admin_required
 def team_list(request):
@@ -362,7 +347,6 @@ def student_create(request):
     if form.is_valid():
         student = form.save(commit=False)
         student.role = 'student'
-        student.set_password('default123')
         student.save()
         return redirect('dashboard:student_list')
     return render(request, 'dashboard/form.html', {'form': form, 'title': _("Add Student")})

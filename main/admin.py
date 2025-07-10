@@ -1,34 +1,40 @@
 from django.contrib import admin
-from .models import Category, Material, LibraryBook, SalfedjioVideo, YouTubeRecommendation, TeamMember, MaterialProgress
+from modeltranslation.admin import TranslationAdmin
+
+from .models import (
+    Category, Material, LibraryBook,
+    SalfedjioVideo, YouTubeRecommendation,
+    TeamMember, MaterialProgress
+)
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = ['id', 'name']
 
 
 @admin.register(Material)
-class MaterialAdmin(admin.ModelAdmin):
+class MaterialAdmin(TranslationAdmin):
     list_display = ['id', 'category']
 
 
 @admin.register(LibraryBook)
-class LibraryBookAdmin(admin.ModelAdmin):
+class LibraryBookAdmin(TranslationAdmin):
     list_display = ['id', 'title']
 
 
 @admin.register(SalfedjioVideo)
-class SalfedjioVideoAdmin(admin.ModelAdmin):
+class SalfedjioVideoAdmin(TranslationAdmin):
     list_display = ['id', 'title', 'youtube_url']
 
 
 @admin.register(YouTubeRecommendation)
-class YouTubeRecommendationAdmin(admin.ModelAdmin):
+class YouTubeRecommendationAdmin(TranslationAdmin):
     list_display = ['id', 'title', 'youtube_url']
 
 
 @admin.register(TeamMember)
-class TeamMemberAdmin(admin.ModelAdmin):
+class TeamMemberAdmin(TranslationAdmin):
     list_display = ['id', 'full_name', 'job_title']
 
 
@@ -36,5 +42,5 @@ class TeamMemberAdmin(admin.ModelAdmin):
 class MaterialProgressAdmin(admin.ModelAdmin):
     list_display = ('user', 'material', 'is_completed', 'completed_at')
     list_filter = ('is_completed', 'completed_at')
-    search_fields = ('user__username', 'user__email', 'material__title')
+    search_fields = ('user__username', 'user__email', 'material__text')
     ordering = ('-completed_at',)
