@@ -99,6 +99,17 @@ class TeamMemberForm(forms.ModelForm):
 
 
 class StudentForm(forms.ModelForm):
+    password1 = forms.CharField(
+        label=_("Password"),
+        widget=forms.PasswordInput,
+        required=True
+    )
+    password2 = forms.CharField(
+        label=_("Confirm Password"),
+        widget=forms.PasswordInput,
+        required=True
+    )
+
     class Meta:
         model = User
         fields = ['full_name', 'phone', 'email', 'is_active']
@@ -108,6 +119,24 @@ class StudentForm(forms.ModelForm):
             'email': _("Email"),
             'is_active': _("Is Active"),
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        pw1 = cleaned_data.get("password1")
+        pw2 = cleaned_data.get("password2")
+
+        if pw1 and pw2 and pw1 != pw2:
+            raise forms.ValidationError(_("Passwords do not match"))
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        password = self.cleaned_data["password1"]
+        user.set_password(password)
+        if commit:
+            user.save()
+        return user
 
 
 # ==== GENERIC CRUD ====

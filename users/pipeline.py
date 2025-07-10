@@ -1,13 +1,24 @@
+from users.models import User
 from django.utils.translation import gettext_lazy as _
 
 
 def assign_user_fields(strategy, details, backend, user=None, *args, **kwargs):
     if user:
-        return
+        return {'user': user}
 
-    fields = {
-        'email': details.get('email'),
-        'full_name': details.get('fullname') or details.get('first_name'),
-        'phone': None
-    }
-    return {'user': strategy.create_user(**fields)}
+    email = details.get('email')
+    full_name = details.get('fullname') or details.get('first_name')
+
+    if not email:
+        return
+    try:
+        existing_user = User.objects.get(email=email)
+        return {'user': existing_user}
+    except User.DoesNotExist:
+        new_user = strategy.create_user(
+            email=email,
+            full_name=full_name or email,
+            phone=None,
+            role='student'
+        )
+        return {'user': new_user}
