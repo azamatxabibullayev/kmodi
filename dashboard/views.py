@@ -93,11 +93,22 @@ class YouTubeRecommendationForm(forms.ModelForm):
 class TeamMemberForm(forms.ModelForm):
     class Meta:
         model = TeamMember
-        fields = ['photo'] + list(get_translation_fields('full_name')) + list(get_translation_fields('job_title'))
+        fields = (
+                ['photo'] +
+                list(get_translation_fields('full_name')) +
+                list(get_translation_fields('job_title')) +
+                list(get_translation_fields('bio'))
+        )
         labels = {
             'full_name': _("Full Name"),
             'job_title': _("Job Title"),
             'photo': _("Photo"),
+            'bio': _("Bio"),
+        }
+        widgets = {
+            'bio_uz': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+            'bio_ru': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+            'bio_en': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
         }
 
 

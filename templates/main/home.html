@@ -5,234 +5,302 @@
 
 {% block content %}
 <style>
-    body {
-        background: linear-gradient(to right, #faf8af, #ffa6fa);
+  body {
+    background: linear-gradient(to right, #faf8af, #ffa6fa);
+  }
+
+  .section-title {
+    background: linear-gradient(to right, #faf8af, #ffa6fa);
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 1px solid #000;
+  }
+
+  .main-card {
+    background: linear-gradient(to right, #faf8af, #ffa6fa);
+    border-radius: 25px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 300;
+    border: 1px solid #000;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: #000;
+  }
+
+  .main-card:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .team-card {
+    background: #ffa6fa;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .team-card-name {
+    background: #fffaa0;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-top: auto;
+  }
+
+  .rounded-img {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px;
+  }
+
+  .detail-view {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 0 10px;
+  }
+
+  .detail-card {
+    background: linear-gradient(to right, #faf8af, #ffa6fa);
+    border: 2px solid #888;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    flex: 1;
+  }
+
+  .detail-card h6 {
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .detail-card p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .bio-text {
+    background-color: transparent;
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .close-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 12px;
+    font-size: 13px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .book-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #ffcaf4, #ffe67c);
+    display: inline-block;
+    border: 2px dotted black;
+    margin-right: 10px;
+  }
+
+  .ebook-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: black;
+    transition: transform 0.2s;
+  }
+
+  .ebook-item:hover {
+    transform: scale(1.03);
+  }
+
+  .youtube-card {
+    background: linear-gradient(to right, #fff9a9, #ffa2f9);
+    border-radius: 25px;
+    border: 1px solid #000;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .youtube-section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  .video-card {
+    border-radius: 25px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .video-card:hover {
+    transform: scale(1.02);
+  }
+
+  .video-thumbnail {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .main-card {
+      font-size: 28px;
+      height: 300px;
     }
 
     .section-title {
-        background: linear-gradient(to right, #faf8af, #ffa6fa);
-        padding: 10px 20px;
-        border-radius: 25px;
-        display: inline-block;
-        margin-bottom: 30px;
-        font-size: 24px;
-        font-weight: bold;
-        border: 1px solid #000000;
-    }
-
-    .main-card {
-        background: linear-gradient(to right, #faf8af, #ffa6fa);
-        border-radius: 25px;
-        height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 40px;
-        font-weight: light;
-        border: 1px solid #000000;
-        transition: all 0.3s ease;
-        text-align: center;
-        color: #000;
-    }
-
-    .main-card:hover {
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      font-size: 20px;
     }
 
     .team-card {
-        background: #ffa6fa;
-        border-radius: 30px;
-        padding: 20px;
-        text-align: center;
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        border: 1px solid #333;
-        cursor: pointer;
-        transition: transform 0.2s;
+      width: 100%;
+      max-width: 320px;
     }
 
-    .team-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .team-card-name {
-        background: #fffaa0;
-        padding: 10px;
-        border-radius: 20px;
-        font-weight: 500;
-        margin-top: auto;
-    }
-
-    .rounded-img {
-        object-fit: cover;
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 10px;
+    .detail-view {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 15px;
     }
 
     .detail-card {
-        border-radius: 20px;
-        border: 1px solid #333;
-        background: #fff;
-        padding: 15px;
-    }
-
-    .book-icon {
-        width: 55px;
-        height: 55px;
-        border-radius: 10px;
-        background: linear-gradient(to bottom right, #ffcaf4, #ffe67c);
-        display: inline-block;
-        border: 2px dotted black;
-        margin-right: 10px;
+      width: 100%;
     }
 
     .ebook-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        text-decoration: none;
-        color: black;
-        transition: transform 0.2s;
-    }
-
-    .ebook-item:hover {
-        transform: scale(1.03);
-    }
-
-    .youtube-card {
-        background: linear-gradient(to right, #fff9a9, #ffa2f9);
-        border-radius: 25px;
-        border: 1px solid #000;
-        padding: 30px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .youtube-section-title {
-        text-align: center;
-        margin-bottom: 30px;
-        font-weight: 600;
-        font-size: 24px;
-    }
-
-    .video-card {
-        border-radius: 25px;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .video-card:hover {
-        transform: scale(1.02);
+      font-size: 15px;
     }
 
     .video-thumbnail {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 25px;
-        display: block;
+      height: 160px;
     }
+  }
 </style>
 
 <div class="container text-center mt-4">
-
-  <!-- Main Cards -->
   <div class="row justify-content-center mb-5">
-    <div class="col-md-5 mb-4">
+    <div class="col-sm-12 col-md-5 mb-4">
       <a href="{% url 'category_list' %}" class="text-decoration-none">
         <div class="main-card">{% trans "Musiqa Nazariyasi" %}</div>
       </a>
     </div>
-    <div class="col-md-5 mb-4">
+    <div class="col-sm-12 col-md-5 mb-4">
       <a href="{% url 'salfedjio' %}" class="text-decoration-none">
         <div class="main-card">{% trans "Salfedjio" %}</div>
       </a>
     </div>
   </div>
 
-  <!-- Team Section with Collapse Details -->
-  <div class="text-center">
-    <div class="section-title" id="team">{% trans "Loyiha a’zolari" %}</div>
-    <div class="row justify-content-center">
-      {% for member in team_members %}
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-          <!-- Toggle Card -->
-          <div
-            class="team-card"
-            data-bs-toggle="collapse"
-            data-bs-target="#member-{{ member.id }}-detail"
-            aria-expanded="false"
-            aria-controls="member-{{ member.id }}-detail"
-          >
-            {% if member.photo %}
-              <img src="{{ member.photo.url }}" class="rounded-img" alt="{{ member.full_name }}">
-            {% endif %}
-            <div class="team-card-name">{{ member.full_name }}</div>
-          </div>
-          <!-- Collapsible Detail -->
-          <div class="collapse mt-2" id="member-{{ member.id }}-detail">
-            <div class="detail-card text-start">
-              <h6 class="fw-semibold mb-2">{{ member.full_name }}</h6>
-              {% if member.job_title %}
-                <p class="mb-1"><strong>{% trans "Lavozim" %}:</strong> {{ member.job_title }}</p>
-              {% endif %}
-              {% if member.bio %}
-                <p class="small text-muted">{{ member.bio }}</p>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      {% empty %}
-        <p class="text-muted">{% trans "Loyiha a’zolari hozircha mavjud emas." %}</p>
-      {% endfor %}
-    </div>
+
+  <div class="section-title" id="team">{% trans "Loyiha a’zolari" %}</div>
+  <div id="team-grid" class="team-grid">
+    {% for member in team_members %}
+      <div class="team-card" onclick="showDetail({{ member.id }})">
+        {% if member.photo %}
+          <img src="{{ member.photo.url }}" class="rounded-img" alt="{{ member.full_name }}">
+        {% endif %}
+        <div class="team-card-name">{{ member.full_name }}</div>
+      </div>
+    {% endfor %}
   </div>
 
-  <!-- E-Kitoblar -->
+
+  {% for member in team_members %}
+    <div class="detail-view" id="detail-view-{{ member.id }}">
+      <div class="team-card" onclick="hideDetail({{ member.id }})">
+        {% if member.photo %}
+          <img src="{{ member.photo.url }}" class="rounded-img" alt="{{ member.full_name }}">
+        {% endif %}
+        <div class="team-card-name">{{ member.full_name }}</div>
+      </div>
+      <div class="detail-card">
+        <button class="close-btn" onclick="hideDetail({{ member.id }})">✕</button>
+        <h6>{{ member.full_name }}</h6>
+        {% if member.job_title %}
+          <p><strong>{% trans "Kasb" %}:</strong> {{ member.job_title }}</p>
+        {% endif %}
+        {% if member.bio %}
+          <div class="bio-text">{{ member.bio }}</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+
+
   <div class="text-center mt-5">
     <div class="section-title" id="ebooks">{% trans "E-Kutubxona" %}</div>
     <div class="row text-start justify-content-center">
-      <div class="col-md-4">
-        {% for book in books|slice:":3" %}
+      {% for book in books %}
+        <div class="col-md-4">
           <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
             <div class="book-icon"></div>
             <span>{{ book.title }}</span>
           </a>
-        {% endfor %}
-      </div>
-      <div class="col-md-4">
-        {% for book in books|slice:"3:6" %}
-          <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
-            <div class="book-icon"></div>
-            <span>{{ book.title }}</span>
-          </a>
-        {% endfor %}
-      </div>
-      <div class="col-md-4">
-        {% for book in books|slice:"6:" %}
-          <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
-            <div class="book-icon"></div>
-            <span>{{ book.title }}</span>
-          </a>
-        {% endfor %}
-      </div>
+        </div>
+      {% endfor %}
       {% if not books %}
         <p class="text-muted">{% trans "Hech qanday e-kitob mavjud emas." %}</p>
       {% endif %}
     </div>
   </div>
 
-  <!-- YouTube Recommendations -->
+
   <div class="youtube-card mt-5">
     <h4 class="youtube-section-title">{% trans "YouTube kanalimiz" %}</h4>
     <div class="row justify-content-center gx-4 gy-4">
       {% for video in videos %}
         {% if video.video_id %}
-          <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+          <div class="col-12 col-sm-6 col-md-4">
             <div class="video-card">
               <a href="https://www.youtube.com/watch?v={{ video.video_id }}" target="_blank">
                 <img src="https://img.youtube.com/vi/{{ video.video_id }}/hqdefault.jpg"
@@ -247,7 +315,19 @@
       {% endfor %}
     </div>
   </div>
-
 </div>
 
+
+<script>
+  function showDetail(id) {
+    document.getElementById('team-grid').style.display = 'none';
+    document.querySelectorAll('.detail-view').forEach(e => e.style.display = 'none');
+    document.getElementById('detail-view-' + id).style.display = 'flex';
+  }
+
+  function hideDetail(id) {
+    document.getElementById('detail-view-' + id).style.display = 'none';
+    document.getElementById('team-grid').style.display = 'flex';
+  }
+</script>
 {% endblock %}
