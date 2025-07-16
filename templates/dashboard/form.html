@@ -1,4 +1,6 @@
 {% extends 'base_dashboard.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -6,18 +8,18 @@
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8">
-            <div class="card shadow rounded border-0">
+            <div class="card shadow rounded-4 border-0">
                 <div class="card-header bg-white border-bottom">
-                    <h5 class="mb-0">{{ title }}</h5>
+                    <h5 class="mb-0 text-center text-md-start">{{ title }}</h5>
                 </div>
                 <div class="card-body">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                         {% csrf_token %}
 
                         {% for field in form %}
                             <div class="mb-3">
                                 <label for="{{ field.id_for_label }}" class="form-label fw-semibold">{{ field.label }}</label>
-                                {{ field }}
+                                {{ field|add_class:"form-control w-100" }}
 
                                 {% if field.errors %}
                                     <div class="text-danger small mt-1">
@@ -27,9 +29,13 @@
                             </div>
                         {% endfor %}
 
-                        <div class="mt-4 d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary px-4">Saqlash</button>
-                            <a href="javascript:history.back();" class="btn btn-outline-secondary">Bekor qilish</a>
+                        <div class="mt-4 d-flex flex-column flex-md-row justify-content-between gap-2">
+                            <button type="submit" class="btn btn-primary px-4 w-100 w-md-auto">
+                                {% trans "Save" %}
+                            </button>
+                            <a href="javascript:history.back();" class="btn btn-outline-secondary px-4 w-100 w-md-auto">
+                                {% trans "Cancel" %}
+                            </a>
                         </div>
                     </form>
                 </div>

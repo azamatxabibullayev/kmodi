@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+
 {% block title %}{% trans "Bosh sahifa" %}{% endblock %}
 
 {% block content %}
@@ -48,6 +49,12 @@
         flex-direction: column;
         justify-content: flex-end;
         border: 1px solid #333;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .team-card:hover {
+        transform: translateY(-5px);
     }
 
     .team-card-name {
@@ -64,6 +71,13 @@
         width: 120px;
         height: 120px;
         margin: 0 auto 10px;
+    }
+
+    .detail-card {
+        border-radius: 20px;
+        border: 1px solid #333;
+        background: #fff;
+        padding: 15px;
     }
 
     .book-icon {
@@ -87,11 +101,8 @@
 
     .ebook-item:hover {
         transform: scale(1.03);
-        text-decoration: none;
-        color: black;
     }
 
-    /* Updated YouTube Section Styles (Thumbnail-Only) */
     .youtube-card {
         background: linear-gradient(to right, #fff9a9, #ffa2f9);
         border-radius: 25px;
@@ -125,97 +136,118 @@
         border-radius: 25px;
         display: block;
     }
-
 </style>
 
 <div class="container text-center mt-4">
 
-    <!-- Main Cards -->
-    <div class="row justify-content-center mb-5">
-        <div class="col-md-5 mb-4">
-            <a href="{% url 'category_list' %}" class="text-decoration-none">
-                <div class="main-card">{% trans "Musiqa Nazariyasi" %}</div>
-            </a>
-        </div>
-        <div class="col-md-5 mb-4">
-            <a href="{% url 'salfedjio' %}" class="text-decoration-none">
-                <div class="main-card">{% trans "Salfedjio" %}</div>
-            </a>
-        </div>
+  <!-- Main Cards -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-5 mb-4">
+      <a href="{% url 'category_list' %}" class="text-decoration-none">
+        <div class="main-card">{% trans "Musiqa Nazariyasi" %}</div>
+      </a>
     </div>
-
-    <!-- Team Section -->
-    <div class="text-center">
-        <div class="section-title" id="team">{% trans "Loyiha a’zolari" %}</div>
-        <div class="row justify-content-center">
-            {% for member in team_members %}
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="team-card">
-                    {% if member.photo %}
-                    <img src="{{ member.photo.url }}" class="rounded-img" alt="{{ member.full_name }}">
-                    {% endif %}
-                    <div class="team-card-name">{{ member.full_name }}</div>
-                </div>
-            </div>
-            {% empty %}
-            <p class="text-muted">{% trans "Loyiha a’zolari hozircha mavjud emas." %}</p>
-            {% endfor %}
-        </div>
+    <div class="col-md-5 mb-4">
+      <a href="{% url 'salfedjio' %}" class="text-decoration-none">
+        <div class="main-card">{% trans "Salfedjio" %}</div>
+      </a>
     </div>
+  </div>
 
-    <!-- E-Kitoblar -->
-    <div class="text-center mt-5">
-        <div class="section-title" id="ebooks">{% trans "E-Kutubxona" %}</div>
-        <div class="row text-start justify-content-center">
-            <div class="col-md-4">
-                {% for book in books|slice:":3" %}
-                <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
-                    <div class="book-icon"></div>
-                    <span>{{ book.title }}</span>
-                </a>
-                {% endfor %}
-            </div>
-            <div class="col-md-4">
-                {% for book in books|slice:"3:6" %}
-                <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
-                    <div class="book-icon"></div>
-                    <span>{{ book.title }}</span>
-                </a>
-                {% endfor %}
-            </div>
-            <div class="col-md-4">
-                {% for book in books|slice:"6:" %}
-                <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
-                    <div class="book-icon"></div>
-                    <span>{{ book.title }}</span>
-                </a>
-                {% endfor %}
-            </div>
-            {% if books|length == 0 %}
-            <p class="text-muted">{% trans "Hech qanday e-kitob mavjud emas." %}</p>
+  <!-- Team Section with Collapse Details -->
+  <div class="text-center">
+    <div class="section-title" id="team">{% trans "Loyiha a’zolari" %}</div>
+    <div class="row justify-content-center">
+      {% for member in team_members %}
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <!-- Toggle Card -->
+          <div
+            class="team-card"
+            data-bs-toggle="collapse"
+            data-bs-target="#member-{{ member.id }}-detail"
+            aria-expanded="false"
+            aria-controls="member-{{ member.id }}-detail"
+          >
+            {% if member.photo %}
+              <img src="{{ member.photo.url }}" class="rounded-img" alt="{{ member.full_name }}">
             {% endif %}
+            <div class="team-card-name">{{ member.full_name }}</div>
+          </div>
+          <!-- Collapsible Detail -->
+          <div class="collapse mt-2" id="member-{{ member.id }}-detail">
+            <div class="detail-card text-start">
+              <h6 class="fw-semibold mb-2">{{ member.full_name }}</h6>
+              {% if member.job_title %}
+                <p class="mb-1"><strong>{% trans "Lavozim" %}:</strong> {{ member.job_title }}</p>
+              {% endif %}
+              {% if member.bio %}
+                <p class="small text-muted">{{ member.bio }}</p>
+              {% endif %}
+            </div>
+          </div>
         </div>
+      {% empty %}
+        <p class="text-muted">{% trans "Loyiha a’zolari hozircha mavjud emas." %}</p>
+      {% endfor %}
     </div>
+  </div>
 
-    <!-- YouTube Recommendations -->
-    <div class="youtube-card mt-5">
-        <h4 class="youtube-section-title">{% trans "YouTube kanalimiz" %}</h4>
-        <div class="row justify-content-center gx-4 gy-4">
-            {% for video in videos %}
-                {% if video.video_id %}
-                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                    <div class="video-card">
-                        <a href="https://www.youtube.com/watch?v={{ video.video_id }}" target="_blank">
-                            <img src="https://img.youtube.com/vi/{{ video.video_id }}/hqdefault.jpg" alt="YouTube video" class="video-thumbnail">
-                        </a>
-                    </div>
-                </div>
-                {% endif %}
-            {% empty %}
-            <p class="text-danger text-center">{% trans "Tavsiya etilgan video mavjud emas." %}</p>
-            {% endfor %}
-        </div>
+  <!-- E-Kitoblar -->
+  <div class="text-center mt-5">
+    <div class="section-title" id="ebooks">{% trans "E-Kutubxona" %}</div>
+    <div class="row text-start justify-content-center">
+      <div class="col-md-4">
+        {% for book in books|slice:":3" %}
+          <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
+            <div class="book-icon"></div>
+            <span>{{ book.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+      <div class="col-md-4">
+        {% for book in books|slice:"3:6" %}
+          <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
+            <div class="book-icon"></div>
+            <span>{{ book.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+      <div class="col-md-4">
+        {% for book in books|slice:"6:" %}
+          <a href="{{ book.pdf_file.url }}" class="ebook-item" target="_blank">
+            <div class="book-icon"></div>
+            <span>{{ book.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+      {% if not books %}
+        <p class="text-muted">{% trans "Hech qanday e-kitob mavjud emas." %}</p>
+      {% endif %}
     </div>
+  </div>
+
+  <!-- YouTube Recommendations -->
+  <div class="youtube-card mt-5">
+    <h4 class="youtube-section-title">{% trans "YouTube kanalimiz" %}</h4>
+    <div class="row justify-content-center gx-4 gy-4">
+      {% for video in videos %}
+        {% if video.video_id %}
+          <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+            <div class="video-card">
+              <a href="https://www.youtube.com/watch?v={{ video.video_id }}" target="_blank">
+                <img src="https://img.youtube.com/vi/{{ video.video_id }}/hqdefault.jpg"
+                     alt="YouTube video"
+                     class="video-thumbnail">
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% empty %}
+        <p class="text-danger text-center">{% trans "Tavsiya etilgan video mavjud emas." %}</p>
+      {% endfor %}
+    </div>
+  </div>
 
 </div>
+
 {% endblock %}

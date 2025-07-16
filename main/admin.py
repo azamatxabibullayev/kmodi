@@ -34,8 +34,10 @@ class YouTubeRecommendationAdmin(TranslationAdmin):
 
 
 @admin.register(TeamMember)
-class TeamMemberAdmin(TranslationAdmin):
-    list_display = ['id', 'full_name', 'job_title']
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'job_title')
+    fields = ('full_name', 'job_title', 'bio', 'photo')
+    search_fields = ('full_name', 'job_title')
 
 
 @admin.register(MaterialProgress)

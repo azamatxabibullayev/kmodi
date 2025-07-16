@@ -75,35 +75,12 @@
     footer {
       background: linear-gradient(to right, #faf8af, #ffa6fa);
     }
-
-    .highlight-read {
-      outline: 3px solid orange;
-      background-color: rgba(255, 255, 0, 0.3);
-      transition: background 0.3s, outline 0.3s;
-    }
-
-    .sr-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      border: 2px solid #222;
-      border-radius: 30px;
-      padding: 10px 20px;
-      background-color: #fff4a3;
-      color: #000;
-      font-weight: bold;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
-      cursor: pointer;
-    }
   </style>
 
   {% block extra_head %}{% endblock %}
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
-<button id="screenReaderToggle" class="sr-button">🔊 {% trans "Screen Reader" %}</button>
 
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
@@ -163,119 +140,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const srToggleBtn = document.getElementById('screenReaderToggle');
-  const synth = window.speechSynthesis;
-  let voices = [];
-  const lang = "{{ LANGUAGE_CODE }}";
-  const targetsSelector = "a, button, input, label, textarea, p, h1, h2, h3, h4, h5, h6, span, div";
-  let screenReaderEnabled = localStorage.getItem('screenReader') === 'on';
-
-  function loadVoices() { voices = synth.getVoices(); }
-  window.speechSynthesis.onvoiceschanged = loadVoices;
-
-  function getVoice(langCode) {
-    loadVoices();
-    if (langCode === 'uz') return voices.find(v => v.lang.startsWith('tr')) || voices.find(v => v.lang.startsWith('en'));
-    if (langCode === 'ru') return voices.find(v => v.lang.startsWith('ru'));
-    if (langCode === 'en') return voices.find(v => v.lang.startsWith('en'));
-    return voices[0];
-  }
-
-  function cleanText(text) {
-    return text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F6FF}\u{1F900}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]+/gu, '')
-               .replace(/[^a-zA-Z0-9\s.,?!\u0400-\u04FF\u0600-\u06FF\u0C00-\u0C7F\u1000-\u109F]/g, '');
-  }
-
-  function speak(text) {
-    const cleaned = cleanText(text);
-    if (!cleaned.trim()) return;
-    const utter = new SpeechSynthesisUtterance(cleaned);
-    const voice = getVoice(lang);
-    if (voice) {
-      utter.voice = voice;
-      utter.lang = voice.lang;
-    }
-    utter.pitch = 1;
-    utter.rate = 1;
-    synth.cancel();
-    synth.speak(utter);
-  }
-
-  function handleHoverSpeak(e) {
-    const el = e.target;
-    const prev = document.querySelector('.highlight-read');
-    if (prev && prev !== el) prev.classList.remove("highlight-read");
-    el.classList.add("highlight-read");
-
-    const text = el.innerText || el.alt || el.title || el.ariaLabel || el.value;
-    if (text && text.trim()) {
-      speak(text);
-    }
-
-    setTimeout(() => el.classList.remove("highlight-read"), 1500);
-  }
-
-  function handleTextSelect() {
-    const selected = window.getSelection().toString().trim();
-    if (selected.length > 2) speak(selected);
-  }
-
-  function addListeners() {
-    if (!screenReaderEnabled) return;
-    document.querySelectorAll(targetsSelector).forEach((el) => {
-      if (!el.classList.contains('sr-listened')) {
-        el.addEventListener('mouseenter', handleHoverSpeak);
-        el.addEventListener('focus', handleHoverSpeak);
-        el.classList.add('sr-listened');
-      }
-    });
-  }
-
-  function removeListeners() {
-    document.querySelectorAll(targetsSelector).forEach((el) => {
-      el.removeEventListener("mouseenter", handleHoverSpeak);
-      el.removeEventListener("focus", handleHoverSpeak);
-      el.classList.remove("sr-listened");
-      el.classList.remove("highlight-read");
-    });
-  }
-
-  function updateToggleText() {
-    srToggleBtn.style.backgroundColor = screenReaderEnabled ? "#00cc66" : "#fff4a3";
-    srToggleBtn.innerText = screenReaderEnabled
-      ? "🟢 {{ _('Screen Reader On') }}"
-      : "🔊 {{ _('Screen Reader') }}";
-  }
-
-  srToggleBtn.addEventListener("click", () => {
-    screenReaderEnabled = !screenReaderEnabled;
-    localStorage.setItem('screenReader', screenReaderEnabled ? 'on' : 'off');
-    updateToggleText();
-
-    if (screenReaderEnabled) {
-      addListeners();
-      document.addEventListener("mouseup", handleTextSelect);
-    } else {
-      removeListeners();
-      document.removeEventListener("mouseup", handleTextSelect);
-    }
-  });
-
-  new MutationObserver(() => {
-    if (screenReaderEnabled) addListeners();
-  }).observe(document.body, { childList: true, subtree: true });
-
-  // INIT on page load if screenReader = 'on'
-  window.addEventListener("DOMContentLoaded", () => {
-    updateToggleText();
-    if (screenReaderEnabled) {
-      addListeners();
-      document.addEventListener("mouseup", handleTextSelect);
-    }
-  });
-</script>
-
 {% block extra_js %}{% endblock %}
 </body>
 </html>

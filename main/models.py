@@ -94,6 +94,7 @@ class TeamMember(models.Model):
     full_name = models.CharField(_("Full Name"), max_length=200)
     job_title = models.CharField(_("Job Title"), max_length=200, blank=True, null=True)
     photo = models.ImageField(_("Photo"), upload_to='users/', blank=True, null=True)
+    bio = models.TextField(_("Bio / About"), blank=True, null=True)
 
     def __str__(self):
         return self.full_name

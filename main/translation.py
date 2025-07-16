@@ -29,4 +29,4 @@ class YouTubeRecommendationTranslationOptions(TranslationOptions):
 
 @register(TeamMember)
 class TeamMemberTranslationOptions(TranslationOptions):
-    fields = ('full_name', 'job_title',)
+    fields = ('full_name', 'job_title', 'bio',)
