@@ -1,16 +1,17 @@
-# Russian Translation for Kmodi.uz
-# Copyright (C) 2025 Kmodi Team
-# This file is distributed under the same license as the Kmodi.uz package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Kmodi.uz 1.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 12:04+0500\n"
-"PO-Revision-Date: 2025-06-27 13:30+0500\n"
+"POT-Creation-Date: 2025-07-17 12:39+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"Language-Team: Russian <ru@locale.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,386 +20,528 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: dashboard/views.py:29 main/models.py:7
 msgid "Category Name"
 msgstr "Название категории"
 
+#: dashboard/views.py:41 main/models.py:14
 msgid "Category"
 msgstr "Категория"
 
+#: dashboard/views.py:42 main/models.py:15
 msgid "Text"
 msgstr "Текст"
 
+#: dashboard/views.py:43
 msgid "Audio"
 msgstr "Аудио"
 
+#: dashboard/views.py:44 main/models.py:18
 msgid "Assignment Text"
 msgstr "Текст задания"
 
+#: dashboard/views.py:45 main/models.py:19
 msgid "Assignment Audio"
 msgstr "Аудио задания"
 
+#: dashboard/views.py:46 main/models.py:20
 msgid "Assignment Image"
 msgstr "Изображение задания"
 
-msgid "User"
-msgstr "Пользователь"
-
-msgid "Material"
-msgstr "Материал"
-
-msgid "Is Completed"
-msgstr "Завершено"
-
+#: dashboard/views.py:55 dashboard/views.py:66 dashboard/views.py:76
+#: main/models.py:28
 msgid "Title"
 msgstr "Заголовок"
 
+#: dashboard/views.py:56 main/models.py:29
 msgid "Description"
 msgstr "Описание"
 
+#: dashboard/views.py:57 main/models.py:30
 msgid "PDF File"
 msgstr "PDF-файл"
 
+#: dashboard/views.py:67 dashboard/views.py:77 main/models.py:38
+#: main/models.py:65
 msgid "YouTube URL"
-msgstr "Ссылка на YouTube"
+msgstr "Ссылка YouTube"
 
+#: dashboard/views.py:91 dashboard/views.py:111 main/models.py:81
+#: users/forms.py:65 users/forms.py:90 users/models.py:45
 msgid "Full Name"
 msgstr "Полное имя"
 
+#: dashboard/views.py:92 main/models.py:82
 msgid "Job Title"
 msgstr "Должность"
 
+#: dashboard/views.py:93 main/models.py:83
 msgid "Photo"
 msgstr "Фото"
 
-msgid "Phone"
-msgstr "Телефон"
-
-msgid "Email"
-msgstr "Электронная почта"
-
-msgid "Is Active"
-msgstr "Активен"
-
-msgid "Add Category"
-msgstr "Добавить категорию"
-
-msgid "Edit Category"
-msgstr "Редактировать категорию"
-
-msgid "Delete Category"
-msgstr "Удалить категорию"
-
-msgid "Add Material"
-msgstr "Добавить материал"
-
-msgid "Edit Material"
-msgstr "Редактировать материал"
-
-msgid "Delete Material"
-msgstr "Удалить материал"
-
-msgid "Add Material Progress"
-msgstr "Добавить прогресс по материалу"
-
-msgid "Edit Material Progress"
-msgstr "Редактировать прогресс по материалу"
-
-msgid "Delete Material Progress"
-msgstr "Удалить прогресс по материалу"
-
-msgid "Add Book"
-msgstr "Добавить книгу"
-
-msgid "Edit Book"
-msgstr "Редактировать книгу"
-
-msgid "Delete Book"
-msgstr "Удалить книгу"
-
-msgid "Add Video"
-msgstr "Добавить видео"
-
-msgid "Edit Video"
-msgstr "Редактировать видео"
-
-msgid "Delete Video"
-msgstr "Удалить видео"
-
-msgid "Add Recommendation"
-msgstr "Добавить рекомендацию"
-
-msgid "Edit Recommendation"
-msgstr "Редактировать рекомендацию"
-
-msgid "Delete Recommendation"
-msgstr "Удалить рекомендацию"
-
-msgid "Add Team Member"
-msgstr "Добавить участника команды"
-
-msgid "Edit Team Member"
-msgstr "Редактировать участника команды"
-
-msgid "Delete Team Member"
-msgstr "Удалить участника команды"
-
-msgid "Add Student"
-msgstr "Добавить ученика"
-
-msgid "Edit Student"
-msgstr "Редактировать ученика"
-
-msgid "Delete Student"
-msgstr "Удалить ученика"
-
-msgid "Uzbek"
-msgstr "Узбекский"
-
-msgid "Russian"
-msgstr "Русский"
-
-msgid "English"
-msgstr "Английский"
-
-msgid "Audio File"
-msgstr "Аудиофайл"
-
-msgid "Completed"
-msgstr "Завершено"
-
-msgid "Completed At"
-msgstr "Дата завершения"
-
-msgid "Material Progress"
-msgstr "Прогресс изучения"
-
-msgid "Material Progresses"
-msgstr "Прогрессы изучения"
-
-msgid "Video Title"
-msgstr "Название видео"
-
-msgid "Recommendation Title"
-msgstr "Название рекомендации"
-
-msgid "Kmodi.uz"
-msgstr "Kmodi.uz"
-
-msgid "Toggle navigation"
-msgstr "Переключить навигацию"
-
-msgid "Search..."
-msgstr "Поиск..."
-
-msgid "Search"
-msgstr "Поиск"
-
-msgid "UZ"
-msgstr "УЗ"
-
-msgid "RU"
-msgstr "РУ"
-
-msgid "ENG"
-msgstr "АНГ"
-
-msgid "E-Library"
-msgstr "Электронная библиотека"
-
-msgid "Project Team"
-msgstr "Команда проекта"
-
-msgid "Profile"
-msgstr "Профиль"
-
-msgid "Logout"
-msgstr "Выйти"
-
-msgid "Login"
-msgstr "Вход"
-
-msgid "Register"
-msgstr "Регистрация"
-
-msgid "All rights reserved."
-msgstr "Все права защищены."
-
-msgid "Musiqa Nazariyasi"
-msgstr "Теория музыки"
-
-msgid "Bo‘limlar"
-msgstr "Разделы"
-
-msgid "Yopiq"
-msgstr "Закрыто"
-
-msgid "Orqaga"
-msgstr "Назад"
-
-msgid "Bosh sahifa"
-msgstr "Главная страница"
-
-msgid "Salfedjio"
-msgstr "Сольфеджио"
-
-msgid "Loyiha a’zolari"
-msgstr "Члены проекта"
-
-msgid "Loyiha a’zolari hozircha mavjud emas."
-msgstr "В проекте пока нет участников."
-
-msgid "E-Kutubxona"
-msgstr "Электронная библиотека"
-
-msgid "Hech qanday e-kitob mavjud emas."
-msgstr "Электронные книги отсутствуют."
-
-msgid "YouTube kanalimiz"
-msgstr "Наш YouTube канал"
-
-msgid "Tavsiya etilgan video mavjud emas."
-msgstr "Рекомендованных видео нет."
-
-msgid "Yuklab olish"
-msgstr "Скачать"
-
-msgid "Hech qanday kitob mavjud emas."
-msgstr "Нет доступных книг."
-
-msgid "Dars Tafsiloti"
-msgstr "Подробности урока"
-
-msgid "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
-msgstr "Ваш браузер не поддерживает воспроизведение аудио."
-
-msgid "Topshiriqlar"
-msgstr "Задания"
-
-msgid "Topshiriq rasmi"
-msgstr "Изображение задания"
-
-msgid "Tugallandi!"
-msgstr "Завершено!"
-
-msgid "Salfedjio Darslari"
-msgstr "Уроки сольфеджио"
-
-msgid "Nomer"
-msgstr "Номер"
-
-msgid "Qidiruv natijalari"
-msgstr "Результаты поиска"
-
-msgid "Darsliklar"
-msgstr "Учебные материалы"
-
-msgid "Salfedjio Videolari"
-msgstr "Видеоуроки по сольфеджио"
-
-msgid "Sahifada ko‘rish"
-msgstr "Посмотреть на странице"
-
-msgid "Hech qanday ma’lumot topilmadi."
-msgstr "Информация не найдена."
-
-msgid "Kirish"
-msgstr "Вход"
-
-msgid "Tizimga kiring<br>yoki Google bilan davom eting"
-msgstr "Войдите в систему<br>или продолжите через Google"
-
-msgid "Telefon raqam"
-msgstr "Номер телефона"
-
-msgid "Parol"
-msgstr "Пароль"
-
-msgid "Google bilan davom eting"
-msgstr "Продолжить через Google"
-
-msgid "Ro‘yxatdan o‘tmaganmisiz?"
-msgstr "Еще не зарегистрированы?"
-
-msgid "Ro‘yxatdan o‘tish"
-msgstr "Регистрация"
-
-msgid "Profil"
-msgstr "Профиль"
-
-msgid "To‘liq ism"
-msgstr "Полное имя"
-
-msgid "Kiritilmagan"
-msgstr "Не указано"
-
-msgid "Ma'lumotlarni yangilash"
-msgstr "Обновить информацию"
-
-msgid "Profilni yangilash"
-msgstr "Обновить профиль"
-
-msgid "Email manzil"
-msgstr "Адрес электронной почты"
-
-msgid "Yangi parol (ixtiyoriy)"
-msgstr "Новый пароль (необязательно)"
-
-msgid "Saqlash"
-msgstr "Сохранить"
-
-msgid "Ortga"
-msgstr "Назад"
-
-msgid "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
-msgstr "Зарегистрируйтесь<br>или продолжите через Google"
-
-msgid "Allaqachon ro‘yxatdan o‘tganmisiz?"
-msgstr "Уже зарегистрированы?"
-
-msgid "Enter your password"
-msgstr "Введите пароль"
-
+#: dashboard/views.py:94
+msgid "Bio"
+msgstr "О себе"
+
+#: dashboard/views.py:104 users/forms.py:9 users/forms.py:32 users/forms.py:48
+#: users/forms.py:72 users/forms.py:79
 msgid "Password"
 msgstr "Пароль"
 
+#: dashboard/views.py:105 users/forms.py:10
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+#: dashboard/views.py:112
+msgid "Phone"
+msgstr "Телефон"
+
+#: dashboard/views.py:113 templates/users/profile.html:71
+msgid "Email"
+msgstr "Электронная почта"
+
+#: dashboard/views.py:114
+msgid "Is Active"
+msgstr "Активен"
+
+#: dashboard/views.py:122
+msgid "Passwords do not match"
+msgstr "Пароли не совпадают"
+
+#: dashboard/views.py:173
+msgid "Add Category"
+msgstr "Добавить категорию"
+
+#: dashboard/views.py:179
+msgid "Edit Category"
+msgstr "Редактировать категорию"
+
+#: dashboard/views.py:185
+msgid "Delete Category"
+msgstr "Удалить категорию"
+
+#: dashboard/views.py:197
+msgid "Add Material"
+msgstr "Добавить материал"
+
+#: dashboard/views.py:203
+msgid "Edit Material"
+msgstr "Редактировать материал"
+
+#: dashboard/views.py:209
+msgid "Delete Material"
+msgstr "Удалить материал"
+
+#: dashboard/views.py:221
+msgid "Add Book"
+msgstr "Добавить книгу"
+
+#: dashboard/views.py:227
+msgid "Edit Book"
+msgstr "Редактировать книгу"
+
+#: dashboard/views.py:233
+msgid "Delete Book"
+msgstr "Удалить книгу"
+
+#: dashboard/views.py:245
+msgid "Add Video"
+msgstr "Добавить видео"
+
+#: dashboard/views.py:251
+msgid "Edit Video"
+msgstr "Редактировать видео"
+
+#: dashboard/views.py:257
+msgid "Delete Video"
+msgstr "Удалить видео"
+
+#: dashboard/views.py:269
+msgid "Add Recommendation"
+msgstr "Добавить рекомендацию"
+
+#: dashboard/views.py:276
+msgid "Edit Recommendation"
+msgstr "Редактировать рекомендацию"
+
+#: dashboard/views.py:282
+msgid "Delete Recommendation"
+msgstr "Удалить рекомендацию"
+
+#: dashboard/views.py:294
+msgid "Add Team Member"
+msgstr "Добавить участника"
+
+#: dashboard/views.py:300
+msgid "Edit Team Member"
+msgstr "Редактировать участника"
+
+#: dashboard/views.py:306
+msgid "Delete Team Member"
+msgstr "Удалить участника"
+
+#: dashboard/views.py:326
+msgid "Add Student"
+msgstr "Добавить студента"
+
+#: dashboard/views.py:337
+msgid "Edit Student"
+msgstr "Редактировать студента"
+
+#: dashboard/views.py:347
+msgid "Delete Student"
+msgstr "Удалить студента"
+
+#: kmodi/settings.py:82
+msgid "Uzbek"
+msgstr "Узбекский"
+
+#: kmodi/settings.py:83
+msgid "Russian"
+msgstr "Русский"
+
+#: kmodi/settings.py:84
+msgid "English"
+msgstr "Английский"
+
+#: main/models.py:16
+msgid "Audio File"
+msgstr "Аудио файл"
+
+#: main/models.py:37
+msgid "Video Title"
+msgstr "Название видео"
+
+#: main/models.py:64
+msgid "Recommendation Title"
+msgstr "Заголовок рекомендации"
+
+#: main/models.py:84
+msgid "Bio / About"
+msgstr "О себе"
+
+#: templates/base.html:7 templates/base.html:87
+msgid "Kmodi.uz"
+msgstr "Kmodi.uz"
+
+#: templates/base.html:89
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: templates/base.html:95
+msgid "Search..."
+msgstr "Поиск..."
+
+#: templates/base.html:95
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/base.html:102
+msgid "UZ"
+msgstr "UZ"
+
+#: templates/base.html:103
+msgid "RU"
+msgstr "RU"
+
+#: templates/base.html:104
+msgid "ENG"
+msgstr "ENG"
+
+#: templates/base.html:109
+msgid "E-Library"
+msgstr "Электронная библиотека"
+
+#: templates/base.html:112
+msgid "Project Team"
+msgstr "Команда проекта"
+
+#: templates/base.html:116
+msgid "Profile"
+msgstr "Профиль"
+
+#: templates/base.html:119
+msgid "Logout"
+msgstr "Выйти"
+
+#: templates/base.html:123
+msgid "Login"
+msgstr "Войти"
+
+#: templates/base.html:126 users/views.py:20
+msgid "Register"
+msgstr "Регистрация"
+
+#: templates/base.html:138
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+#: templates/dashboard/form.html:34
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/dashboard/form.html:37
+msgid "Cancel"
+msgstr "Отменить"
+
+#: templates/main/category_list.html:3 templates/main/home.html:234
+msgid "Musiqa Nazariyasi"
+msgstr "Музыкальная теория"
+
+#: templates/main/category_list.html:82
+msgid "Bo‘limlar"
+msgstr "Разделы"
+
+#: templates/main/category_list.html:95 templates/main/material_detail.html:179
+#: templates/main/salfedjio.html:98
+msgid "Orqaga"
+msgstr "Назад"
+
+#: templates/main/home.html:4
+msgid "Bosh sahifa"
+msgstr "Главная"
+
+#: templates/main/home.html:239
+msgid "Salfedjio"
+msgstr "Сольфеджио"
+
+#: templates/main/home.html:245
+msgid "Loyiha a’zolari"
+msgstr "Команда проекта"
+
+#: templates/main/home.html:270
+msgid "Kasb"
+msgstr "Должность"
+
+#: templates/main/home.html:281 templates/main/library.html:3
+#: templates/main/library.html:58
+msgid "E-Kutubxona"
+msgstr "Электронная библиотека"
+
+#: templates/main/home.html:292
+msgid "Hech qanday e-kitob mavjud emas."
+msgstr "Электронных книг нет."
+
+#: templates/main/home.html:299
+msgid "YouTube kanalimiz"
+msgstr "Наш канал на YouTube"
+
+#: templates/main/home.html:314
+msgid "Tavsiya etilgan video mavjud emas."
+msgstr "Нет рекомендованных видео."
+
+#: templates/main/library.html:67
+msgid "Yuklab olish"
+msgstr "Скачать"
+
+#: templates/main/library.html:72
+msgid "Hech qanday kitob mavjud emas."
+msgstr "Книг нет."
+
+#: templates/main/material_detail.html:3
+msgid "Dars Tafsiloti"
+msgstr "Детали урока"
+
+#: templates/main/material_detail.html:148
+#: templates/main/material_detail.html:163
+msgid "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
+msgstr "Ваш браузер не поддерживает аудио."
+
+#: templates/main/material_detail.html:154
+msgid "Topshiriqlar"
+msgstr "Задания"
+
+#: templates/main/material_detail.html:168
+msgid "Topshiriq rasmi"
+msgstr "Изображение задания"
+
+#: templates/main/material_detail.html:174
+msgid "Tugallandi!"
+msgstr "Завершено!"
+
+#: templates/main/salfedjio.html:3 templates/main/salfedjio.html:71
+msgid "Salfedjio Darslari"
+msgstr "Уроки сольфеджио"
+
+#: templates/main/salfedjio.html:77
+msgid "Video"
+msgstr "Видео"
+
+#: templates/main/search_results.html:3 templates/main/search_results.html:112
+msgid "Qidiruv natijalari"
+msgstr "Результаты поиска"
+
+#: templates/main/search_results.html:117
+msgid "Darsliklar"
+msgstr "Материалы"
+
+#: templates/main/search_results.html:126
+msgid "Salfedjio Videolari"
+msgstr "Видео сольфеджио"
+
+#: templates/main/search_results.html:135
+msgid "Sahifada ko‘rish"
+msgstr "Просмотреть на странице"
+
+#: templates/main/search_results.html:145
+msgid "Kutubxona Kitoblari"
+msgstr "Книги библиотеки"
+
+#: templates/main/search_results.html:154
+msgid "Jamoa A’zolari"
+msgstr "Участники команды"
+
+#: templates/main/search_results.html:168
+msgid "Hech qanday ma’lumot topilmadi."
+msgstr "Ничего не найдено."
+
+#: templates/users/login.html:3 templates/users/login.html:131
+#: templates/users/register.html:135
+msgid "Kirish"
+msgstr "Вход"
+
+#: templates/users/login.html:116
+msgid "Tizimga kiring<br>yoki Google bilan davom eting"
+msgstr "Войдите или продолжите через Google"
+
+#: templates/users/login.html:125 templates/users/profile.html:63
+#: templates/users/profile_update.html:100
+msgid "Telefon raqam"
+msgstr "Номер телефона"
+
+#: templates/users/login.html:128
+msgid "Parol"
+msgstr "Пароль"
+
+#: templates/users/login.html:135 templates/users/register.html:130
+msgid "Google bilan davom eting"
+msgstr "Продолжить с Google"
+
+#: templates/users/login.html:139
+msgid "Ro‘yxatdan o‘tmaganmisiz?"
+msgstr "Еще не зарегистрированы?"
+
+#: templates/users/login.html:140 templates/users/register.html:3
+#: templates/users/register.html:126
+msgid "Ro‘yxatdan o‘tish"
+msgstr "Зарегистрироваться"
+
+#: templates/users/profile.html:3 templates/users/profile.html:58
+msgid "Profil"
+msgstr "Профиль"
+
+#: templates/users/profile.html:61 templates/users/profile_update.html:96
+msgid "To‘liq ism"
+msgstr "Полное имя"
+
+#: templates/users/profile.html:67 templates/users/profile.html:75
+msgid "Kiritilmagan"
+msgstr "Не указано"
+
+#: templates/users/profile.html:79
+msgid "Ma'lumotlarni yangilash"
+msgstr "Обновить данные"
+
+#: templates/users/profile_update.html:3 templates/users/profile_update.html:89
+msgid "Profilni yangilash"
+msgstr "Редактировать профиль"
+
+#: templates/users/profile_update.html:104
+msgid "Email manzil"
+msgstr "Адрес электронной почты"
+
+#: templates/users/profile_update.html:108
+msgid "Yangi parol (ixtiyoriy)"
+msgstr "Новый пароль (необязательно)"
+
+#: templates/users/profile_update.html:112
+msgid "Saqlash"
+msgstr "Сохранить"
+
+#: templates/users/profile_update.html:115
+msgid "Ortga"
+msgstr "Назад"
+
+#: templates/users/register.html:110
+msgid "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
+msgstr "Зарегистрируйтесь или продолжите через Google"
+
+#: templates/users/register.html:134
+msgid "Allaqachon ro‘yxatdan o‘tganmisiz?"
+msgstr "Уже зарегистрированы?"
+
+#: users/admin.py:17
+msgid "Personal info"
+msgstr "Личные данные"
+
+#: users/admin.py:18
+msgid "Permissions"
+msgstr "Права доступа"
+
+#: users/forms.py:20
+msgid "Passwords don't match."
+msgstr "Пароли не совпадают."
+
+#: users/forms.py:46
+msgid "Enter your password"
+msgstr "Введите пароль"
+
+#: users/forms.py:57
 msgid "Your full name"
 msgstr "Ваше полное имя"
 
+#: users/forms.py:61
 msgid "Your phone number"
 msgstr "Ваш номер телефона"
 
+#: users/forms.py:66 users/forms.py:91 users/models.py:46
 msgid "Phone Number"
 msgstr "Номер телефона"
 
+#: users/forms.py:71 users/forms.py:86
 msgid "Phone number"
 msgstr "Номер телефона"
 
+#: users/forms.py:87
 msgid "Your email address"
 msgstr "Ваш адрес электронной почты"
 
+#: users/forms.py:92 users/models.py:47
 msgid "Email Address"
 msgstr "Адрес электронной почты"
 
+#: users/forms.py:100
 msgid "This email is already in use."
 msgstr "Этот адрес уже используется."
 
+#: users/forms.py:108
 msgid "This phone number is already in use."
-msgstr "Этот номер уже используется."
+msgstr "Этот номер телефона уже используется."
 
+#: users/models.py:10
 msgid "Phone number or email is required"
-msgstr "Требуется номер телефона или адрес электронной почты"
+msgstr "Требуется номер телефона или email"
 
+#: users/models.py:13
+msgid "User"
+msgstr "Пользователь"
+
+#: users/models.py:42
 msgid "Student"
 msgstr "Студент"
 
+#: users/models.py:43 users/models.py:50
 msgid "Admin"
 msgstr "Администратор"
 
+#: users/models.py:48
 msgid "Role"
 msgstr "Роль"
 
+#: users/models.py:49
 msgid "Active"
-msgstr "Активный"
+msgstr "Активен"
 
+#: users/views.py:35
 msgid "Invalid phone number or password"
-msgstr "Неверный номер телефона или пароль"
+msgstr "Неверный телефон или пароль"

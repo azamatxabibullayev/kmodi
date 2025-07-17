@@ -169,38 +169,10 @@
             {% endif %}
         </div>
         {% endif %}
-
-        <div id="completion-alert-{{ material.id }}" class="completion-alert {% if material.is_completed %}d-block{% endif %}">
-            ✅ {% trans "Tugallandi!" %}
-        </div>
     </div>
     {% endfor %}
 
     <a href="{% url 'category_list' %}" class="back-link">← {% trans "Orqaga" %}</a>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('audio.material-audio').forEach(audio => {
-        audio.addEventListener('ended', function () {
-            const materialId = audio.dataset.materialId;
-            fetch(`/material/${materialId}/complete/`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'ok') {
-                    const alertBox = document.getElementById('completion-alert-' + materialId);
-                    if (alertBox) {
-                        alertBox.classList.add('d-block');
-                    }
-                }
-            });
-        });
-    });
-});
-</script>
 {% endblock %}

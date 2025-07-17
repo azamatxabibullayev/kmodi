@@ -1,400 +1,545 @@
-# Uzbek Translation for Kmodi.uz
-# Copyright (C) 2025
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Kmodi.uz 1.0\n"
-"POT-Creation-Date: 2025-06-27 12:04+0500\n"
-"PO-Revision-Date: 2025-06-27 15:30+0500\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-17 12:39+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Uzbek <uz@li.org>\n"
+"Language-Team: Uzbek <uz@locale.org>\n"
 "Language: uz\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: dashboard/views.py:29 main/models.py:7
 msgid "Category Name"
-msgstr "Kategoriya nomi"
+msgstr "Bo‘lim nomi"
 
+#: dashboard/views.py:41 main/models.py:14
 msgid "Category"
-msgstr "Kategoriya"
+msgstr "Bo‘lim"
 
+#: dashboard/views.py:42 main/models.py:15
 msgid "Text"
 msgstr "Matn"
 
+#: dashboard/views.py:43
 msgid "Audio"
 msgstr "Audio"
 
+#: dashboard/views.py:44 main/models.py:18
 msgid "Assignment Text"
 msgstr "Topshiriq matni"
 
+#: dashboard/views.py:45 main/models.py:19
 msgid "Assignment Audio"
-msgstr "Topshiriq audiosi"
+msgstr "Topshiriq audio"
 
+#: dashboard/views.py:46 main/models.py:20
 msgid "Assignment Image"
 msgstr "Topshiriq rasmi"
 
-msgid "User"
-msgstr "Foydalanuvchi"
-
-msgid "Material"
-msgstr "Material"
-
-msgid "Is Completed"
-msgstr "Bajarilgan"
-
+#: dashboard/views.py:55 dashboard/views.py:66 dashboard/views.py:76
+#: main/models.py:28
 msgid "Title"
 msgstr "Sarlavha"
 
+#: dashboard/views.py:56 main/models.py:29
 msgid "Description"
 msgstr "Tavsif"
 
+#: dashboard/views.py:57 main/models.py:30
 msgid "PDF File"
 msgstr "PDF fayl"
 
+#: dashboard/views.py:67 dashboard/views.py:77 main/models.py:38
+#: main/models.py:65
 msgid "YouTube URL"
-msgstr "YouTube havola"
+msgstr "YouTube manzili"
 
+#: dashboard/views.py:91 dashboard/views.py:111 main/models.py:81
+#: users/forms.py:65 users/forms.py:90 users/models.py:45
 msgid "Full Name"
 msgstr "To‘liq ism"
 
+#: dashboard/views.py:92 main/models.py:82
 msgid "Job Title"
-msgstr "Lavozimi"
+msgstr "Kasb"
 
+#: dashboard/views.py:93 main/models.py:83
 msgid "Photo"
-msgstr "Rasmi"
+msgstr "Rasm"
 
-msgid "Phone"
-msgstr "Telefon"
+#: dashboard/views.py:94
+msgid "Bio"
+msgstr "Ta’rif"
 
-msgid "Email"
-msgstr "Email"
-
-msgid "Is Active"
-msgstr "Faolmi"
-
-msgid "Add Category"
-msgstr "Kategoriya qo‘shish"
-
-msgid "Edit Category"
-msgstr "Kategoriyani tahrirlash"
-
-msgid "Delete Category"
-msgstr "Kategoriyani o‘chirish"
-
-msgid "Add Material"
-msgstr "Material qo‘shish"
-
-msgid "Edit Material"
-msgstr "Materialni tahrirlash"
-
-msgid "Delete Material"
-msgstr "Materialni o‘chirish"
-
-msgid "Add Material Progress"
-msgstr "Material bajarilishini qo‘shish"
-
-msgid "Edit Material Progress"
-msgstr "Material bajarilishini tahrirlash"
-
-msgid "Delete Material Progress"
-msgstr "Material bajarilishini o‘chirish"
-
-msgid "Add Book"
-msgstr "Kitob qo‘shish"
-
-msgid "Edit Book"
-msgstr "Kitobni tahrirlash"
-
-msgid "Delete Book"
-msgstr "Kitobni o‘chirish"
-
-msgid "Add Video"
-msgstr "Video qo‘shish"
-
-msgid "Edit Video"
-msgstr "Videoni tahrirlash"
-
-msgid "Delete Video"
-msgstr "Videoni o‘chirish"
-
-msgid "Add Recommendation"
-msgstr "Tavsiya qo‘shish"
-
-msgid "Edit Recommendation"
-msgstr "Tavsiyani tahrirlash"
-
-msgid "Delete Recommendation"
-msgstr "Tavsiyani o‘chirish"
-
-msgid "Add Team Member"
-msgstr "Jamoa aʼzosini qo‘shish"
-
-msgid "Edit Team Member"
-msgstr "Jamoa aʼzosini tahrirlash"
-
-msgid "Delete Team Member"
-msgstr "Jamoa aʼzosini o‘chirish"
-
-msgid "Add Student"
-msgstr "Talaba qo‘shish"
-
-msgid "Edit Student"
-msgstr "Talabani tahrirlash"
-
-msgid "Delete Student"
-msgstr "Talabani o‘chirish"
-
-msgid "Uzbek"
-msgstr "O‘zbekcha"
-
-msgid "Russian"
-msgstr "Ruscha"
-
-msgid "English"
-msgstr "Inglizcha"
-
-msgid "Audio File"
-msgstr "Audio fayl"
-
-msgid "Completed"
-msgstr "Bajarildi"
-
-msgid "Completed At"
-msgstr "Bajarilgan vaqti"
-
-msgid "Material Progress"
-msgstr "Material bajarilishi"
-
-msgid "Material Progresses"
-msgstr "Material bajarilishlari"
-
-msgid "Video Title"
-msgstr "Video sarlavhasi"
-
-msgid "Recommendation Title"
-msgstr "Tavsiya sarlavhasi"
-
-msgid "Kmodi.uz"
-msgstr "Kmodi.uz"
-
-msgid "Toggle navigation"
-msgstr "Navigatsiyani yoqish/oʻchirish"
-
-msgid "Search..."
-msgstr "Qidirish..."
-
-msgid "Search"
-msgstr "Qidirish"
-
-msgid "UZ"
-msgstr "UZ"
-
-msgid "RU"
-msgstr "RU"
-
-msgid "ENG"
-msgstr "ENG"
-
-msgid "E-Library"
-msgstr "Elektron kutubxona"
-
-msgid "Project Team"
-msgstr "Loyiha jamoasi"
-
-msgid "Profile"
-msgstr "Profil"
-
-msgid "Logout"
-msgstr "Chiqish"
-
-msgid "Login"
-msgstr "Kirish"
-
-msgid "Register"
-msgstr "Ro‘yxatdan o‘tish"
-
-msgid "All rights reserved."
-msgstr "Barcha huquqlar himoyalangan."
-
-msgid "Musiqa Nazariyasi"
-msgstr "Musiqa Nazariyasi"
-
-msgid "Bo‘limlar"
-msgstr "Bo‘limlar"
-
-msgid "Yopiq"
-msgstr "Yopiq"
-
-msgid "Orqaga"
-msgstr "Orqaga"
-
-msgid "Bosh sahifa"
-msgstr "Bosh sahifa"
-
-msgid "Salfedjio"
-msgstr "Salfedjio"
-
-msgid "Loyiha a’zolari"
-msgstr "Loyiha a’zolari"
-
-msgid "Loyiha a’zolari hozircha mavjud emas."
-msgstr "Loyiha a’zolari hozircha mavjud emas."
-
-msgid "E-Kutubxona"
-msgstr "E-Kutubxona"
-
-msgid "Hech qanday e-kitob mavjud emas."
-msgstr "Hech qanday e-kitob mavjud emas."
-
-msgid "YouTube kanalimiz"
-msgstr "YouTube kanalimiz"
-
-msgid "Tavsiya etilgan video mavjud emas."
-msgstr "Tavsiya etilgan video mavjud emas."
-
-msgid "Yuklab olish"
-msgstr "Yuklab olish"
-
-msgid "Hech qanday kitob mavjud emas."
-msgstr "Hech qanday kitob mavjud emas."
-
-msgid "Dars Tafsiloti"
-msgstr "Dars Tafsiloti"
-
-msgid "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
-msgstr "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
-
-msgid "Topshiriqlar"
-msgstr "Topshiriqlar"
-
-msgid "Topshiriq rasmi"
-msgstr "Topshiriq rasmi"
-
-msgid "Tugallandi!"
-msgstr "Tugallandi!"
-
-msgid "Salfedjio Darslari"
-msgstr "Salfedjio Darslari"
-
-msgid "Nomer"
-msgstr "Raqam"
-
-msgid "Qidiruv natijalari"
-msgstr "Qidiruv natijalari"
-
-msgid "Darsliklar"
-msgstr "Darsliklar"
-
-msgid "Salfedjio Videolari"
-msgstr "Salfedjio Videolari"
-
-msgid "Sahifada ko‘rish"
-msgstr "Sahifada ko‘rish"
-
-msgid "Hech qanday ma’lumot topilmadi."
-msgstr "Hech qanday ma’lumot topilmadi."
-
-msgid "Kirish"
-msgstr "Kirish"
-
-msgid "Tizimga kiring<br>yoki Google bilan davom eting"
-msgstr "Tizimga kiring<br>yoki Google bilan davom eting"
-
-msgid "Telefon raqam"
-msgstr "Telefon raqam"
-
-msgid "Parol"
-msgstr "Parol"
-
-msgid "Google bilan davom eting"
-msgstr "Google bilan davom eting"
-
-msgid "Ro‘yxatdan o‘tmaganmisiz?"
-msgstr "Ro‘yxatdan o‘tmaganmisiz?"
-
-msgid "Ro‘yxatdan o‘tish"
-msgstr "Ro‘yxatdan o‘tish"
-
-msgid "Profil"
-msgstr "Profil"
-
-msgid "To‘liq ism"
-msgstr "To‘liq ism"
-
-msgid "Kiritilmagan"
-msgstr "Kiritilmagan"
-
-msgid "Ma'lumotlarni yangilash"
-msgstr "Ma'lumotlarni yangilash"
-
-msgid "Profilni yangilash"
-msgstr "Profilni yangilash"
-
-msgid "Email manzil"
-msgstr "Email manzil"
-
-msgid "Yangi parol (ixtiyoriy)"
-msgstr "Yangi parol (ixtiyoriy)"
-
-msgid "Saqlash"
-msgstr "Saqlash"
-
-msgid "Ortga"
-msgstr "Ortga"
-
-msgid "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
-msgstr "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
-
-msgid "Allaqachon ro‘yxatdan o‘tganmisiz?"
-msgstr "Allaqachon ro‘yxatdan o‘tganmisiz?"
-
-msgid "Enter your password"
-msgstr "Parolingizni kiriting"
-
+#: dashboard/views.py:104 users/forms.py:9 users/forms.py:32 users/forms.py:48
+#: users/forms.py:72 users/forms.py:79
 msgid "Password"
 msgstr "Parol"
 
+#: dashboard/views.py:105 users/forms.py:10
+msgid "Confirm Password"
+msgstr "Parolni tasdiqlang"
+
+#: dashboard/views.py:112
+msgid "Phone"
+msgstr "Telefon"
+
+#: dashboard/views.py:113 templates/users/profile.html:71
+msgid "Email"
+msgstr "Elektron pochta"
+
+#: dashboard/views.py:114
+msgid "Is Active"
+msgstr "Faol"
+
+#: dashboard/views.py:122
+msgid "Passwords do not match"
+msgstr "Parollar mos emas"
+
+#: dashboard/views.py:173
+msgid "Add Category"
+msgstr "Bo‘lim qo‘shish"
+
+#: dashboard/views.py:179
+msgid "Edit Category"
+msgstr "Bo‘limni tahrirlash"
+
+#: dashboard/views.py:185
+msgid "Delete Category"
+msgstr "Bo‘limni o‘chirish"
+
+#: dashboard/views.py:197
+msgid "Add Material"
+msgstr "Material qo‘shish"
+
+#: dashboard/views.py:203
+msgid "Edit Material"
+msgstr "Materialni tahrirlash"
+
+#: dashboard/views.py:209
+msgid "Delete Material"
+msgstr "Materialni o‘chirish"
+
+#: dashboard/views.py:221
+msgid "Add Book"
+msgstr "Kitob qo‘shish"
+
+#: dashboard/views.py:227
+msgid "Edit Book"
+msgstr "Kitobni tahrirlash"
+
+#: dashboard/views.py:233
+msgid "Delete Book"
+msgstr "Kitobni o‘chirish"
+
+#: dashboard/views.py:245
+msgid "Add Video"
+msgstr "Video qo‘shish"
+
+#: dashboard/views.py:251
+msgid "Edit Video"
+msgstr "Videoni tahrirlash"
+
+#: dashboard/views.py:257
+msgid "Delete Video"
+msgstr "Videoni o‘chirish"
+
+#: dashboard/views.py:269
+msgid "Add Recommendation"
+msgstr "Tavsiya qo‘shish"
+
+#: dashboard/views.py:276
+msgid "Edit Recommendation"
+msgstr "Tavsiyani tahrirlash"
+
+#: dashboard/views.py:282
+msgid "Delete Recommendation"
+msgstr "Tavsiyani o‘chirish"
+
+#: dashboard/views.py:294
+msgid "Add Team Member"
+msgstr "Jamoa a’zosi qo‘shish"
+
+#: dashboard/views.py:300
+msgid "Edit Team Member"
+msgstr "Jamoa a’zosisini tahrirlash"
+
+#: dashboard/views.py:306
+msgid "Delete Team Member"
+msgstr "Jamoa a’zosini o‘chirish"
+
+#: dashboard/views.py:326
+msgid "Add Student"
+msgstr "Talaba qo‘shish"
+
+#: dashboard/views.py:337
+msgid "Edit Student"
+msgstr "Talabani tahrirlash"
+
+#: dashboard/views.py:347
+msgid "Delete Student"
+msgstr "Talabani o‘chirish"
+
+#: kmodi/settings.py:82
+msgid "Uzbek"
+msgstr "O‘zbek"
+
+#: kmodi/settings.py:83
+msgid "Russian"
+msgstr "Rus"
+
+#: kmodi/settings.py:84
+msgid "English"
+msgstr "Ingliz"
+
+#: main/models.py:16
+msgid "Audio File"
+msgstr "Audio fayl"
+
+#: main/models.py:37
+msgid "Video Title"
+msgstr "Video sarlavhasi"
+
+#: main/models.py:64
+msgid "Recommendation Title"
+msgstr "Tavsiyaning sarlavhasi"
+
+#: main/models.py:84
+msgid "Bio / About"
+msgstr "Ta’rif"
+
+#: templates/base.html:7 templates/base.html:87
+msgid "Kmodi.uz"
+msgstr "Kmodi.uz"
+
+#: templates/base.html:89
+msgid "Toggle navigation"
+msgstr "Navigatsiyani almashtirish"
+
+#: templates/base.html:95
+msgid "Search..."
+msgstr "Izlash..."
+
+#: templates/base.html:95
+msgid "Search"
+msgstr "Qidirish"
+
+#: templates/base.html:102
+msgid "UZ"
+msgstr "UZ"
+
+#: templates/base.html:103
+msgid "RU"
+msgstr "RU"
+
+#: templates/base.html:104
+msgid "ENG"
+msgstr "ENG"
+
+#: templates/base.html:109
+msgid "E-Library"
+msgstr "Elektron kutubxona"
+
+#: templates/base.html:112
+msgid "Project Team"
+msgstr "Loyiha guruhi"
+
+#: templates/base.html:116
+msgid "Profile"
+msgstr "Profil"
+
+#: templates/base.html:119
+msgid "Logout"
+msgstr "Chiqish"
+
+#: templates/base.html:123
+msgid "Login"
+msgstr "Kirish"
+
+#: templates/base.html:126 users/views.py:20
+msgid "Register"
+msgstr "Ro‘yxatdan o‘tish"
+
+#: templates/base.html:138
+msgid "All rights reserved."
+msgstr "Barcha huquqlar himoyalangan."
+
+#: templates/dashboard/form.html:34
+msgid "Save"
+msgstr "Saqlash"
+
+#: templates/dashboard/form.html:37
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+#: templates/main/category_list.html:3 templates/main/home.html:234
+msgid "Musiqa Nazariyasi"
+msgstr "Musiqa nazariyasi"
+
+#: templates/main/category_list.html:82
+msgid "Bo‘limlar"
+msgstr "Bo‘limlar"
+
+#: templates/main/category_list.html:95 templates/main/material_detail.html:179
+#: templates/main/salfedjio.html:98
+msgid "Orqaga"
+msgstr "Orqaga"
+
+#: templates/main/home.html:4
+msgid "Bosh sahifa"
+msgstr "Bosh sahifa"
+
+#: templates/main/home.html:239
+msgid "Salfedjio"
+msgstr "Solfedjio"
+
+#: templates/main/home.html:245
+msgid "Loyiha a’zolari"
+msgstr "Loyiha a’zolari"
+
+#: templates/main/home.html:270
+msgid "Kasb"
+msgstr "Kasb"
+
+#: templates/main/home.html:281 templates/main/library.html:3
+#: templates/main/library.html:58
+msgid "E-Kutubxona"
+msgstr "E-Kutubxona"
+
+#: templates/main/home.html:292
+msgid "Hech qanday e-kitob mavjud emas."
+msgstr "Hech qanday e-kitob mavjud emas."
+
+#: templates/main/home.html:299
+msgid "YouTube kanalimiz"
+msgstr "YouTube kanalimiz"
+
+#: templates/main/home.html:314
+msgid "Tavsiya etilgan video mavjud emas."
+msgstr "Tavsiya etilgan video mavjud emas."
+
+#: templates/main/library.html:67
+msgid "Yuklab olish"
+msgstr "Yuklab olish"
+
+#: templates/main/library.html:72
+msgid "Hech qanday kitob mavjud emas."
+msgstr "Hech qanday kitob mavjud emas."
+
+#: templates/main/material_detail.html:3
+msgid "Dars Tafsiloti"
+msgstr "Dars tafsiloti"
+
+#: templates/main/material_detail.html:148
+#: templates/main/material_detail.html:163
+msgid "Brauzeringiz audiolarni qo‘llab-quvvatlamaydi."
+msgstr "Brauzeringiz audio fayllarni qo‘llab-quvvatlamaydi."
+
+#: templates/main/material_detail.html:154
+msgid "Topshiriqlar"
+msgstr "Topshiriqlar"
+
+#: templates/main/material_detail.html:168
+msgid "Topshiriq rasmi"
+msgstr "Topshiriq rasmi"
+
+#: templates/main/material_detail.html:174
+msgid "Tugallandi!"
+msgstr "Tugallandi!"
+
+#: templates/main/salfedjio.html:3 templates/main/salfedjio.html:71
+msgid "Salfedjio Darslari"
+msgstr "Solfedjio darslari"
+
+#: templates/main/salfedjio.html:77
+msgid "Video"
+msgstr "Video"
+
+#: templates/main/search_results.html:3 templates/main/search_results.html:112
+msgid "Qidiruv natijalari"
+msgstr "Qidiruv natijalari"
+
+#: templates/main/search_results.html:117
+msgid "Darsliklar"
+msgstr "Darsliklar"
+
+#: templates/main/search_results.html:126
+msgid "Salfedjio Videolari"
+msgstr "Solfedjio videolari"
+
+#: templates/main/search_results.html:135
+msgid "Sahifada ko‘rish"
+msgstr "Sahifada ko‘rish"
+
+#: templates/main/search_results.html:145
+msgid "Kutubxona Kitoblari"
+msgstr "Kutubxona kitoblari"
+
+#: templates/main/search_results.html:154
+msgid "Jamoa A’zolari"
+msgstr "Jamoa a’zolari"
+
+#: templates/main/search_results.html:168
+msgid "Hech qanday ma’lumot topilmadi."
+msgstr "Hech qanday ma’lumot topilmadi."
+
+#: templates/users/login.html:3 templates/users/login.html:131
+#: templates/users/register.html:135
+msgid "Kirish"
+msgstr "Kirish"
+
+#: templates/users/login.html:116
+msgid "Tizimga kiring<br>yoki Google bilan davom eting"
+msgstr "Tizimga kiring yoki Google bilan davom eting"
+
+#: templates/users/login.html:125 templates/users/profile.html:63
+#: templates/users/profile_update.html:100
+msgid "Telefon raqam"
+msgstr "Telefon raqam"
+
+#: templates/users/login.html:128
+msgid "Parol"
+msgstr "Parol"
+
+#: templates/users/login.html:135 templates/users/register.html:130
+msgid "Google bilan davom eting"
+msgstr "Google bilan davom eting"
+
+#: templates/users/login.html:139
+msgid "Ro‘yxatdan o‘tmaganmisiz?"
+msgstr "Ro‘yxatdan o‘tmaganmisiz?"
+
+#: templates/users/login.html:140 templates/users/register.html:3
+#: templates/users/register.html:126
+msgid "Ro‘yxatdan o‘tish"
+msgstr "Ro‘yxatdan o‘tish"
+
+#: templates/users/profile.html:3 templates/users/profile.html:58
+msgid "Profil"
+msgstr "Profil"
+
+#: templates/users/profile.html:61 templates/users/profile_update.html:96
+msgid "To‘liq ism"
+msgstr "To‘liq ism"
+
+#: templates/users/profile.html:67 templates/users/profile.html:75
+msgid "Kiritilmagan"
+msgstr "Kiritilmagan"
+
+#: templates/users/profile.html:79
+msgid "Ma'lumotlarni yangilash"
+msgstr "Ma'lumotlarni yangilash"
+
+#: templates/users/profile_update.html:3 templates/users/profile_update.html:89
+msgid "Profilni yangilash"
+msgstr "Profilni yangilash"
+
+#: templates/users/profile_update.html:104
+msgid "Email manzil"
+msgstr "Email manzil"
+
+#: templates/users/profile_update.html:108
+msgid "Yangi parol (ixtiyoriy)"
+msgstr "Yangi parol (ixtiyoriy)"
+
+#: templates/users/profile_update.html:112
+msgid "Saqlash"
+msgstr "Saqlash"
+
+#: templates/users/profile_update.html:115
+msgid "Ortga"
+msgstr "Ortga"
+
+#: templates/users/register.html:110
+msgid "Ro‘yxatdan o‘ting<br>yoki Google bilan davom eting"
+msgstr "Ro‘yxatdan o‘ting yoki Google bilan davom eting"
+
+#: templates/users/register.html:134
+msgid "Allaqachon ro‘yxatdan o‘tganmisiz?"
+msgstr "Allaqachon ro‘yxatdan o‘tganmisiz?"
+
+#: users/admin.py:17
+msgid "Personal info"
+msgstr "Shaxsiy ma’lumot"
+
+#: users/admin.py:18
+msgid "Permissions"
+msgstr "Ruxsatlar"
+
+#: users/forms.py:20
+msgid "Passwords don't match."
+msgstr "Parollar mos emas."
+
+#: users/forms.py:46
+msgid "Enter your password"
+msgstr "Parolingizni kiriting"
+
+#: users/forms.py:57
 msgid "Your full name"
 msgstr "To‘liq ismingiz"
 
+#: users/forms.py:61
 msgid "Your phone number"
 msgstr "Telefon raqamingiz"
 
+#: users/forms.py:66 users/forms.py:91 users/models.py:46
 msgid "Phone Number"
-msgstr "Telefon raqam"
+msgstr "Telefon raqami"
 
+#: users/forms.py:71 users/forms.py:86
 msgid "Phone number"
-msgstr "Telefon raqam"
+msgstr "Telefon raqami"
 
+#: users/forms.py:87
 msgid "Your email address"
 msgstr "Email manzilingiz"
 
+#: users/forms.py:92 users/models.py:47
 msgid "Email Address"
-msgstr "Email manzil"
+msgstr "Email manzili"
 
+#: users/forms.py:100
 msgid "This email is already in use."
-msgstr "Bu email allaqachon ishlatilmoqda."
+msgstr "Bu email manzili allaqachon ishlatilgan."
 
+#: users/forms.py:108
 msgid "This phone number is already in use."
-msgstr "Bu telefon raqam allaqachon ishlatilmoqda."
+msgstr "Bu telefon raqami allaqachon ishlatilgan."
 
+#: users/models.py:10
 msgid "Phone number or email is required"
-msgstr "Telefon raqam yoki email manzil talab qilinadi"
+msgstr "Telefon raqami yoki email talab qilinadi"
 
+#: users/models.py:13
+msgid "User"
+msgstr "Foydalanuvchi"
+
+#: users/models.py:42
 msgid "Student"
 msgstr "Talaba"
 
+#: users/models.py:43 users/models.py:50
 msgid "Admin"
-msgstr "Admin"
+msgstr "Administrator"
 
+#: users/models.py:48
 msgid "Role"
 msgstr "Roli"
 
+#: users/models.py:49
 msgid "Active"
 msgstr "Faol"
 
+#: users/views.py:35
 msgid "Invalid phone number or password"
-msgstr "Telefon raqam yoki parol noto‘g‘ri"
+msgstr "Noto‘g‘ri telefon yoki parol"
