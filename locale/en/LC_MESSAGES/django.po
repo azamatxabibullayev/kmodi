@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 12:39+0500\n"
+"POT-Creation-Date: 2025-07-17 15:42+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -290,7 +290,7 @@ msgstr "Music Theory"
 msgid "Bo‘limlar"
 msgstr "Sections"
 
-#: templates/main/category_list.html:95 templates/main/material_detail.html:179
+#: templates/main/category_list.html:95 templates/main/material_detail.html:175
 #: templates/main/salfedjio.html:98
 msgid "Orqaga"
 msgstr "Back"
@@ -353,10 +353,6 @@ msgstr "Assignments"
 msgid "Topshiriq rasmi"
 msgstr "Assignment Image"
 
-#: templates/main/material_detail.html:174
-msgid "Tugallandi!"
-msgstr "Completed!"
-
 #: templates/main/salfedjio.html:3 templates/main/salfedjio.html:71
 msgid "Salfedjio Darslari"
 msgstr "Solfeggio Lessons"
@@ -370,26 +366,30 @@ msgid "Qidiruv natijalari"
 msgstr "Search Results"
 
 #: templates/main/search_results.html:117
+msgid "Bo'limlar"
+msgstr "Sections"
+
+#: templates/main/search_results.html:126
 msgid "Darsliklar"
 msgstr "Materials"
 
-#: templates/main/search_results.html:126
+#: templates/main/search_results.html:135
 msgid "Salfedjio Videolari"
 msgstr "Solfeggio Videos"
 
-#: templates/main/search_results.html:135
+#: templates/main/search_results.html:144
 msgid "Sahifada ko‘rish"
 msgstr "View on Page"
 
-#: templates/main/search_results.html:145
+#: templates/main/search_results.html:154
 msgid "Kutubxona Kitoblari"
 msgstr "Library Books"
 
-#: templates/main/search_results.html:154
+#: templates/main/search_results.html:163
 msgid "Jamoa A’zolari"
 msgstr "Team Members"
 
-#: templates/main/search_results.html:168
+#: templates/main/search_results.html:175
 msgid "Hech qanday ma’lumot topilmadi."
 msgstr "No results found."
 
@@ -543,3 +543,5 @@ msgstr "Active"
 #: users/views.py:35
 msgid "Invalid phone number or password"
 msgstr "Invalid phone number or password"
+
+

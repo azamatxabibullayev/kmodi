@@ -111,7 +111,16 @@
 
 <h3 class="search-title">{% trans "Qidiruv natijalari" %}: "{{ query }}"</h3>
 
-{% if materials or videos or books or team_members %}
+{% if categories or materials or videos or books or team_members %}
+
+    {% if categories %}
+        <h5 class="section-heading">{% trans "Bo'limlar" %}:</h5>
+        {% for category in categories %}
+            <a href="{% url 'category_detail' category.id %}" class="material-button">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    {% endif %}
 
     {% if materials %}
         <h5 class="section-heading">{% trans "Darsliklar" %}:</h5>
@@ -132,7 +141,7 @@
                          alt="{{ v.title }}">
                     <div class="card-body">
                         <a href="{% url 'salfedjio' %}?video={{ v.get_video_id }}" class="btn-view">
-                             {% trans "Sahifada ko‘rish" %}
+                            {% trans "Sahifada ko‘rish" %}
                         </a>
                     </div>
                 </div>
@@ -153,14 +162,12 @@
     {% if team_members %}
         <h5 class="section-heading">{% trans "Jamoa A’zolari" %}:</h5>
         {% for member in team_members %}
-            <a href="{% url 'home' %}#team" style="text-decoration: none;">
-                <div class="member-card" >
-                    {{ member.full_name }}
-                    {% if member.job_title %}
-                        <div class="member-role">{{ member.job_title }}</div>
-                    {% endif %}
-                </div>
-            </a>
+            <div class="member-card">
+                {{ member.full_name }}
+                {% if member.job_title %}
+                    <div class="member-role">{{ member.job_title }}</div>
+                {% endif %}
+            </div>
         {% endfor %}
     {% endif %}
 

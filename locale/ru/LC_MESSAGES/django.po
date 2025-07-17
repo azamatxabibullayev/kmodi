@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 12:39+0500\n"
+"POT-Creation-Date: 2025-07-17 15:42+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Russian <ru@locale.org>\n"
@@ -292,7 +292,7 @@ msgstr "Музыкальная теория"
 msgid "Bo‘limlar"
 msgstr "Разделы"
 
-#: templates/main/category_list.html:95 templates/main/material_detail.html:179
+#: templates/main/category_list.html:95 templates/main/material_detail.html:175
 #: templates/main/salfedjio.html:98
 msgid "Orqaga"
 msgstr "Назад"
@@ -355,10 +355,6 @@ msgstr "Задания"
 msgid "Topshiriq rasmi"
 msgstr "Изображение задания"
 
-#: templates/main/material_detail.html:174
-msgid "Tugallandi!"
-msgstr "Завершено!"
-
 #: templates/main/salfedjio.html:3 templates/main/salfedjio.html:71
 msgid "Salfedjio Darslari"
 msgstr "Уроки сольфеджио"
@@ -372,26 +368,30 @@ msgid "Qidiruv natijalari"
 msgstr "Результаты поиска"
 
 #: templates/main/search_results.html:117
+msgid "Bo'limlar"
+msgstr "Категории"
+
+#: templates/main/search_results.html:126
 msgid "Darsliklar"
 msgstr "Материалы"
 
-#: templates/main/search_results.html:126
+#: templates/main/search_results.html:135
 msgid "Salfedjio Videolari"
 msgstr "Видео сольфеджио"
 
-#: templates/main/search_results.html:135
+#: templates/main/search_results.html:144
 msgid "Sahifada ko‘rish"
 msgstr "Просмотреть на странице"
 
-#: templates/main/search_results.html:145
+#: templates/main/search_results.html:154
 msgid "Kutubxona Kitoblari"
 msgstr "Книги библиотеки"
 
-#: templates/main/search_results.html:154
+#: templates/main/search_results.html:163
 msgid "Jamoa A’zolari"
 msgstr "Участники команды"
 
-#: templates/main/search_results.html:168
+#: templates/main/search_results.html:175
 msgid "Hech qanday ma’lumot topilmadi."
 msgstr "Ничего не найдено."
 
@@ -545,3 +545,4 @@ msgstr "Активен"
 #: users/views.py:35
 msgid "Invalid phone number or password"
 msgstr "Неверный телефон или пароль"
+

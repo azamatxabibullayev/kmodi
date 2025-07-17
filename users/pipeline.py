@@ -1,5 +1,4 @@
 from users.models import User
-from django.utils.translation import gettext_lazy as _
 
 
 def assign_user_fields(strategy, details, backend, user=None, *args, **kwargs):

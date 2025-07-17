@@ -8,7 +8,6 @@ kmodi.uz — an inclusive educational platform designed to provide **equal acces
 - 🔊 Assignment support: **text**, **audio**, **image**
 - 📚 E-Library: downloadable PDF books
 - 🎥 Embedded YouTube video lectures (Solfeggio & recommendations)
-- 📈 Track learning progress per user
 - 🛠️ Custom admin dashboard (with superuser-only admin creation)
 - 🔐 Google OAuth support for authentication
 - 📱 Responsive, mobile-friendly design (Bootstrap 5)
