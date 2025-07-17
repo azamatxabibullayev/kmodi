@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.translation import gettext as _t
 
 from main.models import (
-    Category, Material, MaterialProgress,
+    Category, Material,
     LibraryBook, SalfedjioVideo,
     YouTubeRecommendation, TeamMember
 )
@@ -22,7 +22,6 @@ def dashboard_home(request):
     return render(request, 'dashboard/home.html')
 
 
-# ==== FORMS ====
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
@@ -45,17 +44,6 @@ class MaterialForm(forms.ModelForm):
             'assignment_text': _("Assignment Text"),
             'assignment_audio': _("Assignment Audio"),
             'assignment_image': _("Assignment Image"),
-        }
-
-
-class MaterialProgressForm(forms.ModelForm):
-    class Meta:
-        model = MaterialProgress
-        fields = ['user', 'material', 'is_completed']
-        labels = {
-            'user': _("User"),
-            'material': _("Material"),
-            'is_completed': _("Is Completed"),
         }
 
 
@@ -219,31 +207,6 @@ def material_edit(request, pk):
 @admin_required
 def material_delete(request, pk):
     return delete_view(request, pk, Material, 'dashboard:material_list', _("Delete Material"))
-
-
-@login_required
-@admin_required
-def progress_list(request):
-    return list_view(request, MaterialProgress, 'dashboard/progress_list.html', 'progresses')
-
-
-@login_required
-@admin_required
-def progress_create(request):
-    return create_view(request, MaterialProgressForm, 'dashboard:progress_list', _("Add Material Progress"))
-
-
-@login_required
-@admin_required
-def progress_edit(request, pk):
-    return update_view(request, pk, MaterialProgress, MaterialProgressForm, 'dashboard:progress_list',
-                       _("Edit Material Progress"))
-
-
-@login_required
-@admin_required
-def progress_delete(request, pk):
-    return delete_view(request, pk, MaterialProgress, 'dashboard:progress_list', _("Delete Material Progress"))
 
 
 @login_required

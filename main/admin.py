@@ -4,7 +4,7 @@ from modeltranslation.admin import TranslationAdmin
 from .models import (
     Category, Material, LibraryBook,
     SalfedjioVideo, YouTubeRecommendation,
-    TeamMember, MaterialProgress
+    TeamMember
 )
 
 
@@ -46,11 +46,3 @@ class TeamMemberAdmin(TranslationAdmin):
         'full_name_uz', 'full_name_ru', 'full_name_en',
         'job_title_uz', 'job_title_ru', 'job_title_en'
     )
-
-
-@admin.register(MaterialProgress)
-class MaterialProgressAdmin(admin.ModelAdmin):
-    list_display = ('user', 'material', 'is_completed', 'completed_at')
-    list_filter = ('is_completed', 'completed_at')
-    search_fields = ('user__username', 'user__email', 'material__text')
-    ordering = ('-completed_at',)

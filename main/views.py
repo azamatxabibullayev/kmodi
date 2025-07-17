@@ -1,11 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_POST
-from django.http import JsonResponse
 from django.db.models import Q
 from .models import (
     Category, Material, LibraryBook, SalfedjioVideo,
-    YouTubeRecommendation, TeamMember, MaterialProgress
+    YouTubeRecommendation, TeamMember
 )
 
 
@@ -33,12 +31,6 @@ def category_list(request):
 def category_detail(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     materials = Material.objects.filter(category=category)
-    completed_ids = set(
-        MaterialProgress.objects.filter(user=request.user, is_completed=True).values_list('material_id', flat=True)
-    )
-    for m in materials:
-        m.is_completed = m.id in completed_ids
-
     return render(request, 'main/material_detail.html', {
         'category': category,
         'materials': materials
@@ -98,11 +90,3 @@ def search_view(request):
         "team_members": team_members,
     }
     return render(request, "main/search_results.html", context)
-
-
-@require_POST
-@login_required
-def mark_material_completed(request, material_id):
-    material = get_object_or_404(Material, pk=material_id)
-    MaterialProgress.objects.get_or_create(user=request.user, material=material, defaults={'is_completed': True})
-    return JsonResponse({'status': 'ok'})

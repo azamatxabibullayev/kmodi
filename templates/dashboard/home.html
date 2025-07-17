@@ -4,9 +4,6 @@
 {% block content %}
 <div class="container py-4">
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
-        <div>
-            <h2 class="fw-bold">👋 Xush kelibsiz, {{ request.user.full_name }}!</h2>
-        </div>
         <div class="text-end">
             <a href="{% url 'profile' %}" class="btn btn-outline-primary">Profilni Ko‘rish</a>
             <a href="{% url 'logout' %}" class="btn btn-danger">Chiqish</a>
@@ -18,7 +15,7 @@
             <div class="card shadow border-0 h-100">
                 <div class="card-body text-center">
                     <i class="bi bi-folder fs-1 text-primary"></i>
-                    <h5 class="card-title mt-2">Bo‘limlar</h5>
+                    <h5 class="card-title mt-2">Kategoriyalar</h5>
                     <p class="card-text">O‘quv kategoriyalarini boshqarish</p>
                     <a href="{% url 'dashboard:category_list' %}" class="btn btn-sm btn-primary">Ko‘rish</a>
                 </div>

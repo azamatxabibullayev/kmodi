@@ -1,7 +1,6 @@
 from django.db import models
 from urllib.parse import urlparse, parse_qs
 from django.utils.translation import gettext_lazy as _
-from kmodi import settings
 
 
 class Category(models.Model):
@@ -23,18 +22,6 @@ class Material(models.Model):
 
     def __str__(self):
         return f"{_('Material for')} {self.category.name}"
-
-
-class MaterialProgress(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), on_delete=models.CASCADE)
-    material = models.ForeignKey(Material, verbose_name=_("Material"), on_delete=models.CASCADE)
-    is_completed = models.BooleanField(_("Completed"), default=False)
-    completed_at = models.DateTimeField(_("Completed At"), auto_now_add=True)
-
-    class Meta:
-        unique_together = ('user', 'material')
-        verbose_name = _("Material Progress")
-        verbose_name_plural = _("Material Progresses")
 
 
 class LibraryBook(models.Model):

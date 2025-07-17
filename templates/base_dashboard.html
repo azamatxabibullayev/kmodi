@@ -50,19 +50,18 @@
             <button class="btn btn-outline-light me-2 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
                 <i class="bi bi-list"></i>
             </button>
-            <a class="navbar-brand" href="{% url 'dashboard:home' %}">🎓 Admin Panel</a>
+            <a class="navbar-brand" href="{% url 'dashboard:home' %}">Admin Panel</a>
         </div>
     </nav>
 
     <div class="sidebar d-none d-md-block bg-dark text-white position-fixed h-100" style="width: 250px;">
         <div class="p-3 border-bottom border-secondary">
             <h5 class="text-white">
-                <a href="{% url 'dashboard:home' %}" class="text-white text-decoration-none">🎓 Admin Panel</a>
+                <a href="{% url 'dashboard:home' %}" class="text-white text-decoration-none">Admin Panel</a>
             </h5>
         </div>
         <a href="{% url 'dashboard:category_list' %}" class="nav-link"><i class="bi bi-folder me-2"></i> Kategoriyalar</a>
         <a href="{% url 'dashboard:material_list' %}" class="nav-link"><i class="bi bi-journals me-2"></i> Materiallar</a>
-        <a href="{% url 'dashboard:progress_list' %}" class="nav-link"><i class="bi bi-check2-square me-2"></i> Dars Progressi</a>
         <a href="{% url 'dashboard:book_list' %}" class="nav-link"><i class="bi bi-book me-2"></i> Kutubxona</a>
         <a href="{% url 'dashboard:video_list' %}" class="nav-link"><i class="bi bi-play-circle me-2"></i> Salfedjio videolar</a>
         <a href="{% url 'dashboard:recommendation_list' %}" class="nav-link"><i class="bi bi-youtube me-2"></i> Tavsiya videolar</a>
@@ -73,13 +72,12 @@
 
     <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
         <div class="offcanvas-header border-bottom border-secondary">
-            <h5 class="offcanvas-title" id="mobileSidebarLabel">🎓 Admin Panel</h5>
+            <h5 class="offcanvas-title" id="mobileSidebarLabel">Admin Panel</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Yopish"></button>
         </div>
         <div class="offcanvas-body">
             <a href="{% url 'dashboard:category_list' %}" class="nav-link"><i class="bi bi-folder me-2"></i> Kategoriyalar</a>
             <a href="{% url 'dashboard:material_list' %}" class="nav-link"><i class="bi bi-journals me-2"></i> Materiallar</a>
-            <a href="{% url 'dashboard:progress_list' %}" class="nav-link"><i class="bi bi-check2-square me-2"></i> Dars Progressi</a>
             <a href="{% url 'dashboard:book_list' %}" class="nav-link"><i class="bi bi-book me-2"></i> Kutubxona</a>
             <a href="{% url 'dashboard:video_list' %}" class="nav-link"><i class="bi bi-play-circle me-2"></i> Salfedjio videolar</a>
             <a href="{% url 'dashboard:recommendation_list' %}" class="nav-link"><i class="bi bi-youtube me-2"></i> Tavsiya videolar</a>
