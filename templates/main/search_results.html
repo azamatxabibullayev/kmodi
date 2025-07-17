@@ -24,7 +24,7 @@
         color: #333;
     }
 
-    .material-button {
+    .material-button, .book-button, .member-card {
         display: block;
         background: linear-gradient(to right, #faf8af, #ffa6fa);
         border: 1px solid #444;
@@ -39,7 +39,9 @@
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .material-button:hover {
+    .material-button:hover,
+    .book-button:hover,
+    .member-card:hover {
         transform: scale(1.05);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
@@ -60,6 +62,7 @@
     .video-card img {
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
+        width: 100%;
     }
 
     .video-card .card-body {
@@ -97,14 +100,21 @@
         font-weight: bold;
         margin-top: 50px;
     }
+
+    .member-role {
+        font-size: 14px;
+        font-weight: normal;
+        margin-top: 5px;
+        color: #333;
+    }
 </style>
 
-<h3 class="search-title">🔍 {% trans "Qidiruv natijalari" %}: "{{ query }}"</h3>
+<h3 class="search-title">{% trans "Qidiruv natijalari" %}: "{{ query }}"</h3>
 
-{% if materials or videos %}
+{% if materials or videos or books or team_members %}
 
     {% if materials %}
-        <h5 class="section-heading">📘 {% trans "Darsliklar" %}:</h5>
+        <h5 class="section-heading">{% trans "Darsliklar" %}:</h5>
         {% for m in materials %}
             <a href="{% url 'category_detail' m.category.id %}" class="material-button">
                 {{ m.category.name }}
@@ -113,17 +123,16 @@
     {% endif %}
 
     {% if videos %}
-        <h5 class="section-heading">🎥 {% trans "Salfedjio Videolari" %}:</h5>
+        <h5 class="section-heading">{% trans "Salfedjio Videolari" %}:</h5>
         <div class="row">
             {% for v in videos %}
             <div class="col-md-4 mb-4">
                 <div class="video-card h-100">
                     <img src="https://img.youtube.com/vi/{{ v.get_video_id }}/hqdefault.jpg"
-                         class="card-img-top" alt="{{ v.title }}">
+                         alt="{{ v.title }}">
                     <div class="card-body">
-                        <h6 class="card-title">{{ v.title }}</h6>
                         <a href="{% url 'salfedjio' %}?video={{ v.get_video_id }}" class="btn-view">
-                            ▶️ {% trans "Sahifada ko‘rish" %}
+                             {% trans "Sahifada ko‘rish" %}
                         </a>
                     </div>
                 </div>
@@ -132,7 +141,30 @@
         </div>
     {% endif %}
 
+    {% if books %}
+        <h5 class="section-heading">{% trans "Kutubxona Kitoblari" %}:</h5>
+        {% for book in books %}
+            <a href="{{ book.pdf_file.url }}" target="_blank" class="book-button">
+                {{ book.title }}
+            </a>
+        {% endfor %}
+    {% endif %}
+
+    {% if team_members %}
+        <h5 class="section-heading">{% trans "Jamoa A’zolari" %}:</h5>
+        {% for member in team_members %}
+            <a href="{% url 'home' %}#team" style="text-decoration: none;">
+                <div class="member-card" >
+                    {{ member.full_name }}
+                    {% if member.job_title %}
+                        <div class="member-role">{{ member.job_title }}</div>
+                    {% endif %}
+                </div>
+            </a>
+        {% endfor %}
+    {% endif %}
+
 {% else %}
-    <p class="no-result">❌ {% trans "Hech qanday ma’lumot topilmadi." %}</p>
+    <p class="no-result">{% trans "Hech qanday ma’lumot topilmadi." %}</p>
 {% endif %}
 {% endblock %}

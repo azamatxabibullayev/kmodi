@@ -1,10 +1,7 @@
-import json
-from django.core.serializers.json import DjangoJSONEncoder
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
-from django.utils.translation import gettext as _
 from django.db.models import Q
 from .models import (
     Category, Material, LibraryBook, SalfedjioVideo,
@@ -60,34 +57,47 @@ def salfedjio_view(request):
     return render(request, 'main/salfedjio.html', {'videos': videos})
 
 
-@login_required
 def search_view(request):
-    query = request.GET.get('q', '')
-    materials = Material.objects.none()
-    videos = SalfedjioVideo.objects.none()
-    material_categories = {}
-    completed_material_ids = []
+    query = request.GET.get("q", "")
+    language = request.LANGUAGE_CODE
 
-    if query:
-        materials = Material.objects.filter(category__name__icontains=query)
-        videos = SalfedjioVideo.objects.filter(title__icontains=query)
+    def translated(field):
+        return f"{field}_{language}"
 
-        completed_material_ids = list(MaterialProgress.objects.filter(
-            user=request.user, is_completed=True
-        ).values_list('material_id', flat=True))
+    categories = Category.objects.filter(
+        Q(**{translated("name") + "__icontains": query})
+    )
 
-        from collections import defaultdict
-        material_categories = defaultdict(list)
-        for material in materials:
-            material_categories[str(material.category.id)].append(material.id)
+    materials = Material.objects.filter(
+        Q(**{translated("text") + "__icontains": query}) |
+        Q(**{translated("assignment_text") + "__icontains": query})
+    )
 
-    return render(request, 'main/search_results.html', {
-        'query': query,
-        'materials': materials,
-        'videos': videos,
-        'completed_material_ids': json.dumps(completed_material_ids, cls=DjangoJSONEncoder),
-        'material_categories': json.dumps(material_categories, cls=DjangoJSONEncoder),
-    })
+    books = LibraryBook.objects.filter(
+        Q(**{translated("title") + "__icontains": query})
+    )
+
+    videos = SalfedjioVideo.objects.all()
+    filtered_videos = []
+    for i, video in enumerate(videos, 1):
+        if query.lower() in f"video {i}".lower():
+            filtered_videos.append(video)
+
+    team_members = TeamMember.objects.filter(
+        Q(**{translated("full_name") + "__icontains": query}) |
+        Q(**{translated("job_title") + "__icontains": query}) |
+        Q(**{translated("bio") + "__icontains": query})
+    )
+
+    context = {
+        "query": query,
+        "categories": categories,
+        "materials": materials,
+        "books": books,
+        "videos": filtered_videos,
+        "team_members": team_members,
+    }
+    return render(request, "main/search_results.html", context)
 
 
 @require_POST
